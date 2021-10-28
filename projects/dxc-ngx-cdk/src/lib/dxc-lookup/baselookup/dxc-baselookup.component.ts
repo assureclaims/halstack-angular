@@ -102,7 +102,7 @@ export class DxcBaselookupComponent<T> implements OnInit, OnChanges, OnDestroy, 
   filteredOptions: Observable<T[]>;
   lookupTypeValues = ELookupType;
   lookupModeValues = Mode;
-  chipwidth = 332;
+  chipwidth = '';
   displayValue = '';
   hideTemplateBox = false;
   RowSelectionTypeValues = RowSelectionType;
@@ -243,7 +243,6 @@ export class DxcBaselookupComponent<T> implements OnInit, OnChanges, OnDestroy, 
   calcWidth = () => {
     // tslint:disable-next-line: radix
     if (this.lookupformfield && this.lookupformfield.nativeElement && this.lookupformfield.nativeElement.offsetWidth) {
-      this.chipwidth = (this.lookupformfield.nativeElement.offsetWidth - 42);
     }
   }
 
