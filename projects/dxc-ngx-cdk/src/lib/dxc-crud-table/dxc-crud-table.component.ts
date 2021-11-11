@@ -207,7 +207,7 @@ export class DxcCrudTableComponent implements OnInit, ControlValueAccessor, OnCh
   }
 
   rowChecked = ($event) => {
-    if (this.expandedElement != null || this.isEditForm == true) {
+    if (this.isEditForm == true) {
       this.messageService.Info(this.config.configservice.GlobalResource.rowSelectionError?.description);
       return;
     }
@@ -222,7 +222,7 @@ export class DxcCrudTableComponent implements OnInit, ControlValueAccessor, OnCh
   }
 
   selectAllRow = () => {
-    if (this.expandedElement != null || this.isEditForm == true) {
+    if (this.isEditForm == true) {
       this.messageService.Info(this.config.configservice.GlobalResource.rowSelectionError?.description);
       return;
     }
