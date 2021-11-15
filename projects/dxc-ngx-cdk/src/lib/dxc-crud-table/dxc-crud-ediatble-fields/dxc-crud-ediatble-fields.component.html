@@ -1,5 +1,5 @@
   <div [ngSwitch]="field.fieldType" [formGroup]="formGroup">
-    <dxc-label [required]="field.required" [text]="resource[field.label]" [id]="field.name">
+    <dxc-label [required]="field.required" [text]="resource[field.label]" [id]="field.name" tabindex="0">
     </dxc-label>
     <div *ngSwitchCase="fieldsType.textInput">
       <dxc-input-text id="ctrl_{{field.name}}" ariaLabelledBy="cl_{{field.name}}" [ariaRequired]="field.required"
