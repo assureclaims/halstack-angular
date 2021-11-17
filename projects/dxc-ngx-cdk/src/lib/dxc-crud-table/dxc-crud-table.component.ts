@@ -106,7 +106,6 @@ export class DxcCrudTableComponent implements OnInit, ControlValueAccessor, OnCh
   filterValue: string = '';
   referenceRow: any = null;
   enableAccessKey: boolean;
-  selectAllLabel: string = 'Select All Grid Row';
 
   constructor(private fb: FormBuilder, public dialog: MatDialog,
     private helper: DxcCrudService, private messageService: MessageService,
@@ -152,7 +151,6 @@ export class DxcCrudTableComponent implements OnInit, ControlValueAccessor, OnCh
     this.uniqueColumn = this.uniqueIdentifier;
     this.validations = this.config.configservice.Resources.gridGlobalRequiredValidation?.description;
     this.noRecord = this.config.configservice.Resources.gridNoRecord?.description;
-    this.selectAllLabel = this.config.configservice.Resources.selectAllRow?.description;
   }
 
   ngAfterViewInit() {
