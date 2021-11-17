@@ -11,7 +11,7 @@
       #table>
       <ng-container *ngFor="let column of columns; let i = index; let last = last; let first = first;"
         matColumnDef="{{column}}">
-        <th tabindex="0" mat-header-cell *matHeaderCellDef class="pr-3 px-2 gridHeaderClr text-nowrap">
+        <th tabindex="0" mat-header-cell *matHeaderCellDef class="pr-3 px-2 gridHeaderClr text-nowrap" attr.aria-label="{{resource[column]}}>
           <span *ngIf="first && rowSelection == 'multi'" class="float-left mr-2">
             <ng-container *ngTemplateOutlet="selectAll">
             </ng-container>
@@ -62,10 +62,15 @@
 
 <ng-template #mobileView>
   <div class="mobile-view">
-    <mat-card *ngIf="rowSelection == 'multi'" class="p-1 m-1">
+    <mat-card *ngIf="rowSelection == 'multi' && loaded == true && dataSource?.data != null && dataSource.data.length > 0" class="p-1 m-1">
       <mat-card-title>
         <ng-container *ngTemplateOutlet="selectAll"></ng-container>
       </mat-card-title>
+      <mat-card-content class="mt-4 p-1">
+        <span>
+          <b>{{selectAllLabel}}</b>
+        </span>
+      </mat-card-content>
     </mat-card>
     <ng-container
       *ngFor="let row of dataSource?.data | formatter: {'format': {'columns': columns, 'filterValue': filterValue}, 'type': 'xsfilter'}; trackBy:trackTable">

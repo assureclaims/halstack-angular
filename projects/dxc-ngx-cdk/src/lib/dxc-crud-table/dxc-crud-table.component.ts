@@ -106,7 +106,8 @@ export class DxcCrudTableComponent implements OnInit, ControlValueAccessor, OnCh
   filterValue: string = '';
   referenceRow: any = null;
   enableAccessKey: boolean;
-  
+  selectAllLabel: string = 'Select All Grid Row';
+
   constructor(private fb: FormBuilder, public dialog: MatDialog,
     private helper: DxcCrudService, private messageService: MessageService,
     private confirmationDialogService: DxcConfirmationDialogService,
@@ -134,7 +135,7 @@ export class DxcCrudTableComponent implements OnInit, ControlValueAccessor, OnCh
     if (changes.gridToolbar && changes.gridToolbar.currentValue && changes.gridToolbar.currentValue.filter(buttons => { return (buttons.rel == this.deleteRel || buttons.rel == this.editRel) }).count() > 0 && this.rowSelection == 'none') {
       this.rowSelection = 'single';
     }
-    if (changes.editableColumns?.currentValue != null && changes.editableColumns.currentValue.filter(({ fieldType }) => fieldType === EFieldsType.dropdown).size  > 0) {
+    if (changes.editableColumns?.currentValue != null) {
       this.editableFields = changes.editableColumns.currentValue;
       if (this.editableColumns?.viewmode != "TAB") {
         this.fieldOptions = this.editableFields.map(obj => ({ ...obj }));
@@ -151,6 +152,7 @@ export class DxcCrudTableComponent implements OnInit, ControlValueAccessor, OnCh
     this.uniqueColumn = this.uniqueIdentifier;
     this.validations = this.config.configservice.Resources.gridGlobalRequiredValidation?.description;
     this.noRecord = this.config.configservice.Resources.gridNoRecord?.description;
+    this.selectAllLabel = this.config.configservice.Resources.selectAllRow?.description;
   }
 
   ngAfterViewInit() {
