@@ -534,6 +534,8 @@ export class DxcCrudTableComponent implements OnInit, ControlValueAccessor, OnCh
     }
     this.tableHeight = this.crudHelper.calculateFormHeight(false, this.tableHeight, this.dataSource.data, this.elRef);
     this.formControlUpdater.emit({ action: EAction.ONPANELCLOSE });
+    this.parentForm?.markAsPristine();
+    this.parentForm?.markAsUntouched();
   }
 
   expandRow = (index, row) => {
