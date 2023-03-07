@@ -48,7 +48,6 @@ export class FilesService {
       event: "remove",
     });
   }
-
   emptyArrayFiles(){
     this.files.next({
       files: [],

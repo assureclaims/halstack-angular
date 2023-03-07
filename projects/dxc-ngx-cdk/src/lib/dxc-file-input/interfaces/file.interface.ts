@@ -1,4 +1,4 @@
-import { EventType } from "../services/fileupload.request.services";
+import { EventType } from "../model/fileuploadrequestdata";
 export interface FileData{
     data: File;
     error: string;

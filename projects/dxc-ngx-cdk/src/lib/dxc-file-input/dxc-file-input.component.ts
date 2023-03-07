@@ -22,9 +22,9 @@ import { FileData } from "./interfaces/file.interface";
 import { FilesService } from "./services/files.services";
 import { NgChanges } from "../typings/ng-onchange";
 import { FileInputProperties, Space, Spacing } from "./dxc-file-input.types";
-import { filemetadata } from './model/filemetadata';
+import { FileMetaData } from './model/filemetadata';
 import { chunkmetadata } from './model/chunkmetadata';
-import { IfileuploadRequest, EventType } from "./services/fileupload.request.services";
+import { IFileUploadRequest, EventType } from "./model/fileuploadrequestdata";
 
 @Component({
   selector: "dxc-file-input",
@@ -136,7 +136,7 @@ export class DxcFileInputComponent implements OnChanges, OnInit {
   /**
    * request object gets the value from APP and pass to halstack library.
    */
-  @Input('requests') requests: IfileuploadRequest = null;
+  @Input('requests') requests: IFileUploadRequest = null;
   private _tabIndexValue = 0;
   hasShowError: boolean = false;
   /**
@@ -174,16 +174,15 @@ export class DxcFileInputComponent implements OnChanges, OnInit {
   hasSingleFile: boolean = false;
   hasErrorSingleFile: boolean = false;
   hasValue: boolean = false;
-  global_filehit: number = 0;
-  global_chunkcount: number = 0;
-  global_actualchunkcount: number = 0;
-  filedataupload: filemetadata;
+  globalFileHit: number = 0;
+  globalChunkCount: number = 0;
+  globalActualChunkCount: number = 0;
+  fileDataUpload: FileMetaData;
   GUID: string;
   fileEventType: EventType = EventType.PREUPLOAD;
-  chunkresult: boolean;
+  chunkResult: boolean;
   data: any;
-  Postresp: any;
-  //fileinfo: any;
+  postResp: any;
   
   constructor(private utils: CssUtils, private service: FilesService) {
     this.service.files.subscribe(({ files, event }) => {
@@ -311,13 +310,6 @@ export class DxcFileInputComponent implements OnChanges, OnInit {
    * @param event
    */
     processFiles(event) {
-    // var len = event.length;
-    // if(this.global_filehit == 0 && len > 0)
-    // {
-    //   this.files = event;
-    //   this.UploadFile(this.files);
-    // }
-    //this.UploadFile(event);
     this.files=event;
     this.fileEventType = EventType.UPLOAD;
     for(let i=0;i<event.length;i++)
@@ -327,63 +319,55 @@ export class DxcFileInputComponent implements OnChanges, OnInit {
   }
 
   UploadFile(eventFiles) {
-  //this.global_filehit = 1;
-  // Array.from(eventFiles).map((file) => {
-  //   this.uploadChunkDoc(file);
-  // });
   this.uploadChunkDoc(eventFiles);
 }
 uploadChunkDoc(file) {
   let lastChunksize = 0;
-  this.filedataupload = new filemetadata();
+  this.fileDataUpload = new FileMetaData();
   this.GUID = uuidv4();
-  this.global_actualchunkcount = 0;
-  this.global_chunkcount = file.size % 1000000 == 0 ? file.size / 1000000 : Math.floor(file.size / 1000000) + 1;
+  this.globalActualChunkCount = 0;
+  this.globalChunkCount = file.size % 1000000 == 0 ? file.size / 1000000 : Math.floor(file.size / 1000000) + 1;
 
   this.readFile(file, lastChunksize, this.uploadtoAPI.bind(this));
  }
 
  uploadtoAPI(filedata,file, lastChunksize, result) {
   lastChunksize = lastChunksize + 1000000;
-  this.chunkresult = result;
+  this.chunkResult = result;
   if(result) {
     //Add you logic what do you want after reading the file
-      // this.upload(filedata).subscribe(resp => { 
-      // //global_actualchunkcount++;
-      // console.log(" Chunk Upload complete"); });
       this.uploads(filedata);
       this.readFile(file, lastChunksize, this.uploadtoAPI.bind(this));
 
   }
-  else if(this.global_actualchunkcount == this.global_chunkcount)
+  else if(this.globalActualChunkCount == this.globalChunkCount)
   {
     setTimeout(() => {
-      this.uploadcomplete(this.filedataupload).then(resp => { 
+      this.uploadcomplete(this.fileDataUpload).then(resp => { 
         this.data[0].postresponse = resp;
         this.fileEventType = EventType.POSTUPLOAD;
         //let data = this.getPreview(file);
         this.data[0].eventtype = this.fileEventType;
         this.callbackFile.emit(this.data);
-        alert("File Upload completed"); });
+        });
     }, 3000);
-    //this.uploadcomplete(this.filedataupload);
   }
  }
 
  readFile(file,lastChunksize: number, callback) {
   let filedata = new chunkmetadata();
-  filedata.fileName = this.global_actualchunkcount + "-" + this.GUID + file.name;
+  filedata.fileName = this.globalActualChunkCount + "-" + this.GUID + file.name;
    filedata.fileSize = file.size;
    filedata.fileType = file.type;
-   this.filedataupload.GUID = this.GUID;
+   this.fileDataUpload.GUID = this.GUID;
   var chunk = file.slice(lastChunksize,lastChunksize+1000000);
   if(chunk.size !=0) {
     let fileReader = new FileReader();
     fileReader.onloadend= (result)=>{
       // Store base64 encoded representation of file
     filedata.fileAsBase64 = fileReader.result.toString();
-    this.global_actualchunkcount++;
-    this.filedataupload.fileNames.push(filedata.fileName);
+    this.globalActualChunkCount++;
+    this.fileDataUpload.fileNames.push(filedata.fileName);
     return callback(filedata,file,lastChunksize,fileReader.result)
     }
     fileReader.readAsDataURL(chunk);
@@ -391,7 +375,7 @@ uploadChunkDoc(file) {
    return callback(filedata,file,lastChunksize,false);
   }
  }
- public async uploads(theFile: chunkmetadata) 
+ private async uploads(theFile: chunkmetadata) 
  {
    const response = await fetch(this.requests.uploadrequest.url, {
      method: 'POST',
@@ -414,7 +398,7 @@ uploadChunkDoc(file) {
 
 //  return result;
  }
-  public async uploadcomplete(theFiles: filemetadata) {
+  private async uploadcomplete(theFiles: FileMetaData) {
     const response = await fetch(this.requests.uploadcompleterequest.url, {
       method: 'POST',
       body: JSON.stringify(theFiles),
@@ -462,7 +446,7 @@ uploadChunkDoc(file) {
           image: null,
           error: this.checkFileSize(file),
           eventtype: this.fileEventType,
-          postresponse: this.Postresp
+          postresponse: this.postResp
         };
         this.service.addFile(fileToAdd);
       } else {
@@ -471,7 +455,7 @@ uploadChunkDoc(file) {
           image: event.target["result"],
           error: this.checkFileSize(file),
           eventtype: this.fileEventType,
-          postresponse: this.Postresp
+          postresponse: this.postResp
         };
         this.service.addFile(fileToAdd);
       }
