@@ -1,6 +1,6 @@
-import { chunkmetadata } from "./chunkmetadata";
+import { ChunkMetaData } from "./chunk.metadata";
 
-export class filemetadata {
+export class FileMetaData {
     //filedatas = [FileToUpload];
     GUID: string = "";
     fileNames : string[] = [];

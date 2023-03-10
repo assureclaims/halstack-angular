@@ -1,8 +1,8 @@
-import { EventType } from "../model/fileuploadrequestdata";
+import { EventType } from "../model/fileuploadrequest.data";
 export interface FileData{
     data: File;
     error: string;
     image: string | ArrayBuffer;
-    eventtype: EventType;
-    postresponse: string
+    eventType: EventType;
+    postResponse: string
 }

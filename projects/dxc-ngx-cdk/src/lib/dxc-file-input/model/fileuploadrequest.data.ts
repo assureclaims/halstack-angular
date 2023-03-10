@@ -2,13 +2,12 @@
 import { HttpParams, HttpHeaders } from '@angular/common/http';
 
 export interface IFileUploadRequest {
-  uploadrequest: IRequest, 
-  uploadcompleterequest: IRequest,
-  removerequest: IRequest
+  uploadRequest: IRequest, 
+  uploadCompleteRequest: IRequest,
 }
 
 export interface IEventResponse {
-  eventtype: EventType;
+  eventType: EventType;
 }
 
 export enum EventType {
@@ -18,7 +17,7 @@ export enum EventType {
 }
 export interface IRequest {
   url: string;
-  methodtype: EMethod;
+  methodType: EMethod;
   params?: HttpParams;
   body?: any;
   serverSideFilter?: boolean;

@@ -22,9 +22,9 @@ import { FileData } from "./interfaces/file.interface";
 import { FilesService } from "./services/files.services";
 import { NgChanges } from "../typings/ng-onchange";
 import { FileInputProperties, Space, Spacing } from "./dxc-file-input.types";
-import { FileMetaData } from './model/filemetadata';
-import { chunkmetadata } from './model/chunkmetadata';
-import { IFileUploadRequest, EventType } from "./model/fileuploadrequestdata";
+import { FileMetaData } from './model/file.metadata';
+import { ChunkMetaData } from './model/chunk.metadata';
+import { IFileUploadRequest, EventType } from "./model/fileuploadrequest.data";
 
 @Component({
   selector: "dxc-file-input",
@@ -174,14 +174,13 @@ export class DxcFileInputComponent implements OnChanges, OnInit {
   hasSingleFile: boolean = false;
   hasErrorSingleFile: boolean = false;
   hasValue: boolean = false;
-  globalFileHit: number = 0;
   globalChunkCount: number = 0;
   globalActualChunkCount: number = 0;
   fileDataUpload: FileMetaData;
   GUID: string;
   fileEventType: EventType = EventType.PREUPLOAD;
   chunkResult: boolean;
-  data: any;
+  data: Array<FileData> = [];
   postResp: any;
   
   constructor(private utils: CssUtils, private service: FilesService) {
@@ -192,7 +191,6 @@ export class DxcFileInputComponent implements OnChanges, OnInit {
         this.hasMultipleFiles = this.isMultipleFilesPrintables();
         this.hasSingleFile = this.isSingleFilesPrintables();
         this.callbackFile.emit(files);
-        this.uploadEventType.emit(this.fileEventType);
       }
     });
   }
@@ -344,10 +342,10 @@ uploadChunkDoc(file) {
   {
     setTimeout(() => {
       this.uploadcomplete(this.fileDataUpload).then(resp => { 
-        this.data[0].postresponse = resp;
+        this.data[0].postResponse = resp;
         this.fileEventType = EventType.POSTUPLOAD;
         //let data = this.getPreview(file);
-        this.data[0].eventtype = this.fileEventType;
+        this.data[0].eventType = this.fileEventType;
         this.callbackFile.emit(this.data);
         });
     }, 3000);
@@ -355,7 +353,7 @@ uploadChunkDoc(file) {
  }
 
  readFile(file,lastChunksize: number, callback) {
-  let filedata = new chunkmetadata();
+  let filedata = new ChunkMetaData();
   filedata.fileName = this.globalActualChunkCount + "-" + this.GUID + file.name;
    filedata.fileSize = file.size;
    filedata.fileType = file.type;
@@ -375,9 +373,9 @@ uploadChunkDoc(file) {
    return callback(filedata,file,lastChunksize,false);
   }
  }
- private async uploads(theFile: chunkmetadata) 
+ private async uploads(theFile: ChunkMetaData) 
  {
-   const response = await fetch(this.requests.uploadrequest.url, {
+   const response = await fetch(this.requests.uploadRequest.url, {
      method: 'POST',
      body: JSON.stringify(theFile),
      headers: {
@@ -390,16 +388,9 @@ uploadChunkDoc(file) {
   if (!response.ok) {
    throw new Error(`Error! status: ${response.status}`);
  }
-
- // const result: CreateUserResponse
-//  const result = (await response.json());
-
-//  console.log('result is: ', JSON.stringify(result, null, 4));
-
-//  return result;
- }
+}
   private async uploadcomplete(theFiles: FileMetaData) {
-    const response = await fetch(this.requests.uploadcompleterequest.url, {
+    const response = await fetch(this.requests.uploadCompleteRequest.url, {
       method: 'POST',
       body: JSON.stringify(theFiles),
       headers: {
@@ -445,8 +436,8 @@ uploadChunkDoc(file) {
           data: file,
           image: null,
           error: this.checkFileSize(file),
-          eventtype: this.fileEventType,
-          postresponse: this.postResp
+          eventType: this.fileEventType,
+          postResponse: this.postResp
         };
         this.service.addFile(fileToAdd);
       } else {
@@ -454,8 +445,8 @@ uploadChunkDoc(file) {
           data: file,
           image: event.target["result"],
           error: this.checkFileSize(file),
-          eventtype: this.fileEventType,
-          postresponse: this.postResp
+          eventType: this.fileEventType,
+          postResponse: this.postResp
         };
         this.service.addFile(fileToAdd);
       }
