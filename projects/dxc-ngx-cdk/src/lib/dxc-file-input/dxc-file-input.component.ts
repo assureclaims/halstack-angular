@@ -341,7 +341,7 @@ uploadChunkDoc(file) {
   else if(this.globalActualChunkCount == this.globalChunkCount)
   {
     setTimeout(() => {
-      this.uploadcomplete(this.fileDataUpload).then(resp => { 
+      this.uploadComplete(this.fileDataUpload).then(resp => { 
         this.data[0].postResponse = resp;
         this.fileEventType = EventType.POSTUPLOAD;
         //let data = this.getPreview(file);
@@ -389,7 +389,7 @@ uploadChunkDoc(file) {
    throw new Error(`Error! status: ${response.status}`);
  }
 }
-  private async uploadcomplete(theFiles: FileMetaData) {
+  private async uploadComplete(theFiles: FileMetaData) {
     const response = await fetch(this.requests.uploadCompleteRequest.url, {
       method: 'POST',
       body: JSON.stringify(theFiles),
