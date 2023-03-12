@@ -25,6 +25,7 @@ import { FileInputProperties, Space, Spacing } from "./dxc-file-input.types";
 import { FileMetaData } from './model/file.metadata';
 import { ChunkMetaData } from './model/chunk.metadata';
 import { IFileUploadRequest, EventType } from "./model/fileuploadrequest.data";
+import { RemoveFileData } from "./model/removefiledata";
 
 @Component({
   selector: "dxc-file-input",
@@ -181,7 +182,7 @@ export class DxcFileInputComponent implements OnChanges, OnInit {
   fileEventType: EventType = EventType.PREUPLOAD;
   chunkResult: boolean;
   data: Array<FileData> = [];
-  postResp: any;
+  postResp: Array<string> = [];
   
   constructor(private utils: CssUtils, private service: FilesService) {
     this.service.files.subscribe(({ files, event }) => {
@@ -342,7 +343,7 @@ uploadChunkDoc(file) {
   {
     setTimeout(() => {
       this.uploadComplete(this.fileDataUpload).then(resp => { 
-        this.data[0].postResponse = resp;
+        this.data[0].postResponse.push(resp);
         this.fileEventType = EventType.POSTUPLOAD;
         //let data = this.getPreview(file);
         this.data[0].eventType = this.fileEventType;
@@ -410,6 +411,22 @@ uploadChunkDoc(file) {
   //console.log('result is: ', JSON.stringify(result, null, 4));
  
    return result;
+  }
+
+  public async removefromAPI(theFiles: RemoveFileData) {
+    const response = await fetch(this.requests.removeRequest.url, {
+      method: 'POST',
+      body: JSON.stringify(theFiles),
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+        clientId: '0',
+        'Authorization': 'bearer '+ sessionStorage.session
+      }
+   });
+   if (!response.ok) {
+    throw new Error(`Error! status: ${response.status}`);
+   }
   }
 
   /**

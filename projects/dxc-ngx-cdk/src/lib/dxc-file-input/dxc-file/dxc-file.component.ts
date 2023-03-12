@@ -14,6 +14,8 @@ import { css } from "emotion";
 import { BehaviorSubject } from "rxjs";
 import { FileData } from "../interfaces/file.interface";
 import { FilesService } from "../services/files.services";
+import { DxcFileInputComponent } from "../dxc-file-input.component";
+import { RemoveFileData } from "../model/removefiledata";
 
 @Component({
   selector: "dxc-file",
@@ -55,7 +57,7 @@ export class DxcFileComponent implements OnInit {
     mode: null,
   });
 
-  constructor(private service: FilesService) {}
+  constructor(private service: FilesService, private dxcfilecomponent: DxcFileInputComponent) {}
 
   public ngOnChanges(changes: SimpleChanges): void {
     this.file.error !== null &&
@@ -81,8 +83,12 @@ export class DxcFileComponent implements OnInit {
   }
 
   onRemoveHandler(event: any): void {
+    let filedata = new RemoveFileData();
+    filedata.fileName = this.file.data.name;
+    filedata.lastModified = this.file.data.lastModified;
     if (this.updatable) {
       this.service.removeFile(this.file);
+      this.dxcfilecomponent.removefromAPI(filedata);
     }
   }
 

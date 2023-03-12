@@ -4,6 +4,7 @@ import { HttpParams, HttpHeaders } from '@angular/common/http';
 export interface IFileUploadRequest {
   uploadRequest: IRequest, 
   uploadCompleteRequest: IRequest,
+  removeRequest: IRequest
 }
 
 export interface IEventResponse {
