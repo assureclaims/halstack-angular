@@ -22,6 +22,10 @@ import { FileData } from "./interfaces/file.interface";
 import { FilesService } from "./services/files.services";
 import { NgChanges } from "../typings/ng-onchange";
 import { FileInputProperties, Space, Spacing } from "./dxc-file-input.types";
+import { FileMetaData } from './model/file.metadata';
+import { ChunkMetaData } from './model/chunk.metadata';
+import { IFileUploadRequest, EventType } from "./model/fileuploadrequest.data";
+import { RemoveFileData } from "./model/removefiledata";
 
 @Component({
   selector: "dxc-file-input",
@@ -115,6 +119,17 @@ export class DxcFileInputComponent implements OnChanges, OnInit {
     this._maxSize = coerceNumberProperty(value);
   }
   private _maxSize;
+    /**
+   * The maximum file count (in number) allowed. If the count of the files does not comply the maxFileCount, the file will have an error.
+   */
+    @Input()
+    get maxFileCount(): number {
+      return this._maxFileCount;
+    }
+    set maxFileCount(value: number) {
+      this._maxFileCount = coerceNumberProperty(value);
+    }
+    private _maxFileCount;
   /**
    * Size of the margin to be applied to the component ('xxsmall' | 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge' | 'xxlarge').
    * You can pass an object with 'top', 'bottom', 'left' and 'right' properties in order to specify different margin sizes.
@@ -130,6 +145,14 @@ export class DxcFileInputComponent implements OnChanges, OnInit {
   set tabIndexValue(value: number) {
     this._tabIndexValue = coerceNumberProperty(value);
   }
+  /**
+   * request object gets the value from APP and pass to halstack library.
+   */
+  @Input('resources') resources: { [key: string]: { description: string, type: string } };
+  /**
+   * request object gets the value from APP and pass to halstack library.
+   */
+  @Input('requests') requests: IFileUploadRequest = null;
   private _tabIndexValue = 0;
   hasShowError: boolean = false;
   /**
@@ -152,6 +175,7 @@ export class DxcFileInputComponent implements OnChanges, OnInit {
     value: null,
     maxSize: null,
     minSize: null,
+    maxFileCount: null,
   });
 
   id: string;
@@ -163,10 +187,23 @@ export class DxcFileInputComponent implements OnChanges, OnInit {
   hasSingleFile: boolean = false;
   hasErrorSingleFile: boolean = false;
   hasValue: boolean = false;
-
+  globalChunkCount: number = 0;
+  globalActualChunkCount: number = 0;
+  fileDataUpload: FileMetaData;
+  GUID: string;
+  fileEventType: EventType = EventType.PREUPLOAD;
+  chunkResult: boolean;
+  data: Array<FileData> = [];
+  postResp: Array<string> = [];
+  uniqueFileNameIndex: number = 0;
+  uploadChunkSize: number = 1000000;
+  isDuplicateUpload: boolean;
+  isMinMaxFile: boolean = false;
+  
   constructor(private utils: CssUtils, private service: FilesService) {
     this.service.files.subscribe(({ files, event }) => {
       if (event !== "reset" && (files.length || this.hasValue)) {
+        this.data = files;
         this.hasShowError = this.isErrorShow();
         this.hasMultipleFiles = this.isMultipleFilesPrintables();
         this.hasSingleFile = this.isSingleFilesPrintables();
@@ -226,12 +263,18 @@ export class DxcFileInputComponent implements OnChanges, OnInit {
 
   checkFileSize(file: File) {
     if (file.size < this.minSize) {
-      return "File size must be greater than min size.";
+      return (this.resources.minSize.description + "-" + this.minSize+"kb");
     }
     if (file.size > this.maxSize) {
-      return "File size must be less than max size.";
+      return (this.resources.maxSize.description + "-" + this.maxSize+"kb");
     }
-    return null;
+    if (this.data.length > this.maxFileCount) {
+      return (this.resources.maxFileCount.description + " - " + this.maxFileCount);
+    }
+    if (this.isDuplicateUpload) {
+      return (this.resources.duplicateFileUpload.description);
+    }
+    //return null;
   }
 
   /**
@@ -264,6 +307,7 @@ export class DxcFileInputComponent implements OnChanges, OnInit {
         this.service.emptyArrayFiles();
       }
       this.getPreviewsFiles(event.dataTransfer.files);
+      this.processFiles(event.dataTransfer.files);
     }
   }
 
@@ -277,8 +321,182 @@ export class DxcFileInputComponent implements OnChanges, OnInit {
         this.service.emptyArrayFiles();
       }
       this.getPreviewsFiles(event.target.files);
+      this.isDuplicateUpload = false;
+      for(let i=0; i < this.data.length;i++)
+      {
+        if(event.target.files[0].name == this.data[i].data.name)
+        {
+          this.isDuplicateUpload = true;
+          this.data[i].error = this.checkFileSize(event.target.files[0]);
+        }
+      }
+      if(!this.isDuplicateUpload)
+      {
+        this.processFiles(event.target.files);
+      }
       event.target.value = "";
     }
+  }
+
+    /**
+   * File upload logic to send file as chunk and receive response.
+   * @param event
+   */
+    processFiles(event) {
+    this.files=event;
+    this.isDuplicateUpload = false;
+    this.fileEventType = EventType.UPLOAD;
+    for(let i=0;i<event.length;i++)
+    {
+      this.uploadFile(event[i])
+    }
+  }
+
+  uploadFile(eventFiles) {
+    // if(eventFiles.size < this.uploadChunkSize)
+    // {
+    //   this.uploadWholeDoc(eventFiles);
+    // }
+    // else{
+    //   this.uploadChunkDoc(eventFiles);
+    // }
+    if (eventFiles.size < this.minSize || eventFiles.size > this.maxSize || this.data.length >= this.maxFileCount)
+    {
+      this.isMinMaxFile = true;
+      this.uniqueFileNameIndex++;
+      return;
+    }
+    this.uploadChunkDoc(eventFiles);
+}
+uploadChunkDoc(file) {
+  let lastChunksize = 0;
+  this.fileDataUpload = new FileMetaData();
+  this.GUID = uuidv4();
+  this.globalActualChunkCount = 0;
+  this.globalChunkCount = file.size % this.uploadChunkSize == 0 ? file.size / this.uploadChunkSize : Math.floor(file.size / this.uploadChunkSize) + 1;
+
+  this.readFile(file, lastChunksize, this.uploadtoAPI.bind(this));
+ }
+
+ uploadtoAPI(filedata,file, lastChunksize, result) {
+  lastChunksize = lastChunksize + this.uploadChunkSize;
+  this.chunkResult = result;
+  if(result) {
+    //Add you logic what do you want after reading the file
+      this.uploads(filedata);
+      this.readFile(file, lastChunksize, this.uploadtoAPI.bind(this));
+
+  }
+  else if(this.globalActualChunkCount == this.globalChunkCount)
+  {
+    setTimeout(() => {
+      this.uploadComplete(this.fileDataUpload).then(resp => { 
+        //this.data[0].postResponse.push(resp);
+        this.postResp = resp;
+        this.data[this.uniqueFileNameIndex].data.uniqueFileName = resp;
+        this.fileEventType = EventType.POSTUPLOAD;
+        //let data = this.getPreview(file);
+        this.data[0].eventType = this.fileEventType;
+        this.uniqueFileNameIndex++;
+        this.callbackFile.emit(this.data);
+        });
+    }, 3000);
+    //this.uploadcomplete(this.fileDataUpload);
+  }
+ }
+
+ readFile(file,lastChunksize: number, callback) {
+  let filedata = new ChunkMetaData();
+  filedata.fileName = this.globalActualChunkCount + "$^$" + this.GUID + "$^$" + file.name;
+   filedata.fileSize = file.size;
+   filedata.fileType = file.type;
+   filedata.chunkNumber = this.globalActualChunkCount;
+   this.fileDataUpload.GUID = this.GUID;
+  var chunk = file.slice(lastChunksize,lastChunksize+1000000);
+  if(chunk.size !=0) {
+    let fileReader = new FileReader();
+    fileReader.onloadend= (result)=>{
+      // Store base64 encoded representation of file
+    filedata.fileAsBase64 = fileReader.result.toString();
+    this.globalActualChunkCount++;
+    this.fileDataUpload.fileNames.push(filedata.fileName);
+    return callback(filedata,file,lastChunksize,fileReader.result)
+    }
+    fileReader.readAsDataURL(chunk);
+  }else {
+   return callback(filedata,file,lastChunksize,false);
+  }
+ }
+ uploadWholeDoc(file) {
+  let theFile = file.data;
+  let filedata = new ChunkMetaData();
+   // Set File Information
+   filedata.fileName = file.name;
+   filedata.fileSize = file.size;
+   filedata.fileType = file.type;
+   let reader = new FileReader();
+    // Setup onload event for reader
+  reader.onload = () => {
+    // Store base64 encoded representation of file
+    filedata.fileAsBase64 = reader.result.toString();
+    
+    // POST to server
+    this.uploads(filedata);
+  }
+ }
+ private async uploads(theFile: ChunkMetaData) 
+ {
+   const response = await fetch(this.requests.uploadRequest.url, {
+     method: 'POST',
+     body: JSON.stringify(theFile),
+     headers: {
+       'Content-Type': 'application/json',
+       Accept: 'application/json',
+       clientId: '0',
+       'Authorization': 'bearer '+ sessionStorage.session
+     }
+  });
+  if (!response.ok) {
+   throw new Error(`Error! status: ${response.status}`);
+ }
+}
+  private async uploadComplete(theFiles: FileMetaData) {
+    const response = await fetch(this.requests.uploadCompleteRequest.url, {
+      method: 'POST',
+      body: JSON.stringify(theFiles),
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+        clientId: '0',
+        'Authorization': 'bearer '+ sessionStorage.session
+      }
+   });
+   if (!response.ok) {
+    throw new Error(`Error! status: ${response.status}`);
+  }
+  // const result: CreateUserResponse
+   const result = (await response.json());
+ 
+   return result;
+  }
+
+  public async removefromAPI(theFiles: RemoveFileData) {
+    if(!this.isMinMaxFile){
+      this.uniqueFileNameIndex--;
+    }
+    const response = await fetch(this.requests.removeRequest.url, {
+      method: 'POST',
+      body: JSON.stringify(theFiles),
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+        clientId: '0',
+        'Authorization': 'bearer '+ sessionStorage.session
+      }
+   });
+   if (!response.ok) {
+    throw new Error(`Error! status: ${response.status}`);
+   }
   }
 
   /**
@@ -305,6 +523,8 @@ export class DxcFileInputComponent implements OnChanges, OnInit {
           data: file,
           image: null,
           error: this.checkFileSize(file),
+          eventType: this.fileEventType,
+          postResponse: this.postResp
         };
         this.service.addFile(fileToAdd);
       } else {
@@ -312,6 +532,8 @@ export class DxcFileInputComponent implements OnChanges, OnInit {
           data: file,
           image: event.target["result"],
           error: this.checkFileSize(file),
+          eventType: this.fileEventType,
+          postResponse: this.postResp
         };
         this.service.addFile(fileToAdd);
       }
