@@ -30,14 +30,19 @@ export class FilesService {
       }
       return item;
     } );
-    }else{
-      updatedValue = [...this.files.value.files , file];
-    }
-
     this.files.next({
       files: updatedValue,
-      event: "add",
+      event: "reset",
     });
+    }else{
+      updatedValue = [...this.files.value.files , file];
+      this.files.next({
+        files: updatedValue,
+        event: "add",
+      });
+    }
+
+   
   }
 
   removeFile(file: FileData) {

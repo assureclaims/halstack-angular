@@ -13,6 +13,7 @@ import {
   OnInit,
   Output,
   ViewChild,
+  forwardRef
 } from "@angular/core";
 import { css } from "emotion";
 import { BehaviorSubject, Subscription } from "rxjs";
@@ -26,13 +27,17 @@ import { FileMetaData } from './model/fileUpload.metadata';
 import { ChunkMetaData } from './model/chunk.metadata';
 import { IFileUploadRequest, EventType } from "./model/fileuploadrequest.data";
 import { RemoveFileData } from "./model/removefiledata";
-import { HttpParams } from "@angular/common/http";
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from "@angular/forms";
 @Component({
   selector: "dxc-file-input",
   templateUrl: "./dxc-file-input.component.html",
-  providers: [CssUtils, FilesService],
+  providers: [CssUtils, FilesService,{
+    provide: NG_VALUE_ACCESSOR,
+    useExisting: forwardRef(() => DxcFileInputComponent),
+    multi: true
+  }],
 })
-export class DxcFileInputComponent implements OnChanges, OnInit {
+export class DxcFileInputComponent implements OnChanges, OnInit, ControlValueAccessor {
   @ViewChild("fileInput", { static: false }) fileInputNative: ElementRef;
   @HostBinding("class") className;
   /**
@@ -204,12 +209,14 @@ export class DxcFileInputComponent implements OnChanges, OnInit {
   isDuplicateUpload: boolean = false;
   uploadId: string;
   ActualchunksAddedCount: number = 0;
+  renderedValue = "";
   uploadSubscription: Subscription;
   uploadIdSubscription: Subscription;
+  Subscription: Subscription;
 
   
   constructor(private utils: CssUtils, private service: FilesService) {
-    this.service.files.subscribe(({ files, event }) => {
+    this.Subscription = this.service.files.subscribe(({ files, event }) => {
       if (event !== "reset" && (files.length || this.hasValue)) {
         this.data = files;
         this.hasShowError = this.isErrorShow();
@@ -218,11 +225,27 @@ export class DxcFileInputComponent implements OnChanges, OnInit {
         this.callbackFile.emit(files);
       }
     });
+    
+  }
+   onTouched: () => void = () => { };
+   onChangeRegister = (val) => { };
+
+  writeValue(fileNames: any): void {
+    this.renderedValue = fileNames || "";
+  }
+
+  registerOnChange(fn: any): void {
+    this.onChangeRegister = fn;
+  }
+
+  registerOnTouched(fn: any): void {
+    this.onTouched = fn;
   }
 
   ngOnDestroy(): void {
     this.uploadSubscription?.unsubscribe();
     this.uploadIdSubscription?.unsubscribe();
+    this.Subscription?.unsubscribe();
   }
 
   ngOnInit() {
@@ -330,6 +353,7 @@ export class DxcFileInputComponent implements OnChanges, OnInit {
       if (!this.multiple) {
         this.service.emptyArrayFiles();
       }
+      this.onChangeRegister(event.target.files)
       this.getPreviewsFiles(event.target.files);
       for(let i=0; i < this.data.length;i++)
       {
@@ -342,6 +366,7 @@ export class DxcFileInputComponent implements OnChanges, OnInit {
       {
         this.processFiles(event.target.files);
       }
+     
       event.target.value = "";
     }
   }
