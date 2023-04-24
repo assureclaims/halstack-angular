@@ -2,7 +2,7 @@
   #tabGroup
   matRipple 
   [ngClass]="'filled-tabs'"
-  [selectedIndex]="renderedActiveTabIndex"
+  [selectedIndex]="activeTabIndex"
   (selectedTabChange)="onSelectedTabChangeHandler($event)"
 >
   <ng-content #outlet></ng-content>
