@@ -2,12 +2,14 @@ import { Injectable } from "@angular/core";
 import { BehaviorSubject } from "rxjs";
 import { FileData } from "../interfaces/file.interface";
 import { FilesData } from "../interfaces/files.interface";
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: "root",
 })
 export class FilesService {
-  constructor() {}
+  constructor(private http: HttpClient) {}
 
   public files: BehaviorSubject<FilesData> = new BehaviorSubject({
     files: new Array<FileData>(),
@@ -48,11 +50,16 @@ export class FilesService {
       event: "remove",
     });
   }
-
   emptyArrayFiles(){
     this.files.next({
       files: [],
       event: "",
     });
+  }
+  upload(url, formParams, headers): Observable<any>{
+    return this.http.post(url, formParams, {headers});
+  }
+  getUploadId(url, headers): Observable<any> {
+    return this.http.get(url, {headers})
   }
 }
