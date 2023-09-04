@@ -79,7 +79,7 @@ npm run start
 
 If you are watching for changes, anytime you make a change to the library or the app, `angular cli` will live-reload your local dev server so you can iterate on your component in real-time.
 
-## Running the test
+## Running the test1
 
 Run the tests from the library folder `projects\dxc-ngx-cdk` after the library dependencies have been installed.
 
