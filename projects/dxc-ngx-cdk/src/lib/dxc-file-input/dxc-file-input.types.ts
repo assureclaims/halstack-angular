@@ -1,4 +1,4 @@
-import { FileData } from "./interfaces/file.interface";
+import { FileData } from "./model/file-info";
 
 export interface FileInputProperties {
   margin?: Space | Spacing;

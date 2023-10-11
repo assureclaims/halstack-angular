@@ -1,14 +1,15 @@
 import { Injectable } from "@angular/core";
 import { BehaviorSubject } from "rxjs";
-import { FileData } from "../interfaces/file.interface";
-import { FilesData } from "../interfaces/files.interface";
-import { HttpClient } from '@angular/common/http';
+import { FileData } from "../model/file-info";
+import { FilesData } from "../model/file-info";
+import { HttpClient, HttpEvent, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { IFileService } from "../model/IFileService";
 
 @Injectable({
   providedIn: "root",
 })
-export class FilesService {
+export class FilesService implements IFileService {
   constructor(private http: HttpClient) {}
 
   public files: BehaviorSubject<FilesData> = new BehaviorSubject({
@@ -16,22 +17,23 @@ export class FilesService {
     event: null,
   });
 
-
-  addFile(file: FileData) {
+  add(file: FileData) {
     // Check if exist
-    const existingFile = this.files.value.files.filter(item=>  item.data.name === file.data.name);
+    const existingFile = this.files.value.files.filter(
+      (item) => item.data.name === file.data.name
+    );
     let updatedValue: FileData[];
 
-    if (existingFile.length > 0){
-      updatedValue =  this.files.value.files.map(item=>   {
-        if  (item.data.name === file.data.name){
+    if (existingFile.length > 0) {
+      updatedValue = this.files.value.files.map((item) => {
+        if (item.data.name === file.data.name) {
           item.data = file.data;
           item.error = file.error;
-      }
-      return item;
-    } );
-    }else{
-      updatedValue = [...this.files.value.files , file];
+        }
+        return item;
+      });
+    } else {
+      updatedValue = [...this.files.value.files, file];
     }
 
     this.files.next({
@@ -40,7 +42,7 @@ export class FilesService {
     });
   }
 
-  removeFile(file: FileData) {
+  remove(file: FileData) {
     const array: Array<FileData> = this.files.value.files.filter((item) => {
       return item.data.name !== file.data.name;
     });
@@ -50,16 +52,27 @@ export class FilesService {
       event: "remove",
     });
   }
-  emptyArrayFiles(){
+
+  removeAll() {
     this.files.next({
       files: [],
       event: "",
     });
   }
-  upload(url, formParams, headers): Observable<any>{
-    return this.http.post(url, formParams, {headers});
+
+  upload(
+    url: string,
+    formParams: any,
+    headers: HttpHeaders
+  ): Observable<HttpEvent<Object>> {
+    return this.http.post(url, formParams, {
+      headers,
+      observe: "events",
+      reportProgress: true,
+    });
   }
-  getUploadId(url, headers): Observable<any> {
-    return this.http.get(url, {headers})
+
+  uploadId(url: string, headers: HttpHeaders): Observable<Object> {
+    return this.http.get(url, { headers });
   }
 }

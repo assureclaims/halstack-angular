@@ -18,6 +18,7 @@ export enum EventType {
   UPLOAD = "UPLOAD",
   POSTUPLOAD = "POSTUPLOAD"
 }
+
 export interface IRequest {
   url: string;
   methodType: EMethod;
@@ -26,6 +27,7 @@ export interface IRequest {
   serverSideFilter?: boolean;
   headers?: HttpHeaders;
 }
+
 export declare enum EMethod {
   GET = 0,
   POST = 1,

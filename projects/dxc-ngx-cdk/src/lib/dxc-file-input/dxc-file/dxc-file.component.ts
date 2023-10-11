@@ -6,16 +6,19 @@ import { C } from "@angular/cdk/keycodes";
 import {
   Component,
   HostBinding,
+  Inject,
   Input,
   OnInit,
   SimpleChanges,
 } from "@angular/core";
 import { css } from "@emotion/css";
 import { BehaviorSubject } from "rxjs";
-import { FileData } from "../interfaces/file.interface";
+import { FileData } from "../model/file-info";
 import { FilesService } from "../services/files.services";
 import { DxcFileInputComponent } from "../dxc-file-input.component";
 import { RemoveFileData } from "../model/removefiledata";
+import { IFileService } from "../model/IFileService";
+import { FILE_SERVICE } from "../services/file-provider..service";
 
 @Component({
   selector: "dxc-file",
@@ -58,7 +61,7 @@ export class DxcFileComponent implements OnInit {
     mode: null,
   });
 
-  constructor(private service: FilesService, private dxcfilecomponent: DxcFileInputComponent) {}
+  constructor(@Inject(FILE_SERVICE) private fileService: IFileService, private dxcfilecomponent: DxcFileInputComponent) {}
 
   public ngOnChanges(changes: SimpleChanges): void {
     this.file.error !== null &&
@@ -89,7 +92,7 @@ export class DxcFileComponent implements OnInit {
     filedata.uniqueFileName = this.file.data.uniqueFileName;
     filedata.lastModified = this.file.data.lastModified;
     if (this.updatable) {
-      this.service.removeFile(this.file);
+      this.fileService.remove(this.file);
       this.dxcfilecomponent.removefromAPI(filedata);
     }
   }
