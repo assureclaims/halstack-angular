@@ -227,6 +227,7 @@ export class DxcFileInputComponent
   uploadId: string;
   actualchunksAddedCount: number = 0;
   renderedValue = "";
+  private totalUploadedChunkedSize = [];
   uploadSubscription: Subscription;
   uploadIdSubscription: Subscription;
   Subscription: Subscription;
@@ -429,6 +430,10 @@ export class DxcFileInputComponent
       file.size % this.uploadChunkSize == 0
         ? file.size / this.uploadChunkSize
         : Math.floor(file.size / this.uploadChunkSize) + 1;
+     this.totalUploadedChunkedSize = [];
+     for (let x = 0; x < this.totalChunkCount; x++) {
+       this.totalUploadedChunkedSize.push(0);
+     }
     this.fileDataUpload.fileName = file.name;
     this.readFile(file, lastChunksize, this.uploadtoAPI.bind(this));
   }
@@ -500,7 +505,7 @@ export class DxcFileInputComponent
         switch (response.type) {
           case HttpEventType.UploadProgress:
             progress.value =
-              Math.round((100 * response.loaded) / response.total) == 100
+              Math.round((100 * response.loaded) / response.total) > 99
                 ? 99
                 : Math.round((100 * response.loaded) / response.total);
             progress.status = "progress";
@@ -514,6 +519,7 @@ export class DxcFileInputComponent
             if (response?.ok) {
               progress.value = 100;
               progress.status = "success";
+              this.uploadChunkComplete();
             }
             break;
         }
@@ -753,14 +759,24 @@ export class DxcFileInputComponent
         };
         switch (response.type) {
           case HttpEventType.UploadProgress:
-            let currentChunkUploaded =
-              Math.round((100 * response.loaded) / response.total) *
-              this.actualchunksAddedCount;
-            let pendingChunkUpload =
-              100 * (this.totalChunkCount - this.actualchunksAddedCount);
-            progress.value = Math.round(
-              (100 * currentChunkUploaded) / pendingChunkUpload
+            this.totalUploadedChunkedSize[chunkFileDetails.chunkNumber] =
+              Math.round((100 * response.loaded) / response.total);
+            let totalProgress = this.totalUploadedChunkedSize.reduce(
+              (accumulator, currentValue) => {
+                return accumulator + currentValue;
+              },
+              0
             );
+            progress.value =
+              Math.round(
+                (100 * totalProgress) /
+                  (this.totalUploadedChunkedSize.length * 100)
+              ) > 99
+                ? 99
+                : Math.round(
+                    (100 * totalProgress) /
+                      (this.totalUploadedChunkedSize.length * 100)
+                  );
             progress.status = "progress";
             break;
           case HttpEventType.ResponseHeader:
@@ -785,12 +801,11 @@ export class DxcFileInputComponent
         }
         let fileList = this.fileService.files.getValue();
         fileList.files.forEach((file) => {
-          if (file.data.name == chunkFileDetails.fileName) {
+          if (file.data.name == chunkFileDetails.fileName && (file?.progress?.value ?? 0) < (progress?.value ?? 0)) {
             file.progress = progress;
           }
           this.fileService.add(file);
         });
-        console.log(progress);
       });
   }
 
