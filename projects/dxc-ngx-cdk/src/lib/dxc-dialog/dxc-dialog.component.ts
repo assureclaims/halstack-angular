@@ -38,6 +38,7 @@ export class DxcDialogComponent implements OnDestroy, AfterViewInit {
   }
 
   @Input() closeButtonLabel: string = 'Close'
+  expandButtonLabel: string = 'Expand'
   @Input()
   get overlay(): boolean {
     return this._overlay;
@@ -53,7 +54,15 @@ export class DxcDialogComponent implements OnDestroy, AfterViewInit {
   set isCloseVisible(value: boolean) {
     this._isCloseVisible = coerceBooleanProperty(value);
   }
+  @Input()
+  get isExpandVisible(): boolean {
+    return this._isExpandVisible;
+  }
+  set isExpandVisible(value: boolean) {
+    this._isExpandVisible = coerceBooleanProperty(value);
+  }
   private _isCloseVisible = true;
+  private _isExpandVisible = false;
   @Input() padding: any;
   @Input()
   get tabIndexValue(): number {
@@ -73,6 +82,7 @@ export class DxcDialogComponent implements OnDestroy, AfterViewInit {
   private _headerHeight = 40;
 
   @Output() onCloseClick = new EventEmitter<any>();
+  @Output() onExpandClick = new EventEmitter<any>();
   @Output() onBackgroundClick = new EventEmitter<any>();
 
   @HostBinding("class") className;
@@ -106,6 +116,10 @@ export class DxcDialogComponent implements OnDestroy, AfterViewInit {
 
     this.defaultInputs.next({ ...this.defaultInputs.getValue(), ...inputs });
     this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
+  }
+
+  onExpandHandler($event: any): void{
+    this.onExpandClick.emit($event);
   }
 
   public onCloseHandler($event: any): void {
