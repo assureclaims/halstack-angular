@@ -228,7 +228,10 @@ export class DxcFileInputComponent
   actualchunksAddedCount: number = 0;
   renderedValue = "";
   private totalUploadedChunkedSize = [];
-  uploadSubscription: Subscription;
+  chunkUploadSubscription: {
+    fileName: string;
+    uploadRequests: Subscription[];
+  }[] = [];
   uploadIdSubscription: Subscription;
   Subscription: Subscription;
 
@@ -262,9 +265,12 @@ export class DxcFileInputComponent
   }
 
   ngOnDestroy(): void {
-    this.uploadSubscription?.unsubscribe();
     this.uploadIdSubscription?.unsubscribe();
     this.Subscription?.unsubscribe();
+    this.chunkUploadSubscription.forEach(subs => { 
+      if (subs.uploadRequests.length > 0)
+        this.unsubscribeUploadRequest(subs.fileName);
+    })
   }
 
   ngOnInit() {
@@ -430,10 +436,10 @@ export class DxcFileInputComponent
       file.size % this.uploadChunkSize == 0
         ? file.size / this.uploadChunkSize
         : Math.floor(file.size / this.uploadChunkSize) + 1;
-     this.totalUploadedChunkedSize = [];
-     for (let x = 0; x < this.totalChunkCount; x++) {
-       this.totalUploadedChunkedSize.push(0);
-     }
+    this.totalUploadedChunkedSize = [];
+    for (let x = 0; x < this.totalChunkCount; x++) {
+      this.totalUploadedChunkedSize.push(0);
+    }
     this.fileDataUpload.fileName = file.name;
     this.readFile(file, lastChunksize, this.uploadtoAPI.bind(this));
   }
@@ -492,7 +498,7 @@ export class DxcFileInputComponent
     const headers = new HttpHeaders({
       "Content-Type": "multipart/form-data",
     });
-    this.uploadSubscription = this.fileService
+    const uploadSubscription = this.fileService
       .upload(this.requests.uploadRequest.url, formParams, headers)
       .subscribe((response: HttpEvent<Object>) => {
         let progress: {
@@ -531,6 +537,11 @@ export class DxcFileInputComponent
           this.fileService.add(file);
         });
       });
+     const SubscriptionManager = {
+       fileName: fileData.fileName,
+       uploadRequests: [uploadSubscription],
+     };
+     this.chunkUploadSubscription.push(SubscriptionManager);
   }
 
   /**
@@ -707,6 +718,30 @@ export class DxcFileInputComponent
         .fileContainer {
           display: flex;
           flex-direction: column;
+          .success-progress-bar {
+            .mdc-linear-progress__bar-inner {
+              background-color: var(--file-input-success-progress-bar);
+            }
+            .mdc-linear-progress__buffer-bar {
+              background-color: var(--file-input-success-buffer-bar);
+            }
+          }
+          .active-progress-bar {
+            .mdc-linear-progress__bar-inner {
+              background-color: var(--file-input-active-progress-bar);
+            }
+            .mdc-linear-progress__buffer-bar {
+              background-color: var(--file-input-active-buffer-bar);
+            }
+          }
+          .failed-progress-bar {
+            .mdc-linear-progress__bar-inner {
+              background-color: var(--file-input-failed-progress-bar);
+            }
+            .mdc-linear-progress__buffer-bar {
+              background-color: var(--file-input-failed-buffer-bar);
+            }
+          }
         }
       }
       .label {
@@ -747,7 +782,7 @@ export class DxcFileInputComponent
     const headers = new HttpHeaders({
       "Content-Type": "multipart/form-data",
     });
-    this.uploadSubscription = this.fileService
+    const uploadSubscription = this.fileService
       .upload(this.requests.uploadChunkRequest.url, formParams, headers)
       .subscribe((response: any) => {
         let progress: {
@@ -782,6 +817,7 @@ export class DxcFileInputComponent
           case HttpEventType.ResponseHeader:
             if (!response?.ok) {
               progress.status = "failed";
+              this.unsubscribeUploadRequest(chunkFileDetails.fileName);
             }
             break;
           case HttpEventType.Response:
@@ -793,20 +829,58 @@ export class DxcFileInputComponent
                 progress.value = 100;
                 progress.status = "success";
                 this.uploadChunkComplete();
+                this.unsubscribeUploadRequest(chunkFileDetails.fileName);
               }
             } else if (!response?.ok) {
               progress.status = "failed";
+              this.unsubscribeUploadRequest(chunkFileDetails.fileName);
             }
             break;
         }
         let fileList = this.fileService.files.getValue();
         fileList.files.forEach((file) => {
-          if (file.data.name == chunkFileDetails.fileName && (file?.progress?.value ?? 0) < (progress?.value ?? 0)) {
+          if (
+            file.data.name == chunkFileDetails.fileName &&
+            (file?.progress?.value ?? 0) < (progress?.value ?? 0)
+          ) {
             file.progress = progress;
           }
           this.fileService.add(file);
         });
       });
+    if (
+      this.chunkUploadSubscription.filter((Subscription) => {
+        return Subscription.fileName == chunkFileDetails.fileName;
+      }).length > 0
+    ) {
+      this.chunkUploadSubscription.map((Subscription) => {
+        if (Subscription.fileName == chunkFileDetails.fileName) {
+          Subscription.uploadRequests.push(uploadSubscription);
+        } 
+      });
+    } else {
+          const SubscriptionManager = {
+            fileName: chunkFileDetails.fileName,
+            uploadRequests: [uploadSubscription],
+          };
+          this.chunkUploadSubscription.push(SubscriptionManager);
+        }
+  }
+
+  private unsubscribeUploadRequest(fileName:string) {
+    let currentSubsIndex = -1;
+    this.chunkUploadSubscription.forEach((subscription, index) => {
+      if (subscription.fileName == fileName) {
+        subscription.uploadRequests.forEach((request) => {
+          request.unsubscribe();
+        });
+        subscription.uploadRequests = [];
+        currentSubsIndex = index;
+      }
+    });
+    if (currentSubsIndex > -1) {
+      this.chunkUploadSubscription.splice(currentSubsIndex, 1);
+    }
   }
 
   private async uploadComplete(theFiles: FileMetaData) {
@@ -827,6 +901,9 @@ export class DxcFileInputComponent
   }
 
   public async removefromAPI(theFiles: RemoveFileData) {
+    if (this.chunkUploadSubscription.filter(subscription => { return subscription.fileName == theFiles.fileName }).length > 0) { 
+      this.unsubscribeUploadRequest(theFiles.fileName);
+    }
     if (this.uniqueFileNameIndex == 0) {
       this.uniqueFileNameIndex--;
     }
