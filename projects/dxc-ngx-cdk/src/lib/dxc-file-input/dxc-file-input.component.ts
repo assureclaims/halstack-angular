@@ -213,8 +213,12 @@ export class DxcFileInputComponent
   hasSingleFile: boolean = false;
   hasErrorSingleFile: boolean = false;
   hasValue: boolean = false;
-  totalChunkCount: number = 0;
-  chunkNumberCount: number = 0;
+  chunkFileInfo: {
+    fileName: string;
+    chunkNumber: number;
+    totalChunkCount: number;
+    uploadedChunkCount;
+  }[] = [];
   fileDataUpload: FileMetaData;
   fileEventType: EventType = EventType.PREUPLOAD;
   chunkResult: boolean;
@@ -225,7 +229,6 @@ export class DxcFileInputComponent
   uploadChunkSize: number = 1000000;
   isDuplicateUpload: boolean = false;
   uploadId: string;
-  actualchunksAddedCount: number = 0;
   renderedValue = "";
   private totalUploadedChunkedSize = [];
   chunkUploadSubscription: {
@@ -267,10 +270,10 @@ export class DxcFileInputComponent
   ngOnDestroy(): void {
     this.uploadIdSubscription?.unsubscribe();
     this.Subscription?.unsubscribe();
-    this.chunkUploadSubscription.forEach(subs => { 
+    this.chunkUploadSubscription.forEach((subs) => {
       if (subs.uploadRequests.length > 0)
         this.unsubscribeUploadRequest(subs.fileName);
-    })
+    });
   }
 
   ngOnInit() {
@@ -430,16 +433,24 @@ export class DxcFileInputComponent
   uploadChunkDoc(file) {
     let lastChunksize = 0;
     this.fileDataUpload = new FileMetaData();
-    this.chunkNumberCount = 0;
-    this.actualchunksAddedCount = 0;
-    this.totalChunkCount =
+    this.removeChunkFileInfo(file.name);
+    let totalChunkCount =
       file.size % this.uploadChunkSize == 0
         ? file.size / this.uploadChunkSize
         : Math.floor(file.size / this.uploadChunkSize) + 1;
+    this.chunkFileInfo.push({
+      fileName: file.name,
+      chunkNumber: 0,
+      uploadedChunkCount: 0,
+      totalChunkCount,
+    });
     this.totalUploadedChunkedSize = [];
-    for (let x = 0; x < this.totalChunkCount; x++) {
-      this.totalUploadedChunkedSize.push(0);
-    }
+    this.chunkFileInfo.forEach((fileInfo) => {
+      if (fileInfo.fileName == file.name) {
+        this.totalUploadedChunkedSize.push(0);
+      }
+    });
+    for (let x = 0; x < totalChunkCount; x++) {}
     this.fileDataUpload.fileName = file.name;
     this.readFile(file, lastChunksize, this.uploadtoAPI.bind(this));
   }
@@ -454,28 +465,45 @@ export class DxcFileInputComponent
     }
   }
 
-  uploadChunkComplete() {
-    if (this.actualchunksAddedCount == this.totalChunkCount) {
-      this.fileDataUpload.totalChunks = this.totalChunkCount;
+  uploadChunkComplete(fileName, progress) {
+    let fileInfo = this.chunkFileInfo.filter(
+      (fileInfo) => (fileInfo.fileName = fileName)
+    );
+    if (
+      fileInfo.length > 0 &&
+      fileInfo[0].uploadedChunkCount == fileInfo[0].totalChunkCount
+    ) {
+      this.fileDataUpload.totalChunks = fileInfo[0].totalChunkCount;
       this.fileDataUpload.uploadId = this.uploadId;
       this.uploadComplete(this.fileDataUpload).then((resp) => {
+        if (!resp.ok) {
+          progress.status = 'failed';
+          progress.value = 99;
+          this.updateProgress(fileName, progress);
+        }
         this.postResp = resp;
         this.data[this.uniqueFileNameIndex].data.uniqueFileName = resp;
         this.fileEventType = EventType.POSTUPLOAD;
         this.data[0].eventType = this.fileEventType;
         this.uniqueFileNameIndex++;
         this.callbackFile.emit(this.data);
-        this.totalChunkCount = 0;
+        this.removeChunkFileInfo(fileName);
+         progress.status = "success";
+         progress.value = 100;
+         this.updateProgress(fileName, progress);
       });
     }
   }
 
   readFile(file, lastChunksize: number, uploadtoAPI) {
+    let fileInfoIndex = this.chunkFileInfo.findIndex(
+      (fileInfo) => fileInfo.fileName == file.name
+    );
     let filedata = new ChunkMetaData();
     filedata.fileName = file.name;
     filedata.fileType = file.type;
     filedata.fileSize = file.size;
-    filedata.chunkNumber = this.chunkNumberCount;
+    filedata.chunkNumber = this.chunkFileInfo[fileInfoIndex].chunkNumber;
     filedata.uploadId = this.uploadId;
     var chunk = file.slice(lastChunksize, lastChunksize + 1000000);
     filedata.file = chunk;
@@ -483,7 +511,8 @@ export class DxcFileInputComponent
     if (chunk.size != 0) {
       let fileReader = new FileReader();
       fileReader.onloadend = (result) => {
-        this.chunkNumberCount++;
+        this.chunkFileInfo[fileInfoIndex].chunkNumber =
+          this.chunkFileInfo[fileInfoIndex].chunkNumber + 1;
         return uploadtoAPI(filedata, file, lastChunksize, fileReader.result);
       };
       fileReader.readAsDataURL(chunk);
@@ -525,23 +554,16 @@ export class DxcFileInputComponent
             if (response?.ok) {
               progress.value = 100;
               progress.status = "success";
-              this.uploadChunkComplete();
             }
             break;
         }
-        let fileList = this.fileService.files.getValue();
-        fileList.files.forEach((file) => {
-          if (file.data.name == fileData.name) {
-            file.progress = progress;
-          }
-          this.fileService.add(file);
-        });
+        this.updateProgress(fileData.name, progress);
       });
-     const SubscriptionManager = {
-       fileName: fileData.fileName,
-       uploadRequests: [uploadSubscription],
-     };
-     this.chunkUploadSubscription.push(SubscriptionManager);
+    const SubscriptionManager = {
+      fileName: fileData.fileName,
+      uploadRequests: [uploadSubscription],
+    };
+    this.chunkUploadSubscription.push(SubscriptionManager);
   }
 
   /**
@@ -720,7 +742,7 @@ export class DxcFileInputComponent
           flex-direction: column;
           .success-progress-bar {
             .mdc-linear-progress__bar-inner {
-              background-color: var(--file-input-success-progress-bar);
+              border-color: var(--file-input-success-progress-bar);
             }
             .mdc-linear-progress__buffer-bar {
               background-color: var(--file-input-success-buffer-bar);
@@ -728,7 +750,7 @@ export class DxcFileInputComponent
           }
           .active-progress-bar {
             .mdc-linear-progress__bar-inner {
-              background-color: var(--file-input-active-progress-bar);
+              border-color: var(--file-input-active-progress-bar);
             }
             .mdc-linear-progress__buffer-bar {
               background-color: var(--file-input-active-buffer-bar);
@@ -736,7 +758,7 @@ export class DxcFileInputComponent
           }
           .failed-progress-bar {
             .mdc-linear-progress__bar-inner {
-              background-color: var(--file-input-failed-progress-bar);
+              border-color: var(--file-input-failed-progress-bar);
             }
             .mdc-linear-progress__buffer-bar {
               background-color: var(--file-input-failed-buffer-bar);
@@ -818,35 +840,33 @@ export class DxcFileInputComponent
             if (!response?.ok) {
               progress.status = "failed";
               this.unsubscribeUploadRequest(chunkFileDetails.fileName);
+              this.removeChunkFileInfo(chunkFileDetails.fileName);
             }
             break;
           case HttpEventType.Response:
             if (response?.ok) {
               chunkFileDetails.fileName = chunkFileDetails.fileName;
               this.fileDataUpload.fileChunks.push(chunkFileDetails);
-              this.actualchunksAddedCount++;
-              if (this.actualchunksAddedCount == this.totalChunkCount) {
-                progress.value = 100;
-                progress.status = "success";
-                this.uploadChunkComplete();
+              let fileInfoIndex = this.chunkFileInfo.findIndex(
+                (fileInfo) => fileInfo.fileName == chunkFileDetails.fileName
+              );
+              this.chunkFileInfo[fileInfoIndex].uploadedChunkCount =
+                this.chunkFileInfo[fileInfoIndex].uploadedChunkCount + 1;
+              if (
+                this.chunkFileInfo[fileInfoIndex].uploadedChunkCount ==
+                this.chunkFileInfo[fileInfoIndex].totalChunkCount
+              ) {
+                this.uploadChunkComplete(chunkFileDetails.fileName, progress);
                 this.unsubscribeUploadRequest(chunkFileDetails.fileName);
               }
             } else if (!response?.ok) {
               progress.status = "failed";
               this.unsubscribeUploadRequest(chunkFileDetails.fileName);
+              this.removeChunkFileInfo(chunkFileDetails.fileName);
             }
             break;
         }
-        let fileList = this.fileService.files.getValue();
-        fileList.files.forEach((file) => {
-          if (
-            file.data.name == chunkFileDetails.fileName &&
-            (file?.progress?.value ?? 0) < (progress?.value ?? 0)
-          ) {
-            file.progress = progress;
-          }
-          this.fileService.add(file);
-        });
+        this.updateProgress(chunkFileDetails.fileName, progress);
       });
     if (
       this.chunkUploadSubscription.filter((Subscription) => {
@@ -856,18 +876,27 @@ export class DxcFileInputComponent
       this.chunkUploadSubscription.map((Subscription) => {
         if (Subscription.fileName == chunkFileDetails.fileName) {
           Subscription.uploadRequests.push(uploadSubscription);
-        } 
+        }
       });
     } else {
-          const SubscriptionManager = {
-            fileName: chunkFileDetails.fileName,
-            uploadRequests: [uploadSubscription],
-          };
-          this.chunkUploadSubscription.push(SubscriptionManager);
-        }
+      const SubscriptionManager = {
+        fileName: chunkFileDetails.fileName,
+        uploadRequests: [uploadSubscription],
+      };
+      this.chunkUploadSubscription.push(SubscriptionManager);
+    }
   }
 
-  private unsubscribeUploadRequest(fileName:string) {
+  private removeChunkFileInfo(fileName: string) {
+    let uploadCompleteFileIndex = this.chunkFileInfo.findIndex(
+      (fileInfo) => fileInfo.fileName == fileName
+    );
+    if (uploadCompleteFileIndex > -1) {
+      this.chunkFileInfo.splice(uploadCompleteFileIndex, 1);
+    }
+  }
+
+  private unsubscribeUploadRequest(fileName: string) {
     let currentSubsIndex = -1;
     this.chunkUploadSubscription.forEach((subscription, index) => {
       if (subscription.fileName == fileName) {
@@ -901,7 +930,11 @@ export class DxcFileInputComponent
   }
 
   public async removefromAPI(theFiles: RemoveFileData) {
-    if (this.chunkUploadSubscription.filter(subscription => { return subscription.fileName == theFiles.fileName }).length > 0) { 
+    if (
+      this.chunkUploadSubscription.filter((subscription) => {
+        return subscription.fileName == theFiles.fileName;
+      }).length > 0
+    ) {
       this.unsubscribeUploadRequest(theFiles.fileName);
     }
     if (this.uniqueFileNameIndex == 0) {
@@ -925,6 +958,19 @@ export class DxcFileInputComponent
 
   private isSingleFilesPrintables() {
     return this.mode === "file" && this.value?.length === 1 && !this.multiple;
+  }
+
+  private updateProgress(fileName: string, progress: any) {
+    let fileList = this.fileService.files.getValue();
+    fileList.files.forEach((file) => {
+      if (
+        file.data.name == fileName &&
+        (file?.progress?.value ?? 0) < (progress?.value ?? 0)
+      ) {
+        file.progress = progress;
+      }
+      this.fileService.add(file);
+    });
   }
 
   private isErrorShow = (): boolean =>
