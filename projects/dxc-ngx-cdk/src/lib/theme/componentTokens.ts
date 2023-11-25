@@ -32,6 +32,8 @@ const globalTokens = {
   lightWhite: "#f2f2f2",
   softGrey: "#cecece",
   softBlack: "#565656",
+  darkPurple: "#5f249f",
+  grey: "#969696",
   fontFamily: "'Open Sans', sans-serif",
 };
 
@@ -162,6 +164,8 @@ export const componentTokens = {
 
   //HEADING
   "--heading-fontColor": globalTokens.inherit,
+  "--header-background-color": globalTokens.darkPurple,
+  "--profile-icon": globalTokens.grey,
 
   //INPUT TEXT
   "--inputText-selectedOptionBackgroundColor": globalTokens.lightGrey,
