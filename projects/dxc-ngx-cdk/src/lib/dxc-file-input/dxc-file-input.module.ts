@@ -10,6 +10,8 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
 import { FilesService } from "./services/files.services";
 import { IFileService } from "./model/IFileService";
+import { ToastrModule } from 'ngx-toastr';
+
 import {
   FILE_SERVICE,
   IFileServiceProvider,
@@ -31,7 +33,8 @@ import { MatTooltipModule } from "@angular/material/tooltip";
     ReactiveFormsModule,
     DxcProgressbarModule,
     HttpClientModule,
-    MatTooltipModule
+    MatTooltipModule,
+    ToastrModule
   ],
   exports: [DxcFileInputComponent],
 })

@@ -38,6 +38,7 @@ import {
   HttpResponse,
 } from "@angular/common/http";
 import { FileAddService } from "./services/file.add.service";
+import { ToastrService } from "ngx-toastr";
 @Component({
   selector: "dxc-file-input",
   templateUrl: "./dxc-file-input.component.html",
@@ -83,7 +84,9 @@ export class DxcFileInputComponent
   /**
    * The file types that the component accepts. Its value must be one of all the possible values of the HTML file input's accept attribute.
    */
-  @Input() public accept: string;
+  @Input() public accept: any;
+
+  @Input() public extCheckmsg: string;
   /**
    * If true, the component allows multiple file items and will show all of them. If false, only one file will be shown,
    * and if there is already one file selected and a new one is chosen, it will be replaced by the new selected one.
@@ -242,7 +245,8 @@ export class DxcFileInputComponent
   constructor(
     @Inject(FILE_SERVICE) private fileService: IFileService,
     private utils: CssUtils,
-    private fileAddService: FileAddService
+    private fileAddService: FileAddService,
+    private toastr: ToastrService
   ) {
     this.Subscription = this.fileAddService.files.subscribe(({ files, event }) => {
       if (event !== "reset" && (files.length || this.hasValue)) {
@@ -330,7 +334,16 @@ export class DxcFileInputComponent
   checkFileSize(file: File) {
     if(file.name!=null){
       let fileExtension = file.name.split('.').pop();
-      if(!this.accept.includes(fileExtension)){
+      fileExtension = '.'+ fileExtension;
+      let accepted = this.accept.split(',');
+      accepted = accepted.filter((x)=>x == fileExtension)
+      if(accepted != fileExtension){
+        this.extCheckmsg = this.extCheckmsg === '' || this.extCheckmsg === undefined ? this.resources.acceptedFiles.description + this.accept:this.extCheckmsg;
+        this.toastr.error(this.extCheckmsg, '', {
+          disableTimeOut: true,
+          positionClass: 'toast-top-full-width',
+     
+        });
         return this.resources.acceptedFiles.description + this.accept;
       }
     }
