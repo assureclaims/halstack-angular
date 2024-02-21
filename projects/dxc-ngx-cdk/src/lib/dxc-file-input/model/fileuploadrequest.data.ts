@@ -16,7 +16,8 @@ export interface IEventResponse {
 export enum EventType {
   PREUPLOAD = "PREUPLOAD",
   UPLOAD = "UPLOAD",
-  POSTUPLOAD = "POSTUPLOAD"
+  POSTUPLOAD = "POSTUPLOAD",
+  REMOVE = "REMOVE"
 }
 
 export interface IRequest {
