@@ -263,7 +263,7 @@ export class DxcFileInputComponent
   onChangeRegister = (val) => { };
 
   writeValue(fileData: any): void {
-    this.renderedValue = fileData || "";
+    this.renderedValue = fileData || null;
   }
 
   registerOnChange(fn: any): void {
@@ -337,7 +337,7 @@ export class DxcFileInputComponent
   checkFileSize(file: File) {
     if(file.name!=null){
       let fileExtension = file.name.split('.').pop();
-      if (!this.accept.toLocaleLowerCase().includes(fileExtension.toLocaleLowerCase())){
+      if (!this.accept.toLowerCase().includes(fileExtension.toLowerCase())){
         return this.resources.acceptedFiles.description + this.accept;
       }
     }
