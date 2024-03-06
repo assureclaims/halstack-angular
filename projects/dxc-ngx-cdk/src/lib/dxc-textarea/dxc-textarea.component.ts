@@ -16,6 +16,7 @@ import { BehaviorSubject } from "rxjs";
 import { UntypedFormControl } from "@angular/forms";
 import { CssUtils } from "../utils";
 import { coerceNumberProperty, coerceBooleanProperty } from "@angular/cdk/coercion";
+import {CdkTextareaAutosize} from '@angular/cdk/text-field';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({

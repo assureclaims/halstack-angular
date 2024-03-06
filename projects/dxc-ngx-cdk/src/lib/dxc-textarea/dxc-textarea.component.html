@@ -22,7 +22,9 @@
     [attr.aria-disabled]="disabled"
     [tabIndex]="disabled ? -1 : tabIndexValue"
     [attr.maxlength]="maxLength"
-    matTextareaAutosize
+    cdkTextareaAutosize
+    cdkAutosizeMinRows="1"
+    cdkAutosizeMaxRows="5"
   >
   </textarea>
   <mat-hint *ngIf="assistiveText">{{ assistiveText }}</mat-hint>
