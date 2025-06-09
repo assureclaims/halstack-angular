@@ -230,7 +230,7 @@ export class DxcFileInputComponent
   uploadChunkSize: number = 1000000;
   isDuplicateUpload: boolean = false;
   uploadId: string;
-  renderedValue = "";
+  renderedValue :any;
   private totalUploadedChunkedSize = [];
   chunkUploadSubscription: {
     fileName: string;
@@ -257,8 +257,8 @@ export class DxcFileInputComponent
   onTouched: () => void = () => { };
   onChangeRegister = (val) => { };
 
-  writeValue(fileNames: any): void {
-    this.renderedValue = fileNames || "";
+  writeValue(fileData: any): void {
+    this.renderedValue = fileData || null;
   }
 
   registerOnChange(fn: any): void {
@@ -332,7 +332,7 @@ export class DxcFileInputComponent
   checkFileSize(file: File) {
     if(file.name!=null){
       let fileExtension = file.name.split('.').pop();
-      if(!this.accept.includes(fileExtension)){
+      if (!this.accept.toLowerCase().includes(fileExtension.toLowerCase())){
         return this.resources.acceptedFiles.description + this.accept;
       }
     }
@@ -866,6 +866,7 @@ export class DxcFileInputComponent
     }
     this.fileService.delete(this.requests.removeRequest.url, fileData).pipe(take(1)).subscribe((response) => {
       const arr: FileData[] = [];
+      this.onChangeRegister({ files: arr, eventType: EventType.REMOVE });
       this.fileAddService.files.next({ files: arr, event: "remove" });
     });
   }
