@@ -15,7 +15,7 @@ const globalTokens = {
   darkBlue: "#006BF6",
   inherit: "inherit",
   transparent: "transparent",
-  purple: "#6f2c91",
+  purple: "#dedede",
   mediumPurple: "#ead8f3",
   lightPurple: "#f5ebf9",
   lighterPurple: "#d0bddb",
