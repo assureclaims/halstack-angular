@@ -260,10 +260,10 @@ export class DxcTabsComponent implements OnChanges {
         &.cdk-focused {
           outline: -webkit-focus-ring-color auto 1px;
           outline-color: var(--tabs-focusOutline);
-          background-color: var(--tabs-hoverBackgroundColor) !important;
+          background-color: var(--tabs-hoverBackgroundColor);
           }
           &.mdc-tab--active{
-            background-color: var(--tabs-hoverBackgroundColor) !important;
+            background-color: var(--tabs-backgroundColor) !important;
           }
         }
         dxc-tab-icon {
