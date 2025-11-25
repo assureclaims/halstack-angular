@@ -66,7 +66,7 @@ export class ComplexThemeBindingStrategy implements MappingStrategy {
     proccessedTokens["--tabs-focusOutline"] =
       theme?.tabs?.baseColor ?? tokens["--tabs-selectedFontColor"];
     proccessedTokens["--tabs-hoverBackgroundColor"] =
-      this.setLightness(theme?.tabs?.baseColor, 58) ??
+      this.setLightness(theme?.tabs?.baseColor, 100) ??
       tokens["--tabs-hoverBackgroundColor"];
     proccessedTokens["--tabs-pressedBackgroundColor"] =
       this.setLightness(theme?.tabs?.baseColor, 53) ??
