@@ -249,7 +249,6 @@ export class DxcTabsComponent implements OnChanges {
           white-space: normal;
         }
         .dxc-tab-label span {
-          color: var(--tabs-fontColor);
           opacity: 1;
           font-family: var(--tabs-fontFamily);
           font-size: var(--tabs-fontSize);
@@ -263,7 +262,7 @@ export class DxcTabsComponent implements OnChanges {
           background-color: var(--tabs-hoverBackgroundColor);
           }
           &.mdc-tab--active{
-            background-color: var(--tabs-backgroundColor) !important;
+            background-color: var(--tabs-backgroundColor);
           }
         }
         dxc-tab-icon {
