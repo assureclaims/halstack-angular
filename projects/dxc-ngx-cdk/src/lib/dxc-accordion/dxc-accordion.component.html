@@ -12,14 +12,14 @@
       <mat-panel-title
         [ngClass]="'before'"
       >
-        <span *ngIf="label">{{ label }}</span>
+        <span *ngIf="label" [matTooltip]="label">{{ label }}</span>
         <img [src]="iconSrc" *ngIf="iconSrc" class="imageIcon" />
         <ng-content select="dxc-accordion-icon"></ng-content>
       </mat-panel-title>
       <mat-panel-description *ngIf="assistiveText">
-        <span>{{ assistiveText }}</span>
+        <span [matTooltip]="assistiveText">{{ assistiveText }}</span>
       </mat-panel-description>
-      <span class="caret-indicator">
+      <span class="caret-indicator" [matTooltip]="isExpanded ? 'Collapse' : 'Expand'"  >
         <svg
           class="up"
           xmlns="http://www.w3.org/2000/svg"

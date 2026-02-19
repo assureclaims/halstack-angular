@@ -196,8 +196,8 @@ export class DxcDialogComponent implements OnDestroy, AfterViewInit {
             transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
             background-color: var(--dialog-backgroundColor);
             .dialog-header{
-              background-color: var(--dialog-header-backgroundColor);
-              border-bottom: 1px solid var(--dialog-header-borderColor);
+              background-color: var(--transparent-color);
+              border-bottom: 1px solid var(--transparent-color);
             }
             .closeIcon {
               svg {
