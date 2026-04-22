@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'resultset-table-directives',
-  templateUrl: './resultset-table-directives.component.html',
-  styleUrls: ['./resultset-table-directives.component.scss']
+    selector: 'resultset-table-directives',
+    templateUrl: './resultset-table-directives.component.html',
+    styleUrls: ['./resultset-table-directives.component.scss'],
+    standalone: false
 })
 export class ResultsetTableDirectivesComponent implements OnInit {
 

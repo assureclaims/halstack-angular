@@ -4,9 +4,10 @@ import { TextAreaApiComponent } from "../../components/examples/text-area/text-a
 import { TextAreaExampleComponent } from "../../components/examples/text-area/text-area-example/text-area-example.component";
 
 @Component({
-  selector: "app-text-area",
-  templateUrl: "./text-area.component.html",
-  styleUrls: ["./text-area.component.scss"],
+    selector: "app-text-area",
+    templateUrl: "./text-area.component.html",
+    styleUrls: ["./text-area.component.scss"],
+    standalone: false
 })
 export class TextAreaComponent implements OnInit {
   headingMargin = {

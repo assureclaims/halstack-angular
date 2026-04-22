@@ -11,8 +11,9 @@ import {
 } from "@angular/core";
 
 @Component({
-  selector: "dxc-input-prefix-icon",
-  templateUrl: "./dxc-input-prefix-icon.component.html",
+    selector: "dxc-input-prefix-icon",
+    templateUrl: "./dxc-input-prefix-icon.component.html",
+    standalone: false
 })
 export class DxcInputPrefixIconComponent implements OnChanges {
   @Input()

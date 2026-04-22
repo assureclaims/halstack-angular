@@ -2,8 +2,9 @@ import { Component, EventEmitter, HostBinding, OnChanges } from "@angular/core";
 import { css } from "@emotion/css";
 
 @Component({
-  selector: "dxc-dropdown-icon",
-  templateUrl: "./dxc-dropdown-icon.component.html",
+    selector: "dxc-dropdown-icon",
+    templateUrl: "./dxc-dropdown-icon.component.html",
+    standalone: false
 })
 export class DxcDropdownIconComponent {
   @HostBinding("class") iconClass;

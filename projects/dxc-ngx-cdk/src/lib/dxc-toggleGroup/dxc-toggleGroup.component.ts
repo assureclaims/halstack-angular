@@ -15,10 +15,11 @@ import { coerceBooleanProperty, coerceNumberProperty } from '@angular/cdk/coerci
 import { ToggleGroupService } from "./services/toggleGroup.service";
 
 @Component({
-  selector: "dxc-togglegroup",
-  templateUrl: "./dxc-toggleGroup.component.html",
-  styleUrls: [],
-  providers: [CssUtils, ToggleGroupService],
+    selector: "dxc-togglegroup",
+    templateUrl: "./dxc-toggleGroup.component.html",
+    styleUrls: [],
+    providers: [CssUtils, ToggleGroupService],
+    standalone: false
 })
 export class DxcToggleGroupComponent implements OnInit {
   @Input()

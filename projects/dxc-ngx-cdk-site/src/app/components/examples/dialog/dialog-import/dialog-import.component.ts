@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'dialog-import',
-  templateUrl: './dialog-import.component.html',
-  styleUrls: ['./dialog-import.component.scss']
+    selector: 'dialog-import',
+    templateUrl: './dialog-import.component.html',
+    styleUrls: ['./dialog-import.component.scss'],
+    standalone: false
 })
 export class DialogImportComponent implements OnInit {
 

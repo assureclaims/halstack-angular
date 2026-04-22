@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'card-import',
-  templateUrl: './card-import.component.html',
-  styleUrls: ['./card-import.component.scss']
+    selector: 'card-import',
+    templateUrl: './card-import.component.html',
+    styleUrls: ['./card-import.component.scss'],
+    standalone: false
 })
 export class CardImportComponent implements OnInit {
 

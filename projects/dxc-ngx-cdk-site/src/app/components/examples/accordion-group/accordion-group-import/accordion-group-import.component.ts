@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'accordion-group-import',
-  templateUrl: './accordion-group-import.component.html'
+    selector: 'accordion-group-import',
+    templateUrl: './accordion-group-import.component.html',
+    standalone: false
 })
 export class AccordionGroupImportComponent {
 

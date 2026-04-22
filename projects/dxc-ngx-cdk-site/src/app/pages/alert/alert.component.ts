@@ -4,10 +4,11 @@ import { AlertExampleComponent } from 'src/app/components/examples/alert/alert-e
 import { AlertApiComponent } from '../../components/examples/alert/alert-api/alert-api.component';
 
 @Component({
-  selector: "app-alert",
-  templateUrl: "./alert.component.html",
-  styleUrls: ["./alert.component.scss"],
-  providers: []
+    selector: "app-alert",
+    templateUrl: "./alert.component.html",
+    styleUrls: ["./alert.component.scss"],
+    providers: [],
+    standalone: false
 })
 export class AlertComponent implements OnInit{
   headingMargin = {

@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'tabs-import',
-  templateUrl: './tabs-import.component.html',
-  styleUrls: ['./tabs-import.component.scss']
+    selector: 'tabs-import',
+    templateUrl: './tabs-import.component.html',
+    styleUrls: ['./tabs-import.component.scss'],
+    standalone: false
 })
 export class TabsImportComponent implements OnInit {
 

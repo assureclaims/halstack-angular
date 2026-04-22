@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'paginator-import',
-  templateUrl: './paginator-import.component.html',
-  styleUrls: ['./paginator-import.component.scss']
+    selector: 'paginator-import',
+    templateUrl: './paginator-import.component.html',
+    styleUrls: ['./paginator-import.component.scss'],
+    standalone: false
 })
 export class PaginatorImportComponent implements OnInit {
 

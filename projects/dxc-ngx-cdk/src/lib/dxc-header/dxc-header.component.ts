@@ -16,9 +16,10 @@ import { spaces, responsiveSizes } from "../variables";
 import { coerceBooleanProperty, coerceNumberProperty } from '@angular/cdk/coercion';
 
 @Component({
-  selector: "dxc-header",
-  templateUrl: "./dxc-header.component.html",
-  providers: [CssUtils],
+    selector: "dxc-header",
+    templateUrl: "./dxc-header.component.html",
+    providers: [CssUtils],
+    standalone: false
 })
 export class DxcHeaderComponent implements OnChanges {
   @HostBinding("class") className;

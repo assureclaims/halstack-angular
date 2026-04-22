@@ -12,9 +12,10 @@ import { coerceNumberProperty, coerceArray } from "@angular/cdk/coercion";
 import { css } from "@emotion/css";
 
 @Component({
-  selector: "dxc-paginator",
-  templateUrl: "./dxc-paginator.component.html",
-  styleUrls: ["./dxc-paginator.component.scss"],
+    selector: "dxc-paginator",
+    templateUrl: "./dxc-paginator.component.html",
+    styleUrls: ["./dxc-paginator.component.scss"],
+    standalone: false
 })
 export class DxcPaginatorComponent implements OnInit {
   @Input()

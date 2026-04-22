@@ -9,9 +9,10 @@ import { BehaviorSubject } from "rxjs";
 import { css } from "@emotion/css";
 import { CssUtils } from "../utils";
 @Component({
-  selector: "dxc-box",
-  templateUrl: "./dxc-box.component.html",
-  providers: [CssUtils],
+    selector: "dxc-box",
+    templateUrl: "./dxc-box.component.html",
+    providers: [CssUtils],
+    standalone: false
 })
 export class DxcBoxComponent implements OnInit {
   @HostBinding("class") className;

@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'wizard-import',
-  templateUrl: './wizard-import.component.html',
-  styleUrls: ['./wizard-import.component.scss']
+    selector: 'wizard-import',
+    templateUrl: './wizard-import.component.html',
+    styleUrls: ['./wizard-import.component.scss'],
+    standalone: false
 })
 export class WizardImportComponent implements OnInit {
 

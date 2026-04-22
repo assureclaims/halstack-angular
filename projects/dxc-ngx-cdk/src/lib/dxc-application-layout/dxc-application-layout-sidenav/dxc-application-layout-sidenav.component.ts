@@ -17,10 +17,11 @@ import { coerceBooleanProperty } from "@angular/cdk/coercion";
 import { SidenavService } from "./services/sidenav.service";
 
 @Component({
-  selector: "dxc-application-layout-sidenav",
-  templateUrl: "./dxc-application-layout-sidenav.component.html",
-  styleUrls: [],
-  providers: [CssUtils],
+    selector: "dxc-application-layout-sidenav",
+    templateUrl: "./dxc-application-layout-sidenav.component.html",
+    styleUrls: [],
+    providers: [CssUtils],
+    standalone: false
 })
 export class DxcApplicationLayoutSidenavComponent implements OnInit, OnChanges {
   @HostBinding("class") sidenavStyles;

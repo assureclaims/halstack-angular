@@ -4,9 +4,10 @@ import { RadioExampleComponent } from '../../components/examples/radio/radio-exa
 import { RadioApiComponent } from '../../components/examples/radio/radio-api/radio-api.component';
 
 @Component({
-  selector: 'app-radio',
-  templateUrl: './radio.component.html',
-  styleUrls: ['./radio.component.scss']
+    selector: 'app-radio',
+    templateUrl: './radio.component.html',
+    styleUrls: ['./radio.component.scss'],
+    standalone: false
 })
 export class RadioComponent implements OnInit {
   headingMargin = {

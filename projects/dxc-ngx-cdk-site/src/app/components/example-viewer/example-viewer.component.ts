@@ -2,9 +2,10 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Example } from 'src/app/model/example';
  
 @Component({
-  selector: 'app-example-viewer',
-  templateUrl: './example-viewer.component.html',
-  styleUrls: ['./example-viewer.component.scss']
+    selector: 'app-example-viewer',
+    templateUrl: './example-viewer.component.html',
+    styleUrls: ['./example-viewer.component.scss'],
+    standalone: false
 })
 export class ExampleViewerComponent implements OnInit {
 

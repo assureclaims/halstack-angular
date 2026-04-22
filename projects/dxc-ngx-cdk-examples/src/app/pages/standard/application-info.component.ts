@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'application-info',
-  templateUrl: './application-info.component.html',
-  styleUrls: ['./application-info.component.scss']
+    selector: 'application-info',
+    templateUrl: './application-info.component.html',
+    styleUrls: ['./application-info.component.scss'],
+    standalone: false
 })
 export class ApplicationInfoComponent {
 

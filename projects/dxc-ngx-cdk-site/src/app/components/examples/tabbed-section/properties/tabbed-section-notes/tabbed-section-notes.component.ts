@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-tabbed-section-notes',
-  templateUrl: './tabbed-section-notes.component.html',
-  styleUrls: ['./tabbed-section-notes.component.scss']
+    selector: 'app-tabbed-section-notes',
+    templateUrl: './tabbed-section-notes.component.html',
+    styleUrls: ['./tabbed-section-notes.component.scss'],
+    standalone: false
 })
 export class TabbedSectionNotesComponent implements OnInit {
 

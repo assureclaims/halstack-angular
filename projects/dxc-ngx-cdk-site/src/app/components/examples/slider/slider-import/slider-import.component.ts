@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'slider-import',
-  templateUrl: './slider-import.component.html',
-  styleUrls: ['./slider-import.component.scss']
+    selector: 'slider-import',
+    templateUrl: './slider-import.component.html',
+    styleUrls: ['./slider-import.component.scss'],
+    standalone: false
 })
 export class SliderImportComponent implements OnInit {
 

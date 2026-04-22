@@ -4,9 +4,10 @@ import { WizardExampleComponent } from "../../components/examples/wizard/wizard-
 import { WizardApiComponent } from '../../components/examples/wizard/wizard-api/wizard-api.component';
 
 @Component({
-  selector: 'app-wizard',
-  templateUrl: './wizard.component.html',
-  styleUrls: ['./wizard.component.scss']
+    selector: 'app-wizard',
+    templateUrl: './wizard.component.html',
+    styleUrls: ['./wizard.component.scss'],
+    standalone: false
 })
 export class WizardComponent implements OnInit {
   headingMargin = {

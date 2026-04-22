@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'resultset-table-import',
-  templateUrl: './resultset-table-import.component.html',
-  styleUrls: ['./resultset-table-import.component.scss']
+    selector: 'resultset-table-import',
+    templateUrl: './resultset-table-import.component.html',
+    styleUrls: ['./resultset-table-import.component.scss'],
+    standalone: false
 })
 export class ResultsetTableImportComponent implements OnInit {
 

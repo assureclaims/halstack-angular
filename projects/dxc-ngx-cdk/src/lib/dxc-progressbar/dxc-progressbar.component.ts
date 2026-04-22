@@ -5,10 +5,11 @@ import { CssUtils } from "../utils";
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
 
 @Component({
-  selector: "dxc-progressbar",
-  templateUrl: "./dxc-progressbar.component.html",
-  styleUrls: ["./dxc-progressbar.component.scss"],
-  providers: [CssUtils],
+    selector: "dxc-progressbar",
+    templateUrl: "./dxc-progressbar.component.html",
+    styleUrls: ["./dxc-progressbar.component.scss"],
+    providers: [CssUtils],
+    standalone: false
 })
 export class DxcProgressbarComponent {
   mode: string = "indeterminate";

@@ -15,10 +15,11 @@ import { CssUtils } from "../utils";
 import { coerceNumberProperty } from '@angular/cdk/coercion';
 
 @Component({
-  selector: "dxc-alert",
-  templateUrl: "./dxc-alert.component.html",
-  styleUrls: ["./dxc-alert.component.scss"],
-  providers: [CssUtils],
+    selector: "dxc-alert",
+    templateUrl: "./dxc-alert.component.html",
+    styleUrls: ["./dxc-alert.component.scss"],
+    providers: [CssUtils],
+    standalone: false
 })
 export class DxcAlertComponent implements OnChanges {
   @HostBinding("class") className;

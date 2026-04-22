@@ -2,7 +2,8 @@ import { Directive, ElementRef, Input, Inject } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 
 @Directive({
-  selector: '[dxcFileFormat]'
+    selector: '[dxcFileFormat]',
+    standalone: false
 })
 export class FileFormatDirective {
 

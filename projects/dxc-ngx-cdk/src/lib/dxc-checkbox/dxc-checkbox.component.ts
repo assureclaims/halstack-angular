@@ -15,13 +15,14 @@ import { coerceBooleanProperty, coerceNumberProperty } from '@angular/cdk/coerci
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
-  selector: "dxc-checkbox",
-  templateUrl: "./dxc-checkbox.component.html",
-  providers: [CssUtils, {
-    provide: NG_VALUE_ACCESSOR,
-    useExisting: forwardRef(() => DxcCheckboxComponent),
-    multi: true
-  }],
+    selector: "dxc-checkbox",
+    templateUrl: "./dxc-checkbox.component.html",
+    providers: [CssUtils, {
+            provide: NG_VALUE_ACCESSOR,
+            useExisting: forwardRef(() => DxcCheckboxComponent),
+            multi: true
+        }],
+    standalone: false
 })
 export class DxcCheckboxComponent implements OnInit, ControlValueAccessor {
   @Input() value: string;

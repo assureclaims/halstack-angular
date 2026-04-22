@@ -49,12 +49,13 @@ export const MAT_RIPPLE_GLOBAL_OPTIONS =
     new InjectionToken<RippleGlobalOptions>('mat-ripple-global-options');
 
 @Directive({
-  selector: '[mat-ripple], [matRipple]',
-  exportAs: 'matRipple',
-  host: {
-    'class': 'mat-ripple',
-    '[class.mat-ripple-unbounded]': 'unbounded'
-  }
+    selector: '[mat-ripple], [matRipple]',
+    exportAs: 'matRipple',
+    host: {
+        'class': 'mat-ripple',
+        '[class.mat-ripple-unbounded]': 'unbounded'
+    },
+    standalone: false
 })
 export class MatRipple implements OnInit, OnDestroy, RippleTarget {
 

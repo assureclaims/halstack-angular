@@ -24,15 +24,16 @@ import { DxcPopoverPanel } from './dxc-popover-interfaces';
 import { transformPopover } from './dxc-popover-animations';
 
 @Component({
-  selector: 'dxc-popover',
-  templateUrl: './dxc-popover.html',
-  styleUrls: ['./dxc-popover.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  encapsulation: ViewEncapsulation.None,
-  animations: [
-    transformPopover
-  ],
-  exportAs: 'dxcPopover'
+    selector: 'dxc-popover',
+    templateUrl: './dxc-popover.html',
+    styleUrls: ['./dxc-popover.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    encapsulation: ViewEncapsulation.None,
+    animations: [
+        transformPopover
+    ],
+    exportAs: 'dxcPopover',
+    standalone: false
 })
 export class DxcPopover implements DxcPopoverPanel, OnDestroy { // tslint:disable-line:component-class-suffix
 

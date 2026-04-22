@@ -22,10 +22,11 @@ import { BackgroundProviderService } from "../background-provider/service/backgr
 import { Space, Spacing, CardProperties } from "./dxc-card.types"
 
 @Component({
-  selector: "dxc-card",
-  templateUrl: "./dxc-card.component.html",
-  styleUrls: [],
-  providers: [CssUtils],
+    selector: "dxc-card",
+    templateUrl: "./dxc-card.component.html",
+    styleUrls: [],
+    providers: [CssUtils],
+    standalone: false
 })
 export class DxcCardComponent implements OnInit {
   /**

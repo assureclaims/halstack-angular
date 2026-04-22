@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'accordion-group',
-  templateUrl: './accordion-group.component.html'
+    selector: 'accordion-group',
+    templateUrl: './accordion-group.component.html',
+    standalone: false
 })
 export class AccordionGroupComponent implements OnInit {
 

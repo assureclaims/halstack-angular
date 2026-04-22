@@ -12,9 +12,10 @@ import { ViewChild, ViewContainerRef } from '@angular/core';
 
 
 @Component({
-  selector: "app-dynamic-component",
-  template: "",
-  providers: []
+    selector: "app-dynamic-component",
+    template: "",
+    providers: [],
+    standalone: false
 })
 export class DynamicComponentComponent implements AfterViewInit, OnDestroy {
 

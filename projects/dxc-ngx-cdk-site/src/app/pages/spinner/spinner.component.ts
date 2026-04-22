@@ -4,10 +4,11 @@ import { SpinnerExampleComponent } from "../../components/examples/spinner/spinn
 import { SpinnerApiComponent } from '../../components/examples/spinner/spinner-api/spinner-api.component';
 
 @Component({
-  selector: "app-spinner",
-  templateUrl: "./spinner.component.html",
-  styleUrls: ["./spinner.component.scss"],
-  providers: [],
+    selector: "app-spinner",
+    templateUrl: "./spinner.component.html",
+    styleUrls: ["./spinner.component.scss"],
+    providers: [],
+    standalone: false
 })
 export class SpinnerComponent implements OnInit {
   headingMargin = {

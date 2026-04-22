@@ -3,8 +3,9 @@ import { DataPropertiesTable } from 'src/app/model/data-properties-table';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'accordion-group-table-properties',
-  templateUrl: './accordion-group-table-properties.component.html'
+    selector: 'accordion-group-table-properties',
+    templateUrl: './accordion-group-table-properties.component.html',
+    standalone: false
 })
 export class AccordionGroupTablePropertiesComponent implements OnInit {
 

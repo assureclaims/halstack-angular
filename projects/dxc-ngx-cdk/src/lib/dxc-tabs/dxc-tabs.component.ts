@@ -31,14 +31,15 @@ const globalRippleConfig: RippleGlobalOptions = {
 };
 
 @Component({
-  selector: "dxc-tabs",
-  templateUrl: "./dxc-tabs.component.html",
-  styleUrls: ["./dxc-tabs.component.scss"],
-  providers: [
-    CssUtils,
-    TabService,
-    { provide: MAT_RIPPLE_GLOBAL_OPTIONS, useValue: globalRippleConfig },
-  ],
+    selector: "dxc-tabs",
+    templateUrl: "./dxc-tabs.component.html",
+    styleUrls: ["./dxc-tabs.component.scss"],
+    providers: [
+        CssUtils,
+        TabService,
+        { provide: MAT_RIPPLE_GLOBAL_OPTIONS, useValue: globalRippleConfig },
+    ],
+    standalone: false
 })
 export class DxcTabsComponent implements OnChanges {
   /**

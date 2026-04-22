@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'link-import',
-  templateUrl: './link-import.component.html',
-  styleUrls: ['./link-import.component.scss']
+    selector: 'link-import',
+    templateUrl: './link-import.component.html',
+    styleUrls: ['./link-import.component.scss'],
+    standalone: false
 })
 export class LinkImportComponent implements OnInit {
 

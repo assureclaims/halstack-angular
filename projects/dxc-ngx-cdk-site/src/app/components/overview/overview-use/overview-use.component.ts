@@ -2,9 +2,10 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { ExampleService } from 'src/app/service/example.service';
 
 @Component({
-  selector: 'app-overview-use',
-  templateUrl: './overview-use.component.html',
-  styleUrls: ['./overview-use.component.scss']
+    selector: 'app-overview-use',
+    templateUrl: './overview-use.component.html',
+    styleUrls: ['./overview-use.component.scss'],
+    standalone: false
 })
 export class OverviewUseComponent implements OnInit {
 

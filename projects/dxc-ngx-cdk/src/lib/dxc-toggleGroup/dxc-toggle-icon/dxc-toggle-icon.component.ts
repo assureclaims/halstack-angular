@@ -7,7 +7,8 @@ import {
   @Component({
     selector: "dxc-toggle-icon",
     templateUrl: "./dxc-toggle-icon.component.html",
-  })
+    standalone: false
+})
   export class DxcToggleIconComponent implements OnChanges {
   
     @HostBinding("class") classes = "icon";

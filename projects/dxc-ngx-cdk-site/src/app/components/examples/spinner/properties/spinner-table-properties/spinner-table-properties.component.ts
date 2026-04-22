@@ -1,9 +1,10 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { DataPropertiesTable } from 'src/app/model/data-properties-table';
 @Component({
-  selector: 'spinner-table-properties',
-  templateUrl: './spinner-table-properties.component.html',
-  styleUrls: ['./spinner-table-properties.component.scss']
+    selector: 'spinner-table-properties',
+    templateUrl: './spinner-table-properties.component.html',
+    styleUrls: ['./spinner-table-properties.component.scss'],
+    standalone: false
 })
 export class SpinnerTablePropertiesComponent implements OnInit {
 

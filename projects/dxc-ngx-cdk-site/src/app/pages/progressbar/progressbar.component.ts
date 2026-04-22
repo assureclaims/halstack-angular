@@ -4,9 +4,10 @@ import {ProgressbarExampleComponent} from '../../components/examples/progressbar
 import { ProgressbarApiComponent } from '../../components/examples/progressbar/progressbar-api/progressbar-api.component';
 
 @Component({
-  selector: "app-progressbar",
-  templateUrl: "./progressbar.component.html",
-  styleUrls: ["./progressbar.component.scss"]
+    selector: "app-progressbar",
+    templateUrl: "./progressbar.component.html",
+    styleUrls: ["./progressbar.component.scss"],
+    standalone: false
 })
 export class ProgressbarComponent implements OnInit {
   headingMargin = {

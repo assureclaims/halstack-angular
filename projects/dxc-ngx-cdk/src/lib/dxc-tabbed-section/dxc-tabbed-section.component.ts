@@ -15,8 +15,9 @@ import {
 } from "@angular/cdk/coercion";
 
 @Component({
-  selector: "dxc-tabbed-section",
-  templateUrl: "./dxc-tabbed-section.component.html",
+    selector: "dxc-tabbed-section",
+    templateUrl: "./dxc-tabbed-section.component.html",
+    standalone: false
 })
 export class DxcTabbedSectionComponent implements OnInit {
   //input attributes

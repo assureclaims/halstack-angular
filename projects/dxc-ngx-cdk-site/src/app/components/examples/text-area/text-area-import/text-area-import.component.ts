@@ -1,9 +1,10 @@
 import { Component, OnInit } from "@angular/core";
 
 @Component({
-  selector: "text-area-import",
-  templateUrl: "./text-area-import.component.html",
-  styleUrls: ["./text-area-import.component.scss"],
+    selector: "text-area-import",
+    templateUrl: "./text-area-import.component.html",
+    styleUrls: ["./text-area-import.component.scss"],
+    standalone: false
 })
 export class TextAreaImportComponent implements OnInit {
   bindCode = `

@@ -20,13 +20,14 @@ import {CdkTextareaAutosize} from '@angular/cdk/text-field';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
-  selector: "dxc-textarea",
-  templateUrl: "./dxc-textarea.component.html",
-  providers: [CssUtils, {
-    provide: NG_VALUE_ACCESSOR,
-    useExisting: forwardRef(() => DxcTextareaComponent),
-    multi: true
-  }],
+    selector: "dxc-textarea",
+    templateUrl: "./dxc-textarea.component.html",
+    providers: [CssUtils, {
+            provide: NG_VALUE_ACCESSOR,
+            useExisting: forwardRef(() => DxcTextareaComponent),
+            multi: true
+        }],
+    standalone: false
 })
 export class DxcTextareaComponent
   implements OnInit, OnChanges, AfterViewChecked, ControlValueAccessor {

@@ -6,8 +6,8 @@ import {
 } from "@angular/core";
 
 @Component({
-  selector: "th",
-  template: `<div
+    selector: "th",
+    template: `<div
     id="header-{{ columnName }}-{{ parentClassName }}"
     [ngClass]="[isSortable ? 'isSortable' : '']"
     [tabIndex]="isSortable ? tabIndexValue : -1"
@@ -18,9 +18,10 @@ import {
       *ngIf="isSortable"
     ></span>
   </div>`,
-  styleUrls: ["./dxc-header-row-component.scss"],
-  changeDetection: ChangeDetectionStrategy.Default,
-  encapsulation: ViewEncapsulation.None,
+    styleUrls: ["./dxc-header-row-component.scss"],
+    changeDetection: ChangeDetectionStrategy.Default,
+    encapsulation: ViewEncapsulation.None,
+    standalone: false
 })
 export class DxcHeaderRowComponent {
   columnName: string;
