@@ -4,10 +4,11 @@ import { CardExampleComponent } from '../../components/examples/card/card-exampl
 import { CardApiComponent } from '../../components/examples/card/card-api/card-api.component';
 
 @Component({
-  selector: "app-card",
-  templateUrl: "./card.component.html",
-  styleUrls: ["./card.component.scss"],
-  providers: []
+    selector: "app-card",
+    templateUrl: "./card.component.html",
+    styleUrls: ["./card.component.scss"],
+    providers: [],
+    standalone: false
 })
 export class CardComponent implements OnInit{
   headingMargin = {

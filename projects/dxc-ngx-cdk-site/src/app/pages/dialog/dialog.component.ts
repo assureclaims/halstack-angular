@@ -4,9 +4,10 @@ import { DialogExampleComponent } from "../../components/examples/dialog/dialog-
 import { DialogApiComponent } from "../../components/examples/dialog/dialog-api/dialog-api.component";
 
 @Component({
-  selector: "app-dialog",
-  templateUrl: "./dialog.component.html",
-  styleUrls: ["./dialog.component.scss"],
+    selector: "app-dialog",
+    templateUrl: "./dialog.component.html",
+    styleUrls: ["./dialog.component.scss"],
+    standalone: false
 })
 export class DialogComponent implements OnInit {
   headingMargin = {

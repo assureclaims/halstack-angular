@@ -39,18 +39,19 @@ import {
 } from "@angular/common/http";
 import { FileAddService } from "./services/file.add.service";
 @Component({
-  selector: "dxc-file-input",
-  templateUrl: "./dxc-file-input.component.html",
-  providers: [
-    CssUtils,
-    FilesService,
-    {
-      provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => DxcFileInputComponent),
-      multi: true,
-    },
-    FileAddService
-  ],
+    selector: "dxc-file-input",
+    templateUrl: "./dxc-file-input.component.html",
+    providers: [
+        CssUtils,
+        FilesService,
+        {
+            provide: NG_VALUE_ACCESSOR,
+            useExisting: forwardRef(() => DxcFileInputComponent),
+            multi: true,
+        },
+        FileAddService
+    ],
+    standalone: false
 })
 export class DxcFileInputComponent
   implements OnChanges, OnInit, ControlValueAccessor {

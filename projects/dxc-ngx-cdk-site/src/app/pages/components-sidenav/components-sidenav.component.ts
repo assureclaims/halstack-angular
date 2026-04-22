@@ -3,9 +3,10 @@ import { Components } from '../../components';
 import { Router, NavigationEnd } from '@angular/router';
 
 @Component({
-  selector: 'components-sidenav',
-  templateUrl: './components-sidenav.component.html',
-  styleUrls: ['./components-sidenav.component.scss']
+    selector: 'components-sidenav',
+    templateUrl: './components-sidenav.component.html',
+    styleUrls: ['./components-sidenav.component.scss'],
+    standalone: false
 })
 export class ComponentsSidenavComponent implements OnInit {
 

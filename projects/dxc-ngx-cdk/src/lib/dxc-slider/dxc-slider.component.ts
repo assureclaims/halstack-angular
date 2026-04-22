@@ -15,13 +15,14 @@ import { CssUtils } from "../utils";
 import { coerceBooleanProperty, coerceNumberProperty } from '@angular/cdk/coercion';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from "@angular/forms";
 @Component({
-  selector: "dxc-slider",
-  templateUrl: "./dxc-slider.component.html",
-  providers: [CssUtils,{
-    provide: NG_VALUE_ACCESSOR,
-    useExisting: forwardRef(() => DxcSliderComponent),
-    multi: true
-  }]
+    selector: "dxc-slider",
+    templateUrl: "./dxc-slider.component.html",
+    providers: [CssUtils, {
+            provide: NG_VALUE_ACCESSOR,
+            useExisting: forwardRef(() => DxcSliderComponent),
+            multi: true
+        }],
+    standalone: false
 })
 export class DxcSliderComponent implements OnInit, OnChanges, ControlValueAccessor{
   @HostBinding("class") className;

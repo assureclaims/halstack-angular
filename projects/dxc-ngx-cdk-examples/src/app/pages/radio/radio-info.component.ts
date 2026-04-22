@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'radio-info',
-  templateUrl: './radio-info.component.html',
-  styleUrls: ['./radio-info.component.scss']
+    selector: 'radio-info',
+    templateUrl: './radio-info.component.html',
+    styleUrls: ['./radio-info.component.scss'],
+    standalone: false
 })
 export class RadioInfoComponent {
 

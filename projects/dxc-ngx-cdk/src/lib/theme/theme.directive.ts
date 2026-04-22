@@ -12,7 +12,8 @@ import { ComplexThemeBindingStrategy } from "./complexThemeBindingStrategy";
 import { componentIcons } from "./componentTokens";
 
 @Directive({
-  selector: "[theme]",
+    selector: "[theme]",
+    standalone: false
 })
 export class ThemeDirective implements OnInit, OnDestroy {
   private _destroy$ = new Subject<void>();

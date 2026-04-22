@@ -16,9 +16,10 @@ import { DxcFooterComponent } from "../dxc-footer/dxc-footer.component";
 import { DxcApplicationLayoutFooterComponent } from "./dxc-application-layout-footer/dxc-application-layout-footer.component";
 
 @Component({
-  selector: "dxc-application-layout",
-  templateUrl: "./dxc-application-layout.component.html",
-  providers: [CssUtils, SidenavService],
+    selector: "dxc-application-layout",
+    templateUrl: "./dxc-application-layout.component.html",
+    providers: [CssUtils, SidenavService],
+    standalone: false
 })
 export class DxcApplicationLayoutComponent implements OnInit {
   @HostBinding("class") layoutStyles;

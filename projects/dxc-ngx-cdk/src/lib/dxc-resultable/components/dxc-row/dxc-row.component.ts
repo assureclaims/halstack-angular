@@ -6,10 +6,11 @@ import {
 } from "@angular/core";
 
 @Component({
-  selector: "tr",
-  template: `<ng-container cdkCellOutlet></ng-container>`,
-  changeDetection: ChangeDetectionStrategy.Default,
-  encapsulation: ViewEncapsulation.None,
+    selector: "tr",
+    template: `<ng-container cdkCellOutlet></ng-container>`,
+    changeDetection: ChangeDetectionStrategy.Default,
+    encapsulation: ViewEncapsulation.None,
+    standalone: false
 })
 export class DxcRowComponent implements OnInit {
   constructor() {}

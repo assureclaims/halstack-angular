@@ -14,7 +14,8 @@ import { _DxcColumnDefBase } from "../classes/dxc-column-def-base.class";
  * Defines a set of cells available for a table column.
  */
 @Directive({
-  selector: "[dxcColumnDef]",
+    selector: "[dxcColumnDef]",
+    standalone: false
 })
 export class DxcColumnDef extends _DxcColumnDefBase {
   /** Unique name for this column. */

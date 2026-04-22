@@ -1,8 +1,9 @@
 import { Component, OnChanges, Input } from "@angular/core";
 @Component({
-  selector: "dxc-transaction",
-  templateUrl: "./dxc-transaction.component.html",
-  styleUrls: ["./dxc-transaction.component.scss"],
+    selector: "dxc-transaction",
+    templateUrl: "./dxc-transaction.component.html",
+    styleUrls: ["./dxc-transaction.component.scss"],
+    standalone: false
 })
 export class DxcTransactionComponent implements OnChanges {
   @Input() file;

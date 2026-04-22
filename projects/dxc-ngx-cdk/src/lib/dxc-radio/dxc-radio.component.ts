@@ -13,9 +13,10 @@ import { CssUtils } from "../utils";
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
 
 @Component({
-  selector: "dxc-radio",
-  templateUrl: "./dxc-radio.component.html",
-  providers: [CssUtils],
+    selector: "dxc-radio",
+    templateUrl: "./dxc-radio.component.html",
+    providers: [CssUtils],
+    standalone: false
 })
 export class DxcRadioComponent implements OnInit {
   @Input()

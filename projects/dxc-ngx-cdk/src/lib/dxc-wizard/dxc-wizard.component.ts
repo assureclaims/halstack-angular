@@ -18,9 +18,10 @@ import { coerceNumberProperty } from "@angular/cdk/coercion";
 import { Spacing, Space, WizardProperties } from "./dxc-wizard.types";
 
 @Component({
-  selector: "dxc-wizard",
-  templateUrl: "./dxc-wizard.component.html",
-  providers: [CssUtils, WizardService],
+    selector: "dxc-wizard",
+    templateUrl: "./dxc-wizard.component.html",
+    providers: [CssUtils, WizardService],
+    standalone: false
 })
 export class DxcWizardComponent {
   /**

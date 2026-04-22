@@ -19,9 +19,10 @@ import { DxcAccordionIconComponent } from "./dxc-accordion-icon/dxc-accordion-ic
 import { QueryList, ChangeDetectorRef, ElementRef } from "@angular/core";
 
 @Component({
-  selector: "dxc-accordion",
-  templateUrl: "./dxc-accordion.component.html",
-  providers: [CssUtils],
+    selector: "dxc-accordion",
+    templateUrl: "./dxc-accordion.component.html",
+    providers: [CssUtils],
+    standalone: false
 })
 export class DxcAccordionComponent implements OnInit, OnChanges, AfterViewInit {
   @Input() mode: string;

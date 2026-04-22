@@ -5,9 +5,10 @@ import {
 import { CssUtils } from "../../utils";
 
 @Component({
-  selector: "dxc-application-layout-main",
-  templateUrl: "./dxc-application-layout-main.component.html",
-  providers: [CssUtils],
+    selector: "dxc-application-layout-main",
+    templateUrl: "./dxc-application-layout-main.component.html",
+    providers: [CssUtils],
+    standalone: false
 })
 export class DxcApplicationLayoutMainComponent implements OnInit {
 

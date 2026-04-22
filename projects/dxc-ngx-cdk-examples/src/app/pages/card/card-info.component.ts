@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'card-info',
-  templateUrl: './card-info.component.html',
-  styleUrls: ['./card-info.component.scss']
+    selector: 'card-info',
+    templateUrl: './card-info.component.html',
+    styleUrls: ['./card-info.component.scss'],
+    standalone: false
 })
 export class CardInfoComponent {
 

@@ -4,10 +4,11 @@ import { ButtonExampleComponent } from 'src/app/components/examples/button/butto
 import { ButtonApiComponent } from '../../components/examples/button/button-api/button-api.component';
 
 @Component({
-  selector: "app-button",
-  templateUrl: "./button.component.html",
-  styleUrls: ["./button.component.scss"],
-  providers: []
+    selector: "app-button",
+    templateUrl: "./button.component.html",
+    styleUrls: ["./button.component.scss"],
+    providers: [],
+    standalone: false
 })
 export class ButtonComponent implements OnInit{
   headingMargin = {

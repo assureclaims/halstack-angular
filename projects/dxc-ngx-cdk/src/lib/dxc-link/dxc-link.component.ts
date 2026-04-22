@@ -16,9 +16,10 @@ import {
 import { DxcLinkIconComponent } from "./dxc-link-icon/dxc-link-icon.component";
 
 @Component({
-  selector: "dxc-link",
-  templateUrl: "./dxc-link.component.html",
-  providers: [CssUtils],
+    selector: "dxc-link",
+    templateUrl: "./dxc-link.component.html",
+    providers: [CssUtils],
+    standalone: false
 })
 export class DxcLinkComponent {
   @Input()

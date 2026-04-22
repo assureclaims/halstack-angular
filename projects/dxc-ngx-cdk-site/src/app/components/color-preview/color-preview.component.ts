@@ -2,9 +2,10 @@ import { Component, OnInit, Input, HostBinding } from '@angular/core';
 import { css } from "@emotion/css";
 
 @Component({
-  selector: 'color-preview',
-  templateUrl: './color-preview.component.html',
-  styleUrls: ['./color-preview.component.scss']
+    selector: 'color-preview',
+    templateUrl: './color-preview.component.html',
+    styleUrls: ['./color-preview.component.scss'],
+    standalone: false
 })
 export class ColorPreviewComponent implements OnInit {
 

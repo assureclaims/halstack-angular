@@ -10,9 +10,10 @@ import {
 import { css } from "@emotion/css";
 
 @Component({
-  selector: "dxc-header-dropdown",
-  templateUrl: "./dxc-header-dropdown.component.html",
-  styleUrls: [],
+    selector: "dxc-header-dropdown",
+    templateUrl: "./dxc-header-dropdown.component.html",
+    styleUrls: [],
+    standalone: false
 })
 export class DxcHeaderDropdownComponent implements OnChanges {
   @HostBinding("class") triggerStyles;

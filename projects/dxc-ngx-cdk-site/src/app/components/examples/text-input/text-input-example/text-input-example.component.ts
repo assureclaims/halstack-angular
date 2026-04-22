@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 @Component({
-  selector: 'app-text-input-example',
-  templateUrl: './text-input-example.component.html',
-  styleUrls: ['./text-input-example.component.scss']
+    selector: 'app-text-input-example',
+    templateUrl: './text-input-example.component.html',
+    styleUrls: ['./text-input-example.component.scss'],
+    standalone: false
 })
 export class TextInputExampleComponent {
 

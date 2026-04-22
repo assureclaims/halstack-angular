@@ -5,9 +5,10 @@ import { Button, DxcCrudTableComponent, DxcResizeService } from '@dxc-technology
 import { EFieldsType, EMethod, IFieldsBaseProperties, IRequest, ITextEditorproperties } from '@dxc-technology/halstack-angular';
 
 @Component({
-  selector: 'app-crud-grid',
-  templateUrl: './crud-grid.component.html',
-  styleUrls: ['./crud-grid.component.scss']
+    selector: 'app-crud-grid',
+    templateUrl: './crud-grid.component.html',
+    styleUrls: ['./crud-grid.component.scss'],
+    standalone: false
 })
 export class CrudGridComponent implements OnInit {
   @ViewChild('crudgridcomponent', {static: false}) crudGridComponent: DxcCrudTableComponent;

@@ -2,9 +2,10 @@ import { Component, Output, OnChanges, EventEmitter, Input } from '@angular/core
 import { coerceNumberProperty } from '@angular/cdk/coercion';
 
 @Component({
-  selector: "dxc-upload-buttons",
-  templateUrl: "./dxc-upload-buttons.component.html",
-  styleUrls: ["./dxc-upload-buttons.component.scss"],
+    selector: "dxc-upload-buttons",
+    templateUrl: "./dxc-upload-buttons.component.html",
+    styleUrls: ["./dxc-upload-buttons.component.scss"],
+    standalone: false
 })
 export class DxcUploadButtonsComponent implements OnChanges {
   @Input()

@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'footer-import',
-  templateUrl: './footer-import.component.html',
-  styleUrls: ['./footer-import.component.scss']
+    selector: 'footer-import',
+    templateUrl: './footer-import.component.html',
+    styleUrls: ['./footer-import.component.scss'],
+    standalone: false
 })
 export class FooterImportComponent implements OnInit {
 

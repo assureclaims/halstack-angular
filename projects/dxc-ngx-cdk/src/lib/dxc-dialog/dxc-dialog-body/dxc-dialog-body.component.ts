@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'dxc-dialog-body',
-  templateUrl: './dxc-dialog-body.component.html',
-  styleUrls: ['./dxc-dialog-body.component.css']
+    selector: 'dxc-dialog-body',
+    templateUrl: './dxc-dialog-body.component.html',
+    styleUrls: ['./dxc-dialog-body.component.css'],
+    standalone: false
 })
 export class DxcDialogBodyComponent implements OnInit {
 

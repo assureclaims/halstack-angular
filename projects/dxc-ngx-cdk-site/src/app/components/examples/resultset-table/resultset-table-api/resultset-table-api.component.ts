@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'resultset-table-api',
-  templateUrl: './resultset-table-api.component.html',
-  styleUrls: ['./resultset-table-api.component.scss']
+    selector: 'resultset-table-api',
+    templateUrl: './resultset-table-api.component.html',
+    styleUrls: ['./resultset-table-api.component.scss'],
+    standalone: false
 })
 export class ResultsetTableApiComponent implements OnInit {
 

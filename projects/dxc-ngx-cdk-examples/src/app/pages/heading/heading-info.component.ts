@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'heading-info',
-  templateUrl: './heading-info.component.html',
-  styleUrls: ['./heading-info.component.scss']
+    selector: 'heading-info',
+    templateUrl: './heading-info.component.html',
+    styleUrls: ['./heading-info.component.scss'],
+    standalone: false
 })
 export class HeadingInfoComponent implements OnInit {
 

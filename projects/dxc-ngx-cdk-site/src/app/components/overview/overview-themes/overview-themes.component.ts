@@ -2,9 +2,10 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { ExampleService } from '../../../service/example.service';
 
 @Component({
-  selector: 'app-overview-themes',
-  templateUrl: './overview-themes.component.html',
-  styleUrls: ['./overview-themes.component.scss']
+    selector: 'app-overview-themes',
+    templateUrl: './overview-themes.component.html',
+    styleUrls: ['./overview-themes.component.scss'],
+    standalone: false
 })
 export class OverviewThemesComponent implements OnInit {
 

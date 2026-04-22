@@ -8,7 +8,8 @@ import {
 import { DxcHeaderComponent } from "../dxc-header.component";
 
 @Directive({
-  selector: "[isClosable]",
+    selector: "[isClosable]",
+    standalone: false
 })
 export class ClosableDirective {
   parent: DxcHeaderComponent;

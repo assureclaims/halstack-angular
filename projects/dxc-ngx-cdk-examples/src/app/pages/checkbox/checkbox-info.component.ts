@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'checkbox-info',
-  templateUrl: './checkbox-info.component.html',
-  styleUrls: ['./checkbox-info.component.scss']
+    selector: 'checkbox-info',
+    templateUrl: './checkbox-info.component.html',
+    styleUrls: ['./checkbox-info.component.scss'],
+    standalone: false
 })
 export class CheckboxInfoComponent {
 

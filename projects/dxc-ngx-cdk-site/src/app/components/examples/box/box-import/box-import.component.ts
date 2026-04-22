@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'box-import',
-  templateUrl: './box-import.component.html',
-  styleUrls: ['./box-import.component.scss']
+    selector: 'box-import',
+    templateUrl: './box-import.component.html',
+    styleUrls: ['./box-import.component.scss'],
+    standalone: false
 })
 export class BoxImportComponent implements OnInit {
 

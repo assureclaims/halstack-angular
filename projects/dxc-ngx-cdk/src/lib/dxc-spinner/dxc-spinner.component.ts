@@ -13,10 +13,11 @@ import { coerceBooleanProperty } from '@angular/cdk/coercion';
 import { LoaderService } from './services/loader.service';
 import { LoaderState } from './dxc-spinner.interface';
 @Component({
-  selector: "dxc-spinner",
-  templateUrl: "./dxc-spinner.component.html",
-  styleUrls: ["./dxc-spinner.component.scss"],
-  providers: [CssUtils],
+    selector: "dxc-spinner",
+    templateUrl: "./dxc-spinner.component.html",
+    styleUrls: ["./dxc-spinner.component.scss"],
+    providers: [CssUtils],
+    standalone: false
 })
 export class DxcSpinnerComponent {
   type: string = "indeterminate";

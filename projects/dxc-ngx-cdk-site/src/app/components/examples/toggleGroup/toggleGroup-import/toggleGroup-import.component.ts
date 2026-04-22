@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'toggleGroup-import',
-  templateUrl: './toggleGroup-import.component.html',
-  styleUrls: ['./toggleGroup-import.component.scss']
+    selector: 'toggleGroup-import',
+    templateUrl: './toggleGroup-import.component.html',
+    styleUrls: ['./toggleGroup-import.component.scss'],
+    standalone: false
 })
 export class ToggleGroupImportComponent implements OnInit {
 

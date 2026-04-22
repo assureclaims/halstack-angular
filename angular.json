@@ -92,11 +92,11 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "angular-dxc-site:build"
+            "buildTarget": "angular-dxc-site:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "angular-dxc-site:build:production"
+              "buildTarget": "angular-dxc-site:build:production"
             }
           },
           "assets": [
@@ -106,7 +106,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "angular-dxc-site:build"
+            "buildTarget": "angular-dxc-site:build"
           }
         },
         "test": {
@@ -218,11 +218,11 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "dxc-angular-cdk:build"
+            "buildTarget": "dxc-angular-cdk:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "dxc-angular-cdk:build:production"
+              "buildTarget": "dxc-angular-cdk:build:production"
             }
           },
           "assets": [
@@ -232,7 +232,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "dxc-angular-cdk:build"
+            "buildTarget": "dxc-angular-cdk:build"
           }
         },
         "test": {

@@ -71,9 +71,9 @@ import { Space, Spacing } from "./types/dxc-resultset-table.types";
  * connect function that will return an Observable stream that emits the data array to render.
  */
 @Component({
-  selector: "dxc-resultset-table, table[dxc-resultset-table]",
-  exportAs: "dxcResultsetTable",
-  template: `
+    selector: "dxc-resultset-table, table[dxc-resultset-table]",
+    exportAs: "dxcResultsetTable",
+    template: `
     <dxc-table [margin]="margin">
       <ng-container headerOutlet></ng-container>
       <ng-container rowOutlet></ng-container>
@@ -90,17 +90,18 @@ import { Space, Spacing } from "./types/dxc-resultset-table.types";
       (itemsPerPageFunction)="handleItemsPerPageSelect($event)"
     ></dxc-paginator>
   `,
-  encapsulation: ViewEncapsulation.None,
-  // The "OnPush" status for the `MatTable` component is effectively a noop, so we are removing it.
-  // The view for `MatTable` consists entirely of templates declared in other views. As they are
-  // declared elsewhere, they are checked when their declaration points are checked.
-  // tslint:disable-next-line:validate-decorators
-  changeDetection: ChangeDetectionStrategy.Default,
-  providers: [
-    { provide: DXC_RESULTSET_TABLE, useExisting: DxcResultTable },
-    PaginationService,
-    SortService,
-  ],
+    encapsulation: ViewEncapsulation.None,
+    // The "OnPush" status for the `MatTable` component is effectively a noop, so we are removing it.
+    // The view for `MatTable` consists entirely of templates declared in other views. As they are
+    // declared elsewhere, they are checked when their declaration points are checked.
+    // tslint:disable-next-line:validate-decorators
+    changeDetection: ChangeDetectionStrategy.Default,
+    providers: [
+        { provide: DXC_RESULTSET_TABLE, useExisting: DxcResultTable },
+        PaginationService,
+        SortService,
+    ],
+    standalone: false
 })
 export class DxcResultTable<T>
   implements AfterContentChecked, CollectionViewer, OnDestroy, OnInit

@@ -4,9 +4,10 @@ import { DropdownExampleComponent } from "../../components/examples/dropdown/dro
 import { DropdownApiComponent } from "../../components/examples/dropdown/dropdown-api/dropdown-api.component";
 
 @Component({
-  selector: "app-dropdown",
-  templateUrl: "./dropdown.component.html",
-  styleUrls: ["./dropdown.component.scss"],
+    selector: "app-dropdown",
+    templateUrl: "./dropdown.component.html",
+    styleUrls: ["./dropdown.component.scss"],
+    standalone: false
 })
 export class DropdownComponent implements OnInit {
   headingMargin = {

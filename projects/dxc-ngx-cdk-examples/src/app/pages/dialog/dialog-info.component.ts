@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'dialog-info',
-  templateUrl: './dialog-info.component.html',
-  styleUrls: ['./dialog-info.component.scss']
+    selector: 'dialog-info',
+    templateUrl: './dialog-info.component.html',
+    styleUrls: ['./dialog-info.component.scss'],
+    standalone: false
 })
 export class DialogInfoComponent {
 

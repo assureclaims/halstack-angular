@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'sidenav-import',
-  templateUrl: './sidenav-import.component.html',
-  styleUrls: ['./sidenav-import.component.scss']
+    selector: 'sidenav-import',
+    templateUrl: './sidenav-import.component.html',
+    styleUrls: ['./sidenav-import.component.scss'],
+    standalone: false
 })
 export class SidenavImportComponent implements OnInit {
 

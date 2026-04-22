@@ -4,9 +4,10 @@ import { ChipExampleComponent } from 'src/app/components/examples/chip/chip-exam
 import { ChipApiComponent } from '../../components/examples/chip/chip-api/chip-api.component';
 
 @Component({
-  selector: 'app-chip',
-  templateUrl: './chip.component.html',
-  styleUrls: ['./chip.component.scss']
+    selector: 'app-chip',
+    templateUrl: './chip.component.html',
+    styleUrls: ['./chip.component.scss'],
+    standalone: false
 })
 export class ChipComponent implements OnInit {
   headingMargin = {

@@ -4,10 +4,11 @@ import { BehaviorSubject } from "rxjs";
 import { CssUtils } from "../utils";
 
 @Component({
-  selector: "dxc-table",
-  templateUrl: "./dxc-table.component.html",
-  styleUrls: [],
-  providers: [CssUtils],
+    selector: "dxc-table",
+    templateUrl: "./dxc-table.component.html",
+    styleUrls: [],
+    providers: [CssUtils],
+    standalone: false
 })
 export class DxcTableComponent {
   @Input() margin;

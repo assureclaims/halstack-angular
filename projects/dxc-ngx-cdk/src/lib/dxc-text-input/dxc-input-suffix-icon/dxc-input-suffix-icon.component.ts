@@ -13,7 +13,8 @@ import {
   @Component({
     selector: "dxc-input-suffix-icon",
     templateUrl: "./dxc-input-suffix-icon.component.html",
-  })
+    standalone: false
+})
   export class DxcInputSuffixIconComponent implements OnChanges {
     @Input()
     get tabIndexValue(): number {

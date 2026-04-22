@@ -20,9 +20,10 @@ import { DxcChipPrefixIconComponent } from "./dxc-chip-prefix-icon/dxc-chip-pref
 import { DxcChipSuffixIconComponent } from "./dxc-chip-suffix-icon/dxc-chip-suffix-icon.component";
 
 @Component({
-  selector: "dxc-chip",
-  templateUrl: "./dxc-chip.component.html",
-  providers: [CssUtils],
+    selector: "dxc-chip",
+    templateUrl: "./dxc-chip.component.html",
+    providers: [CssUtils],
+    standalone: false
 })
 export class DxcChipComponent implements OnChanges {
   @HostBinding("class") className;

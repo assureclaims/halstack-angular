@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'date-import',
-  templateUrl: './date-import.component.html',
-  styleUrls: ['./date-import.component.scss']
+    selector: 'date-import',
+    templateUrl: './date-import.component.html',
+    styleUrls: ['./date-import.component.scss'],
+    standalone: false
 })
 export class DateImportComponent implements OnInit {
 

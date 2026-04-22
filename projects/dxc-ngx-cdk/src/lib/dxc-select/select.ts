@@ -249,8 +249,9 @@ export const MAT_SELECT_TRIGGER = new InjectionToken<MatSelectTrigger>(
  * Allows the user to customize the trigger that is displayed when the select has a value.
  */
 @Directive({
-  selector: "mat-select-trigger",
-  providers: [{ provide: MAT_SELECT_TRIGGER, useExisting: MatSelectTrigger }],
+    selector: "mat-select-trigger",
+    providers: [{ provide: MAT_SELECT_TRIGGER, useExisting: MatSelectTrigger }],
+    standalone: false
 })
 export class MatSelectTrigger { }
 
@@ -336,8 +337,7 @@ export abstract class _MatSelectBase<C>
   /** Strategy that will be used to handle scrolling while the select panel is open. */
   _scrollStrategy: ScrollStrategy;
 
-  _overlayPanelClass: string | string[] =
-    this._defaultOptions?.overlayPanelClass || "";
+  _overlayPanelClass: string | string[] = "";
 
   /** Whether the select is focused. */
   get focused(): boolean {
@@ -424,8 +424,7 @@ export abstract class _MatSelectBase<C>
   set disableOptionCentering(value: boolean) {
     this._disableOptionCentering = coerceBooleanProperty(value);
   }
-  private _disableOptionCentering =
-    this._defaultOptions?.disableOptionCentering ?? false;
+  private _disableOptionCentering = false;
 
   /**
    * Function to compare the option values with the selected values. The first argument
@@ -603,6 +602,10 @@ export abstract class _MatSelectBase<C>
     private _defaultOptions?: MatSelectConfig
   ) {
     super(elementRef, _defaultErrorStateMatcher, _parentForm, ngControl);
+
+    this._overlayPanelClass = this._defaultOptions?.overlayPanelClass || "";
+    this._disableOptionCentering =
+      this._defaultOptions?.disableOptionCentering ?? false;
 
     if (this.ngControl) {
       // Note: we provide the value accessor through here, instead of
@@ -1408,49 +1411,50 @@ export abstract class _MatSelectBase<C>
 }
 
 @Component({
-  selector: "dxc-select",
-  exportAs: "DxcSelectComponent",
-  templateUrl: "select.html",
-  styleUrls: ["select.scss"],
-  inputs: ["disabled", "disableRipple", "tabIndex", "invalid"],
-  encapsulation: ViewEncapsulation.None,
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  host: {
-    role: "combobox",
-    "aria-autocomplete": "none",
-    // TODO(crisbeto): the value for aria-haspopup should be `listbox`, but currently it's difficult
-    // to sync into Google, because of an outdated automated a11y check which flags it as an invalid
-    // value. At some point we should try to switch it back to being `listbox`.
-    "aria-haspopup": "true",
-    class: "mat-select",
-    "[attr.id]": "id",
-    "[attr.aria-controls]": 'panelOpen ? id + "-panel" : null',
-    "[attr.aria-expanded]": "panelOpen",
-    "[attr.aria-label]": "ariaLabel || null",
-    "[attr.aria-required]": "required.toString()",
-    "[attr.aria-disabled]": "disabled.toString()",
-    "[attr.aria-invalid]": "invalid?.toString()",
-    "[attr.aria-describedby]": "_ariaDescribedby || null",
-    "[attr.aria-activedescendant]": "_getAriaActiveDescendant()",
-    "[class.mat-select-disabled]": "disabled",
-    "[class.mat-select-invalid]": "invalid",
-    "[class.mat-select-required]": "required",
-    "[class.mat-select-empty]": "empty",
-    "[class.mat-select-multiple]": "multiple",
-    "(keydown)": "_handleKeydown($event)",
-    "(focus)": "_onFocus()",
-    "(blur)": "_onBlur()",
-  },
-  animations: [
-    matSelectAnimations.transformPanelWrap,
-    matSelectAnimations.transformPanel,
-  ],
-  providers: [
-    { provide: MatFormFieldControl, useExisting: DxcSelectComponent },
-    { provide: MAT_OPTION_PARENT_COMPONENT, useExisting: DxcSelectComponent },
-    SelectService,
-    CssUtils,
-  ],
+    selector: "dxc-select",
+    exportAs: "DxcSelectComponent",
+    templateUrl: "select.html",
+    styleUrls: ["select.scss"],
+    inputs: ["disabled", "disableRipple", "tabIndex", "invalid"],
+    encapsulation: ViewEncapsulation.None,
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    host: {
+        role: "combobox",
+        "aria-autocomplete": "none",
+        // TODO(crisbeto): the value for aria-haspopup should be `listbox`, but currently it's difficult
+        // to sync into Google, because of an outdated automated a11y check which flags it as an invalid
+        // value. At some point we should try to switch it back to being `listbox`.
+        "aria-haspopup": "true",
+        class: "mat-select",
+        "[attr.id]": "id",
+        "[attr.aria-controls]": 'panelOpen ? id + "-panel" : null',
+        "[attr.aria-expanded]": "panelOpen",
+        "[attr.aria-label]": "ariaLabel || null",
+        "[attr.aria-required]": "required.toString()",
+        "[attr.aria-disabled]": "disabled.toString()",
+        "[attr.aria-invalid]": "invalid?.toString()",
+        "[attr.aria-describedby]": "_ariaDescribedby || null",
+        "[attr.aria-activedescendant]": "_getAriaActiveDescendant()",
+        "[class.mat-select-disabled]": "disabled",
+        "[class.mat-select-invalid]": "invalid",
+        "[class.mat-select-required]": "required",
+        "[class.mat-select-empty]": "empty",
+        "[class.mat-select-multiple]": "multiple",
+        "(keydown)": "_handleKeydown($event)",
+        "(focus)": "_onFocus()",
+        "(blur)": "_onBlur()",
+    },
+    animations: [
+        matSelectAnimations.transformPanelWrap,
+        matSelectAnimations.transformPanel,
+    ],
+    providers: [
+        { provide: MatFormFieldControl, useExisting: DxcSelectComponent },
+        { provide: MAT_OPTION_PARENT_COMPONENT, useExisting: DxcSelectComponent },
+        SelectService,
+        CssUtils,
+    ],
+    standalone: false
 })
 export class DxcSelectComponent
   extends _MatSelectBase<MatSelectChange>

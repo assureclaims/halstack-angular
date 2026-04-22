@@ -1,9 +1,10 @@
 import { Component, OnInit, Inject } from '@angular/core';
 
 @Component({
-  selector: 'heading-example',
-  templateUrl: './heading-example.component.html',
-  styleUrls: ['./heading-example.component.scss']
+    selector: 'heading-example',
+    templateUrl: './heading-example.component.html',
+    styleUrls: ['./heading-example.component.scss'],
+    standalone: false
 })
 export class HeadingExampleComponent implements OnInit {
 

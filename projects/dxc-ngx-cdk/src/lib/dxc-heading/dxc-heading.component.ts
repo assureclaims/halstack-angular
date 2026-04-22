@@ -4,9 +4,10 @@ import { BehaviorSubject } from "rxjs";
 import { Component, Input, HostBinding, SimpleChanges } from "@angular/core";
 
 @Component({
-  selector: "dxc-heading",
-  templateUrl: "./dxc-heading.component.html",
-  providers: [CssUtils],
+    selector: "dxc-heading",
+    templateUrl: "./dxc-heading.component.html",
+    providers: [CssUtils],
+    standalone: false
 })
 export class DxcHeadingComponent {
   @Input() level: number;

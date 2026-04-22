@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'text-input-import',
-  templateUrl: './text-input-import.component.html',
-  styleUrls: ['./text-input-import.component.scss']
+    selector: 'text-input-import',
+    templateUrl: './text-input-import.component.html',
+    styleUrls: ['./text-input-import.component.scss'],
+    standalone: false
 })
 export class TextInputImportComponent implements OnInit {
 

@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'alert-import',
-  templateUrl: './alert-import.component.html',
-  styleUrls: ['./alert-import.component.scss']
+    selector: 'alert-import',
+    templateUrl: './alert-import.component.html',
+    styleUrls: ['./alert-import.component.scss'],
+    standalone: false
 })
 export class AlertImportComponent implements OnInit {
 

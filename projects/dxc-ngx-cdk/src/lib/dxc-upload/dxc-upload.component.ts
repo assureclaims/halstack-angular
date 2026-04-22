@@ -6,10 +6,11 @@ import { BehaviorSubject } from "rxjs";
 import { coerceNumberProperty } from '@angular/cdk/coercion';
 
 @Component({
-  selector: "dxc-upload",
-  templateUrl: "./dxc-upload.component.html",
-  styleUrls: ["./dxc-upload.component.scss"],
-  providers: [CssUtils],
+    selector: "dxc-upload",
+    templateUrl: "./dxc-upload.component.html",
+    styleUrls: ["./dxc-upload.component.scss"],
+    providers: [CssUtils],
+    standalone: false
 })
 export class DxcUploadComponent implements OnChanges {
   private files = [];

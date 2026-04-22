@@ -4,9 +4,10 @@ import { TableExampleComponent } from '../../components/examples/table/table-exa
 import { TableApiComponent } from '../../components/examples/table/table-api/table-api.component';
 
 @Component({
-  selector: 'app-table',
-  templateUrl: './table.component.html',
-  styleUrls: ['./table.component.scss']
+    selector: 'app-table',
+    templateUrl: './table.component.html',
+    styleUrls: ['./table.component.scss'],
+    standalone: false
 })
 export class TableComponent implements OnInit {
   headingMargin = {

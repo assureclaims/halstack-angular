@@ -4,9 +4,10 @@ import { SelectExampleComponent } from "../../components/examples/select/select-
 import { SelectApiComponent } from '../../components/examples/select/select-api/select-api.component';
 
 @Component({
-  selector: "app-select",
-  templateUrl: "./select.component.html",
-  styleUrls: ["./select.component.scss"]
+    selector: "app-select",
+    templateUrl: "./select.component.html",
+    styleUrls: ["./select.component.scss"],
+    standalone: false
 })
 export class SelectComponent implements OnInit {
   headingMargin = {

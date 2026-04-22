@@ -4,9 +4,10 @@ import { SidenavExampleComponent } from "../../components/examples/sidenav/siden
 import { SidenavApiComponent } from "../../components/examples/sidenav/sidenav-api/sidenav-api.component";
 
 @Component({
-  selector: "app-sidenav",
-  templateUrl: "./sidenav.component.html",
-  styleUrls: ["./sidenav.component.scss"],
+    selector: "app-sidenav",
+    templateUrl: "./sidenav.component.html",
+    styleUrls: ["./sidenav.component.scss"],
+    standalone: false
 })
 export class SidenavComponent implements OnInit {
   headingMargin = {

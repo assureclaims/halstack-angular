@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'upload-import',
-  templateUrl: './upload-import.component.html',
-  styleUrls: ['./upload-import.component.scss']
+    selector: 'upload-import',
+    templateUrl: './upload-import.component.html',
+    styleUrls: ['./upload-import.component.scss'],
+    standalone: false
 })
 export class UploadImportComponent implements OnInit {
 

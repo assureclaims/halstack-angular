@@ -2,9 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'header-api',
-  templateUrl: './header-api.component.html',
-  styleUrls: ['./header-api.component.scss']
+    selector: 'header-api',
+    templateUrl: './header-api.component.html',
+    styleUrls: ['./header-api.component.scss'],
+    standalone: false
 })
 export class HeaderApiComponent implements OnInit {
 

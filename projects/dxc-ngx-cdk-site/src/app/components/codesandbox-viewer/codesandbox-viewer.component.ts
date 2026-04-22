@@ -9,9 +9,10 @@ import { CodesandboxServiceService } from "../../service/codesandbox-service.ser
 import { DomSanitizer, SafeResourceUrl } from "@angular/platform-browser";
 
 @Component({
-  selector: "codesandbox-viewer",
-  templateUrl: "./codesandbox-viewer.component.html",
-  styleUrls:["./codesandbox-viewer.component.scss"]
+    selector: "codesandbox-viewer",
+    templateUrl: "./codesandbox-viewer.component.html",
+    styleUrls: ["./codesandbox-viewer.component.scss"],
+    standalone: false
 })
 export class CodesandboxViewer implements OnInit {
   @Input()

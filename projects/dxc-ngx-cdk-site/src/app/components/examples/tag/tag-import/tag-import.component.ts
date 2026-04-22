@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'tag-import',
-  templateUrl: './tag-import.component.html',
-  styleUrls: ['./tag-import.component.scss']
+    selector: 'tag-import',
+    templateUrl: './tag-import.component.html',
+    styleUrls: ['./tag-import.component.scss'],
+    standalone: false
 })
 export class TagImportComponent implements OnInit {
 

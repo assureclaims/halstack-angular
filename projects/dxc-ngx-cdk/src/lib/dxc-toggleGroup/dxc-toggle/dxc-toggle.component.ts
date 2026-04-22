@@ -13,9 +13,10 @@ import { DxcToggleIconComponent } from "../dxc-toggle-icon/dxc-toggle-icon.compo
 import { ToggleGroupService } from "../services/toggleGroup.service";
 
 @Component({
-  selector: "dxc-toggle",
-  templateUrl: "./dxc-toggle.component.html",
-  providers: [],
+    selector: "dxc-toggle",
+    templateUrl: "./dxc-toggle.component.html",
+    providers: [],
+    standalone: false
 })
 export class DxcToggleComponent implements OnInit {
   @Input() label: string;

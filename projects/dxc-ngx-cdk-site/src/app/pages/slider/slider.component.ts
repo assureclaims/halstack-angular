@@ -4,9 +4,10 @@ import { SliderExampleComponent } from '../../components/examples/slider/slider-
 import { SliderApiComponent } from '../../components/examples/slider/slider-api/slider-api.component';
 
 @Component({
-  selector: 'app-slider',
-  templateUrl: './slider.component.html',
-  styleUrls: ['./slider.component.scss']
+    selector: 'app-slider',
+    templateUrl: './slider.component.html',
+    styleUrls: ['./slider.component.scss'],
+    standalone: false
 })
 export class SliderComponent implements OnInit {
   headingMargin = {

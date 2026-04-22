@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'button-import',
-  templateUrl: './button-import.component.html',
-  styleUrls: ['./button-import.component.scss']
+    selector: 'button-import',
+    templateUrl: './button-import.component.html',
+    styleUrls: ['./button-import.component.scss'],
+    standalone: false
 })
 export class ButtonImportComponent implements OnInit {
 

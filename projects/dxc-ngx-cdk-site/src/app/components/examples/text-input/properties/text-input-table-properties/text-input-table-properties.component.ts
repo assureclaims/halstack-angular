@@ -3,9 +3,10 @@ import { DataPropertiesTable } from 'src/app/model/data-properties-table';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'text-input-table-properties',
-  templateUrl: './text-input-table-properties.component.html',
-  styleUrls: ['./text-input-table-properties.component.scss']
+    selector: 'text-input-table-properties',
+    templateUrl: './text-input-table-properties.component.html',
+    styleUrls: ['./text-input-table-properties.component.scss'],
+    standalone: false
 })
 export class TextInputTablePropertiesComponent implements OnInit {
 

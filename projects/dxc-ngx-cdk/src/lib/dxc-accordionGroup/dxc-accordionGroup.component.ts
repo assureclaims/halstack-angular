@@ -24,9 +24,10 @@ import {
 } from "@angular/cdk/coercion";
 
 @Component({
-  selector: "dxc-accordion-group",
-  templateUrl: "./dxc-accordionGroup.component.html",
-  providers: [CssUtils, AccordionService],
+    selector: "dxc-accordion-group",
+    templateUrl: "./dxc-accordionGroup.component.html",
+    providers: [CssUtils, AccordionService],
+    standalone: false
 })
 export class DxcAccordionGroupComponent implements OnChanges, OnInit {
   @Input() margin: any;

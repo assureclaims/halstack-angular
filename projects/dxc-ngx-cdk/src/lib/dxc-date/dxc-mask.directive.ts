@@ -9,7 +9,8 @@ import {
 import * as textMask from "vanilla-text-mask/dist/vanillaTextMask.js";
 
 @Directive({
-  selector: `[dxcMask]`,
+    selector: `[dxcMask]`,
+    standalone: false
 })
 export class DXCMaskDirective implements OnInit, OnDestroy, OnChanges {
   @Input() dxcMask: any;

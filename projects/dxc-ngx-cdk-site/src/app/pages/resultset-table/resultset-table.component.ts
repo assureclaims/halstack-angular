@@ -5,9 +5,10 @@ import { ResultsetTableApiComponent } from '../../components/examples/resultset-
 
 
 @Component({
-  selector: 'app-resultset-table',
-  templateUrl: './resultset-table.component.html',
-  styleUrls: ['./resultset-table.component.scss']
+    selector: 'app-resultset-table',
+    templateUrl: './resultset-table.component.html',
+    styleUrls: ['./resultset-table.component.scss'],
+    standalone: false
 })
 export class ResultsetTableComponent implements OnInit {
   headingMargin = {

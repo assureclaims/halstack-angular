@@ -1,9 +1,9 @@
 ;import { Directive, Input, EventEmitter, Output, ElementRef } from '@angular/core';
 
 @Directive({
-  selector: '[scroll-spy]',
-  host: {'(window:scroll)': 'track($event)'}
-
+    selector: '[scroll-spy]',
+    host: { '(window:scroll)': 'track($event)' },
+    standalone: false
 })
 export class ScrollSpyDirective {
 

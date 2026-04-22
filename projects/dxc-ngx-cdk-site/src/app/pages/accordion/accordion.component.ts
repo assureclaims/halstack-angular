@@ -4,9 +4,10 @@ import { AccordionExampleComponent } from '../../components/examples/accordion/a
 import { AccordionApiComponent } from '../../components/examples/accordion/accordion-api/accordion-api.component';
 
 @Component({
-  selector: 'app-accordion',
-  templateUrl: './accordion.component.html',
-  styleUrls: ['./accordion.component.scss']
+    selector: 'app-accordion',
+    templateUrl: './accordion.component.html',
+    styleUrls: ['./accordion.component.scss'],
+    standalone: false
 })
 export class AccordionComponent implements OnInit {
   headingMargin = {

@@ -3,8 +3,9 @@ import { Section } from 'src/app/model/sections';
 import { AccordionGroupExampleComponent } from '../../components/examples/accordion-group/accordion-group-example/accordion-group-example.component';
 import { AccordionGroupApiComponent } from '../../components/examples/accordion-group/accordion-group-api/accordion-group-api.component';
 @Component({
-  selector: 'app-accordion-group',
-  templateUrl: './accordion-group.component.html'
+    selector: 'app-accordion-group',
+    templateUrl: './accordion-group.component.html',
+    standalone: false
 })
 export class AccordionGroupComponent implements OnInit {
   headingMargin = {

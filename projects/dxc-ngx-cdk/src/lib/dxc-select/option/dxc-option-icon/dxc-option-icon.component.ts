@@ -6,7 +6,8 @@ import {
   @Component({
     selector: "dxc-option-icon",
     templateUrl: "./dxc-option-icon.component.html",
-  })
+    standalone: false
+})
   export class DxcOptionIconComponent implements OnChanges {
   
     constructor() {}
