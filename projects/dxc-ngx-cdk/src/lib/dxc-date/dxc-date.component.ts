@@ -26,13 +26,14 @@ import { DateHelper } from './helpers/date-helper';
 //const moment = momentImported;
 
 @Component({
-  selector: "dxc-date",
-  templateUrl: "./dxc-date.component.html",
-  providers: [{
-    provide: NG_VALUE_ACCESSOR,
-    useExisting: forwardRef(() => DxcDateComponent),
-    multi: true
-  }, CssUtils]
+    selector: "dxc-date",
+    templateUrl: "./dxc-date.component.html",
+    providers: [{
+            provide: NG_VALUE_ACCESSOR,
+            useExisting: forwardRef(() => DxcDateComponent),
+            multi: true
+        }, CssUtils],
+    standalone: false
 })
 export class DxcDateComponent implements OnChanges, OnInit, ControlValueAccessor {
   @Input()

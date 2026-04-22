@@ -4,9 +4,10 @@ import { delay } from "rxjs/operators";
 import { switchMap } from "rxjs/operators";
 
 @Component({
-  selector: "text-info",
-  templateUrl: "./text-input-info.component.html",
-  styleUrls: ["./text-input-info.component.scss"]
+    selector: "text-info",
+    templateUrl: "./text-input-info.component.html",
+    styleUrls: ["./text-input-info.component.scss"],
+    standalone: false
 })
 export class TextInputInfoComponent {
   inputValue = "Testing";

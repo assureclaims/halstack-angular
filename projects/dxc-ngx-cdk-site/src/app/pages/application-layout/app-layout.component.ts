@@ -4,10 +4,11 @@ import { ApplicationLayoutApiComponent } from '../../components/examples/layout/
 import { ApplicationLayoutExamplesComponent } from '../../components/examples/layout/app-layout-examples/app-layout-examples.component';
 
 @Component({
-  selector: "app-layout",
-  templateUrl: "./app-layout.component.html",
-  styleUrls: [],
-  providers: []
+    selector: "app-layout",
+    templateUrl: "./app-layout.component.html",
+    styleUrls: [],
+    providers: [],
+    standalone: false
 })
 export class ApplicationLayoutComponent implements OnInit{
 

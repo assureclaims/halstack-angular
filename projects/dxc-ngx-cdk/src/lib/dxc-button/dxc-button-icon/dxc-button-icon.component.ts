@@ -6,7 +6,8 @@ import {
   @Component({
     selector: "dxc-button-icon",
     templateUrl: "./dxc-button-icon.component.html",
-  })
+    standalone: false
+})
   export class DxcButtonIconComponent implements OnChanges {
   
     constructor() {}

@@ -4,9 +4,10 @@ import {TabsExampleComponent} from '../../components/examples/tabs/tabs-example/
 import { TabsApiComponent } from '../../components/examples/tabs/tabs-api/tabs-api.component';
 
 @Component({
-  selector: "app-tabs",
-  templateUrl: "./tabs.component.html",
-  styleUrls: ["./tabs.component.scss"]
+    selector: "app-tabs",
+    templateUrl: "./tabs.component.html",
+    styleUrls: ["./tabs.component.scss"],
+    standalone: false
 })
 export class TabsComponent implements OnInit {
   headingMargin = {

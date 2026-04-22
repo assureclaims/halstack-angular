@@ -591,7 +591,8 @@ function getTarget(event: Event): HTMLElement|null {
  * 2) cdkMonitorSubtreeFocus: considers an element focused if it or any of its children are focused.
  */
 @Directive({
-  selector: '[cdkMonitorElementFocus], [cdkMonitorSubtreeFocus]',
+    selector: '[cdkMonitorElementFocus], [cdkMonitorSubtreeFocus]',
+    standalone: false
 })
 export class CdkMonitorFocus implements AfterViewInit, OnDestroy {
   private _monitorSubscription: Subscription;

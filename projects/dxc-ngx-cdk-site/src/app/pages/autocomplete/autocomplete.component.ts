@@ -4,9 +4,10 @@ import { AutocompleteExampleComponent } from 'src/app/components/examples/autoco
 import { AutocompleteUsageComponent } from 'src/app/components/examples/autocomplete/autocomplete-usage/autocomplete-usage.component';
 
 @Component({
-  selector: 'app-autocomplete',
-  templateUrl: './autocomplete.component.html',
-  styleUrls: []
+    selector: 'app-autocomplete',
+    templateUrl: './autocomplete.component.html',
+    styleUrls: [],
+    standalone: false
 })
 export class AutocompleteComponent implements OnInit {
 

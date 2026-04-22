@@ -40,7 +40,7 @@ let data = [
 ];
 
 @Component({
-  template: `<div
+    template: `<div
       ordering="{{ isSortable }}"
       id="header-{{ columnName }}-{{ parentClassName }}"
       propertyname="{{ value }}"
@@ -52,6 +52,7 @@ let data = [
       ></span>
     </div>
     >`,
+    standalone: false
 })
 class TestHeaderComponent {
   columnName: string = "User";

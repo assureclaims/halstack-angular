@@ -4,9 +4,10 @@ import {UploadExampleComponent} from '../../components/examples/upload/upload-ex
 import { UploadApiComponent } from '../../components/examples/upload/upload-api/upload-api.component';
 
 @Component({
-  selector: 'app-upload',
-  templateUrl: './upload.component.html',
-  styleUrls: ['./upload.component.scss']
+    selector: 'app-upload',
+    templateUrl: './upload.component.html',
+    styleUrls: ['./upload.component.scss'],
+    standalone: false
 })
 export class UploadComponent implements OnInit {
   headingMargin = {

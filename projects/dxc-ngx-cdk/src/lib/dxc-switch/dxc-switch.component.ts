@@ -16,9 +16,10 @@ import {
 } from "@angular/cdk/coercion";
 
 @Component({
-  selector: "dxc-switch",
-  templateUrl: "./dxc-switch.component.html",
-  providers: [CssUtils],
+    selector: "dxc-switch",
+    templateUrl: "./dxc-switch.component.html",
+    providers: [CssUtils],
+    standalone: false
 })
 export class DxcSwitchComponent implements OnChanges {
   @HostBinding("class") className;

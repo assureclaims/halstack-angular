@@ -4,9 +4,10 @@ import { LinkExampleComponent } from "../../components/examples/link/link-exampl
 import { LinkApiComponent } from '../../components/examples/link/link-api/link-api.component';
 
 @Component({
-  selector: 'app-link',
-  templateUrl: './link.component.html',
-  styleUrls: ['./link.component.scss']
+    selector: 'app-link',
+    templateUrl: './link.component.html',
+    styleUrls: ['./link.component.scss'],
+    standalone: false
 })
 export class LinkComponent implements OnInit {
   headingMargin = {

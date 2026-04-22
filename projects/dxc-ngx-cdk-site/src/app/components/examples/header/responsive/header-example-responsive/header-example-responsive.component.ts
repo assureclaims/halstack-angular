@@ -1,9 +1,10 @@
 import { Component, OnInit, Inject } from '@angular/core';
 
 @Component({
-  selector: 'header-example-responsive',
-  templateUrl: './header-example-responsive.component.html',
-  styleUrls: ['./header-example-responsive.component.scss']
+    selector: 'header-example-responsive',
+    templateUrl: './header-example-responsive.component.html',
+    styleUrls: ['./header-example-responsive.component.scss'],
+    standalone: false
 })
 export class HeaderExampleResponsiveComponent implements OnInit {
 

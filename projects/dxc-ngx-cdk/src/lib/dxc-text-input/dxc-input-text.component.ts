@@ -31,14 +31,15 @@ import { InputTextService } from './services/inputText.service';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
-  selector: "dxc-input-text",
-  templateUrl: "./dxc-input-text.component.html",
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [CssUtils, InputTextService, {
-    provide: NG_VALUE_ACCESSOR,
-    useExisting: forwardRef(() => DxcTextInputComponent),
-    multi: true
-  }],
+    selector: "dxc-input-text",
+    templateUrl: "./dxc-input-text.component.html",
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [CssUtils, InputTextService, {
+            provide: NG_VALUE_ACCESSOR,
+            useExisting: forwardRef(() => DxcTextInputComponent),
+            multi: true
+        }],
+    standalone: false
 })
 export class DxcTextInputComponent
   implements OnInit, OnChanges, AfterViewChecked, ControlValueAccessor {

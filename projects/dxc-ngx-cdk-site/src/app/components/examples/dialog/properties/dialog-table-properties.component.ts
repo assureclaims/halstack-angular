@@ -2,9 +2,10 @@ import { Component, OnInit, Input } from '@angular/core';
 import { DataPropertiesTable } from 'src/app/model/data-properties-table';
 
 @Component({
-  selector: 'dialog-table-properties',
-  templateUrl: './dialog-table-properties.component.html',
-  styleUrls: ['./dialog-table-properties.component.scss']
+    selector: 'dialog-table-properties',
+    templateUrl: './dialog-table-properties.component.html',
+    styleUrls: ['./dialog-table-properties.component.scss'],
+    standalone: false
 })
 export class DialogTablePropertiesComponent implements OnInit {
 

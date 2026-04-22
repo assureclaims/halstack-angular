@@ -2,8 +2,9 @@ import { Component, EventEmitter, Input, OnChanges, Output } from "@angular/core
 import { DropdownService } from '../services/dropdown.service';
 
 @Component({
-  selector: "dxc-dropdown-option",
-  templateUrl: "./dxc-dropdown-option.component.html",
+    selector: "dxc-dropdown-option",
+    templateUrl: "./dxc-dropdown-option.component.html",
+    standalone: false
 })
 export class DxcDropdownOptionComponent implements OnChanges {
   @Input() public value;

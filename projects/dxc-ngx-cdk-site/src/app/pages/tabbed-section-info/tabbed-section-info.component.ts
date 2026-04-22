@@ -5,9 +5,10 @@ import { TabbedSectionNotesComponent } from '../../components/examples/tabbed-se
 import { TabbedSectionApiComponent } from '../../components/examples/tabbed-section/tabbed-section-api/tabbed-section-api.component';
 
 @Component({
-  selector: 'app-tabbed-section-info',
-  templateUrl: './tabbed-section-info.component.html',
-  styleUrls: ['./tabbed-section-info.component.scss']
+    selector: 'app-tabbed-section-info',
+    templateUrl: './tabbed-section-info.component.html',
+    styleUrls: ['./tabbed-section-info.component.scss'],
+    standalone: false
 })
 export class TabbedSectionInfoComponent implements OnInit {
   headingMargin = {

@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'dropdown-import',
-  templateUrl: './dropdown-import.component.html',
-  styleUrls: ['./dropdown-import.component.scss']
+    selector: 'dropdown-import',
+    templateUrl: './dropdown-import.component.html',
+    styleUrls: ['./dropdown-import.component.scss'],
+    standalone: false
 })
 export class DropdownImportComponent implements OnInit {
 

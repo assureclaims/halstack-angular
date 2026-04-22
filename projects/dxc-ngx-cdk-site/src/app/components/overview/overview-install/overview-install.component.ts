@@ -2,9 +2,10 @@ import { Component, OnInit, Inject } from "@angular/core";
 import { ExampleService } from "src/app/service/example.service";
 
 @Component({
-  selector: "app-overview-install",
-  templateUrl: "./overview-install.component.html",
-  styleUrls: ["./overview-install.component.scss"],
+    selector: "app-overview-install",
+    templateUrl: "./overview-install.component.html",
+    styleUrls: ["./overview-install.component.scss"],
+    standalone: false
 })
 export class OverviewInstallComponent implements OnInit {
   headingMargin = {

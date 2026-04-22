@@ -19,9 +19,10 @@ import {
 import { DxcButtonIconComponent } from "./dxc-button-icon/dxc-button-icon.component";
 
 @Component({
-  selector: "dxc-button",
-  templateUrl: "./dxc-button.component.html",
-  providers: [CssUtils],
+    selector: "dxc-button",
+    templateUrl: "./dxc-button.component.html",
+    providers: [CssUtils],
+    standalone: false
 })
 export class DxcButtonComponent {
   @Input() mode: string;

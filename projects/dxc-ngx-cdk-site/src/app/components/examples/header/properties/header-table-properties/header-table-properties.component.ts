@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'header-table-properties',
-  templateUrl: './header-table-properties.component.html',
-  styleUrls: ['./header-table-properties.component.scss']
+    selector: 'header-table-properties',
+    templateUrl: './header-table-properties.component.html',
+    styleUrls: ['./header-table-properties.component.scss'],
+    standalone: false
 })
 export class HeaderTablePropertiesComponent implements OnInit {
 

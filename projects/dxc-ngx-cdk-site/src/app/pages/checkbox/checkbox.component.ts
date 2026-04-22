@@ -4,9 +4,10 @@ import { CheckboxExampleComponent } from '../../components/examples/checkbox/che
 import { CheckboxApiComponent } from 'src/app/components/examples/checkbox/checkbox-api/checkbox-api.component';
 
 @Component({
-  selector: 'app-checkbox',
-  templateUrl: './checkbox.component.html',
-  styleUrls: ['./checkbox.component.scss']
+    selector: 'app-checkbox',
+    templateUrl: './checkbox.component.html',
+    styleUrls: ['./checkbox.component.scss'],
+    standalone: false
 })
 export class CheckboxComponent implements OnInit {
   headingMargin = {

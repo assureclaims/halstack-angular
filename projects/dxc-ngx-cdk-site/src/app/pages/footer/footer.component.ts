@@ -4,9 +4,10 @@ import { FooterExampleComponent } from '../../components/examples/footer/footer-
 import { FooterApiComponent } from '../../components/examples/footer/footer-api/footer-api.component';
 
 @Component({
-  selector: 'app-footer',
-  templateUrl: './footer.component.html',
-  styleUrls: ['./footer.component.scss']
+    selector: 'app-footer',
+    templateUrl: './footer.component.html',
+    styleUrls: ['./footer.component.scss'],
+    standalone: false
 })
 export class FooterComponent implements OnInit {
   headingMargin = {

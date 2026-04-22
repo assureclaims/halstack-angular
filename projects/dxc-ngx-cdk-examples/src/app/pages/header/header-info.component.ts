@@ -26,9 +26,10 @@ import { DxcUploadComponent } from '../../../../../dxc-ngx-cdk/src/lib/dxc-uploa
 DxcUploadComponent
 
 @Component({
-  selector: 'header-info',
-  templateUrl: './header-info.component.html',
-  styleUrls: ['./header-info.component.scss']
+    selector: 'header-info',
+    templateUrl: './header-info.component.html',
+    styleUrls: ['./header-info.component.scss'],
+    standalone: false
 })
 export class HeaderInfoComponent {
 
