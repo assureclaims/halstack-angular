@@ -45,7 +45,7 @@ export class DxcRadioComponent implements OnInit {
     this._required = coerceBooleanProperty(value);
   }
   private _required;
-  @Input() labelPosition: string;
+  @Input() labelPosition: "before" | "after";
   @Input() margin: string;
   @Input() size: string;
   @Input() value: string;

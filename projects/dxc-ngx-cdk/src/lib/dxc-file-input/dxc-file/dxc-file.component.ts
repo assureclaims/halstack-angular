@@ -2,7 +2,6 @@ import {
   coerceBooleanProperty,
   coerceNumberProperty,
 } from "@angular/cdk/coercion";
-import { C } from "@angular/cdk/keycodes";
 import {
   Component,
   EventEmitter,

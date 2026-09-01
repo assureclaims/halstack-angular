@@ -30,7 +30,6 @@ import {
   ViewChild,
   ViewContainerRef,
   ViewEncapsulation,
-  ComponentFactoryResolver,
   Output,
   EventEmitter,
 } from "@angular/core";
@@ -160,7 +159,7 @@ export class DxcResultTable<T>
 
   displayedColumns: string[] = [];
 
-  totalItems: Number = 0;
+  totalItems: number = 0;
 
   fetchStatus;
 
@@ -285,7 +284,6 @@ export class DxcResultTable<T>
     @Attribute("role") role: string,
     @Optional() protected readonly _dir: Directionality,
     @Inject(DOCUMENT) _document: any,
-    private resolver: ComponentFactoryResolver,
     private paginationService: PaginationService,
     private sortService: SortService
   ) {
@@ -361,11 +359,9 @@ export class DxcResultTable<T>
     this._headerOutlet.viewContainer.clear();
     if (this._columnDefsByName !== null) {
       this._columnDefsByName.forEach((value: DxcColumnDef, key: string) => {
-        const factory = this.resolver.resolveComponentFactory(
+        const viewRef = this._headerOutlet.viewContainer.createComponent(
           DxcHeaderRowComponent
         );
-        const viewRef =
-          this._headerOutlet.viewContainer.createComponent(factory);
         viewRef.instance.columnName = key;
         viewRef.instance.isSortable = value.sortable.isSortable; //Save if header is sortable in the created component
         viewRef.instance.tabIndexValue = this.tabIndexValue;
@@ -557,8 +553,7 @@ export class DxcResultTable<T>
     context: RowContext<T> = {}
   ) {
     // TODO(andrewseguin): enforce that one outlet was instantiated from createEmbeddedView
-    const factory = this.resolver.resolveComponentFactory(DxcRowComponent);
-    outlet.viewContainer.createComponent(factory, index);
+    outlet.viewContainer.createComponent(DxcRowComponent, { index });
     //outlet.viewContainer.createEmbeddedView(this.cdkRow.template, context, index);
 
     for (let cellTemplate of this._getCellTemplates(renderRow)) {
