@@ -4,9 +4,10 @@ import { Section } from 'src/app/model/sections';
 import { ToggleGroupExampleComponent } from '../../components/examples/toggleGroup/toggleGroup-example/toggleGroup-example.component';
 
 @Component({
-  selector: 'app-toggleGroup',
-  templateUrl: './toggleGroup.component.html',
-  styleUrls: ['./toggleGroup.component.scss']
+    selector: 'app-toggleGroup',
+    templateUrl: './toggleGroup.component.html',
+    styleUrls: ['./toggleGroup.component.scss'],
+    standalone: false
 })
 export class ToggleGroupComponent implements OnInit {
   headingMargin = {

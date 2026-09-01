@@ -3,15 +3,17 @@ import { css } from "@emotion/css";
 import { BehaviorSubject } from "rxjs";
 import { CssUtils } from "../utils";
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
+import { ProgressBarMode } from "@angular/material/progress-bar";
 
 @Component({
-  selector: "dxc-progressbar",
-  templateUrl: "./dxc-progressbar.component.html",
-  styleUrls: ["./dxc-progressbar.component.scss"],
-  providers: [CssUtils],
+    selector: "dxc-progressbar",
+    templateUrl: "./dxc-progressbar.component.html",
+    styleUrls: ["./dxc-progressbar.component.scss"],
+    providers: [CssUtils],
+    standalone: false
 })
 export class DxcProgressbarComponent {
-  mode: string = "indeterminate";
+  mode: ProgressBarMode = "indeterminate";
   @Input() value: number;
   @Input() label: string;
   @Input()

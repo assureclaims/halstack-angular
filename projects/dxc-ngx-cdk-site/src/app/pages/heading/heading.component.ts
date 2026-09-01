@@ -4,9 +4,10 @@ import { HeadingExampleComponent } from '../../components/examples/heading/headi
 import { HeadingApiComponent } from '../../components/examples/heading/heading-api/heading-api.component';
 
 @Component({
-  selector: 'app-heading',
-  templateUrl: './heading.component.html',
-  styleUrls: ['./heading.component.scss']
+    selector: 'app-heading',
+    templateUrl: './heading.component.html',
+    styleUrls: ['./heading.component.scss'],
+    standalone: false
 })
 export class HeadingComponent implements OnInit {
   headingMargin = {

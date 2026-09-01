@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'switch-import',
-  templateUrl: './switch-import.component.html',
-  styleUrls: ['./switch-import.component.scss']
+    selector: 'switch-import',
+    templateUrl: './switch-import.component.html',
+    styleUrls: ['./switch-import.component.scss'],
+    standalone: false
 })
 export class SwitchImportComponent implements OnInit {
 

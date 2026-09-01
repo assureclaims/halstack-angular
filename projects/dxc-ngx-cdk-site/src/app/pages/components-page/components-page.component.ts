@@ -3,9 +3,10 @@ import { Components } from '../../components';
 import { Router, NavigationEnd } from '@angular/router';
 
 @Component({
-  selector: 'app-components-page',
-  templateUrl: './components-page.component.html',
-  styleUrls: ['./components-page.component.scss']
+    selector: 'app-components-page',
+    templateUrl: './components-page.component.html',
+    styleUrls: ['./components-page.component.scss'],
+    standalone: false
 })
 export class ComponentsPageComponent implements OnInit {
 

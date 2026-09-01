@@ -5,7 +5,7 @@
   }">
   <div class="backOverlay" *ngIf="mode === 'overlay'"></div>
   <mat-progress-spinner class="backCircle" value="100"></mat-progress-spinner>
-  <mat-progress-spinner value="{{ value }}" mode="{{ type }}" class="spinner">
+  <mat-progress-spinner [value]="value" [mode]="type" class="spinner">
   </mat-progress-spinner>
   <div *ngIf="mode !== 'small'" [ngClass]="{ notOverlayed: mode !== 'overlay' }" class="labelsContainer">
     <p class="label">{{ label }}</p>

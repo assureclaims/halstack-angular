@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-overview-support',
-  templateUrl: './overview-support.component.html',
-  styleUrls: ['./overview-support.component.scss']
+    selector: 'app-overview-support',
+    templateUrl: './overview-support.component.html',
+    styleUrls: ['./overview-support.component.scss'],
+    standalone: false
 })
 export class OverviewSupportComponent implements OnInit {
 

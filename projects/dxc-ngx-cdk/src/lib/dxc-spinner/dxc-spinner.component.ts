@@ -12,14 +12,16 @@ import { CssUtils } from "../utils";
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
 import { LoaderService } from './services/loader.service';
 import { LoaderState } from './dxc-spinner.interface';
+import { ProgressSpinnerMode } from "@angular/material/progress-spinner";
 @Component({
-  selector: "dxc-spinner",
-  templateUrl: "./dxc-spinner.component.html",
-  styleUrls: ["./dxc-spinner.component.scss"],
-  providers: [CssUtils],
+    selector: "dxc-spinner",
+    templateUrl: "./dxc-spinner.component.html",
+    styleUrls: ["./dxc-spinner.component.scss"],
+    providers: [CssUtils],
+    standalone: false
 })
 export class DxcSpinnerComponent {
-  type: string = "indeterminate";
+  type: ProgressSpinnerMode = "indeterminate";
   @Input() value: number;
   @Input() label: string;
   @Input() alwaysShow = true;

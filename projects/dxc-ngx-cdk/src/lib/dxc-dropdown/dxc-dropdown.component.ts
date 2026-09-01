@@ -22,11 +22,12 @@ import {
 import { DropdownService } from "./services/dropdown.service";
 
 @Component({
-  selector: "dxc-dropdown",
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  templateUrl: "./dxc-dropdown.component.html",
-  styleUrls: ["./dxc-dropdown.component.scss"],
-  providers: [CssUtils, DropdownService],
+    selector: "dxc-dropdown",
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    templateUrl: "./dxc-dropdown.component.html",
+    styleUrls: ["./dxc-dropdown.component.scss"],
+    providers: [CssUtils, DropdownService],
+    standalone: false
 })
 export class DxcDropdownComponent implements OnChanges {
   @HostBinding("class") className;

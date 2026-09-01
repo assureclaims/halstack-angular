@@ -17,10 +17,11 @@ import { ContentChildren, ChangeDetectorRef } from '@angular/core';
 import { DxcTagIconComponent } from './dxc-tag-icon/dxc-tag-icon.component';
 
 @Component({
-  selector: "dxc-tag",
-  templateUrl: "./dxc-tag.component.html",
-  styleUrls: ["./dxc-tag.component.css"],
-  providers: [CssUtils],
+    selector: "dxc-tag",
+    templateUrl: "./dxc-tag.component.html",
+    styleUrls: ["./dxc-tag.component.css"],
+    providers: [CssUtils],
+    standalone: false
 })
 export class DxcTagComponent implements OnInit {
   isHovered = false;
@@ -59,7 +60,7 @@ export class DxcTagComponent implements OnInit {
 
   iconContainer: string;
 
-  shadowDepth: string;
+  shadowDepth: number;
 
   @ViewChildren("dxcBox", { read: ElementRef }) dxcBox: QueryList<ElementRef>;
 
@@ -165,12 +166,12 @@ export class DxcTagComponent implements OnInit {
     this.onClick.emit($event);
   }
 
-  getShadowDepth(): string {
+  getShadowDepth(): number {
     return this.isHovered &&
       (this.isClickDefined ||
         (this.linkHref !== null && this.linkHref !== undefined))
-      ? "2"
-      : "1";
+      ? 2
+      : 1;
   }
 
   setDxcTagDynamicStyle(input: any) {

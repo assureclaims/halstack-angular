@@ -4,9 +4,10 @@ import { TagExampleComponent } from '../../components/examples/tag/tag-example/t
 import { TagApiComponent } from '../../components/examples/tag/tag-api/tag-api.component';
 
 @Component({
-  selector: 'app-tag',
-  templateUrl: './tag.component.html',
-  styleUrls: ['./tag.component.scss']
+    selector: 'app-tag',
+    templateUrl: './tag.component.html',
+    styleUrls: ['./tag.component.scss'],
+    standalone: false
 })
 export class TagComponent implements OnInit {
   headingMargin = {

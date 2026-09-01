@@ -2,7 +2,6 @@ import {
   coerceBooleanProperty,
   coerceNumberProperty,
 } from "@angular/cdk/coercion";
-import { C } from "@angular/cdk/keycodes";
 import {
   Component,
   EventEmitter,
@@ -22,9 +21,10 @@ import { FILE_SERVICE } from "../services/file-provider..service";
 import { FileAddService } from "../services/file.add.service";
 
 @Component({
-  selector: "dxc-file",
-  templateUrl: "./dxc-file.component.html",
-  providers: [FileAddService]
+    selector: "dxc-file",
+    templateUrl: "./dxc-file.component.html",
+    providers: [FileAddService],
+    standalone: false
 })
 export class DxcFileComponent implements OnInit {
   @HostBinding("class") className;

@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'chip-import',
-  templateUrl: './chip-import.component.html',
-  styleUrls: ['./chip-import.component.scss']
+    selector: 'chip-import',
+    templateUrl: './chip-import.component.html',
+    styleUrls: ['./chip-import.component.scss'],
+    standalone: false
 })
 export class ChipImportComponent implements OnInit {
 

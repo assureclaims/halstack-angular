@@ -13,10 +13,11 @@ import { responsiveSizes } from "../variables";
 import { coerceNumberProperty } from '@angular/cdk/coercion';
 
 @Component({
-  selector: "dxc-footer",
-  templateUrl: "./dxc-footer.component.html",
-  styleUrls: ["./dxc-footer.component.scss"],
-  providers: [CssUtils],
+    selector: "dxc-footer",
+    templateUrl: "./dxc-footer.component.html",
+    styleUrls: ["./dxc-footer.component.scss"],
+    providers: [CssUtils],
+    standalone: false
 })
 export class DxcFooterComponent implements OnChanges {
   @HostBinding("class") className;

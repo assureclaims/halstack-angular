@@ -4,10 +4,11 @@ import { BoxExampleComponent } from 'src/app/components/examples/box/box-example
 import { BoxApiComponent } from '../../components/examples/box/box-api/box-api.component';
 
 @Component({
-  selector: "app-box",
-  templateUrl: "./box.component.html",
-  styleUrls: ["./box.component.scss"],
-  providers: []
+    selector: "app-box",
+    templateUrl: "./box.component.html",
+    styleUrls: ["./box.component.scss"],
+    providers: [],
+    standalone: false
 })
 export class BoxComponent implements OnInit{
   headingMargin = {

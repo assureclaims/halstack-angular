@@ -22,10 +22,11 @@ import { BackgroundProviderService } from "../background-provider/service/backgr
 import { Space, Spacing, CardProperties } from "./dxc-card.types"
 
 @Component({
-  selector: "dxc-card",
-  templateUrl: "./dxc-card.component.html",
-  styleUrls: [],
-  providers: [CssUtils],
+    selector: "dxc-card",
+    templateUrl: "./dxc-card.component.html",
+    styleUrls: [],
+    providers: [CssUtils],
+    standalone: false
 })
 export class DxcCardComponent implements OnInit {
   /**
@@ -182,14 +183,14 @@ export class DxcCardComponent implements OnInit {
     this.isHovered = isHovered;
   }
 
-  getShadowDepth() {
+  getShadowDepth(): number {
     return !this.defaultInputs.value.outlined
-      ? "0"
+      ? 0
       : this.isHovered &&
         this.onClick.observers.length > 0 &&
         this.linkHref !== ""
-      ? "2"
-      : "1";
+      ? 2
+      : 1;
   }
 
   getCursor(href) {
@@ -202,11 +203,11 @@ export class DxcCardComponent implements OnInit {
     }
   }
 
-  getShadowDepthOnHover(href) {
+  getShadowDepthOnHover(href): number {
     if (this.onClick.observers.length > 0 || href) {
-      return "2";
+      return 2;
     } else {
-      return "1";
+      return 1;
     }
   }
 

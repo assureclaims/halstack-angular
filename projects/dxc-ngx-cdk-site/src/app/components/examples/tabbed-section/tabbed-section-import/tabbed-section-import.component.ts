@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'tabbed-section-import',
-  templateUrl: './tabbed-section-import.component.html',
-  styleUrls: ['./tabbed-section-import.component.scss']
+    selector: 'tabbed-section-import',
+    templateUrl: './tabbed-section-import.component.html',
+    styleUrls: ['./tabbed-section-import.component.scss'],
+    standalone: false
 })
 export class TabbedSectionImportComponent implements OnInit {
 

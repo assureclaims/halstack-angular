@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'sidenav-table-properties',
-  templateUrl: './sidenav-table-properties.component.html',
-  styleUrls: ['./sidenav-table-properties.component.scss']
+    selector: 'sidenav-table-properties',
+    templateUrl: './sidenav-table-properties.component.html',
+    styleUrls: ['./sidenav-table-properties.component.scss'],
+    standalone: false
 })
 export class SidenavTablePropertiesComponent implements OnInit {
 

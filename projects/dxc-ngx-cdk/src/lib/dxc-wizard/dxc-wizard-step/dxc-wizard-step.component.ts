@@ -18,8 +18,9 @@ import { WizardService } from "../services/wizard.service";
 import { WizardStepProperties } from "./dxc-wizard-step.types";
 
 @Component({
-  selector: "dxc-wizard-step",
-  templateUrl: "./dxc-wizard-step.component.html",
+    selector: "dxc-wizard-step",
+    templateUrl: "./dxc-wizard-step.component.html",
+    standalone: false
 })
 export class DxcWizardStepComponent {
   /**

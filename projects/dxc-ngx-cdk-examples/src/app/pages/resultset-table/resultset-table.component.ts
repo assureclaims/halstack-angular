@@ -3,9 +3,10 @@ import { DataSource } from '@angular/cdk/collections';
 import { BehaviorSubject, Observable } from 'rxjs';
 
 @Component({
-  selector: 'resultset-table-info',
-  templateUrl: './resultset-table.component.html',
-  styleUrls: ['./resultset-table.component.scss']
+    selector: 'resultset-table-info',
+    templateUrl: './resultset-table.component.html',
+    styleUrls: ['./resultset-table.component.scss'],
+    standalone: false
 })
 export class ResultsetTableComponent implements OnInit {
 

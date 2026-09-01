@@ -14,8 +14,9 @@ import { DXC_RESULTSET_TABLE } from "../tokens";
  * a when predicate that describes when this row should be used.
  */
 @Directive({
-  selector: "[dxcRowDef]",
-  inputs: ["columns: dxcRowDefColumns", "when: dxcRowDefWhen"],
+    selector: "[dxcRowDef]",
+    inputs: ["columns: dxcRowDefColumns", "when: dxcRowDefWhen"],
+    standalone: false
 })
 export class DxcRowDef<T> extends BaseRowDef {
   /**

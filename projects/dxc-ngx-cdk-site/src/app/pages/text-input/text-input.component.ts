@@ -4,9 +4,10 @@ import { TextInputExampleComponent } from 'src/app/components/examples/text-inpu
 import { TextInputApiComponent } from '../../components/examples/text-input/text-input-api/text-input-api.component';
 
 @Component({
-  selector: 'app-text-input',
-  templateUrl: './text-input.component.html',
-  styleUrls: ['./text-input.component.scss']
+    selector: 'app-text-input',
+    templateUrl: './text-input.component.html',
+    styleUrls: ['./text-input.component.scss'],
+    standalone: false
 })
 export class TextInputComponent implements OnInit {
   headingMargin = {

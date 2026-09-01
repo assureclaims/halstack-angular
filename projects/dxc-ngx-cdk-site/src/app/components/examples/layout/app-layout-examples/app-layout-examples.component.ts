@@ -2,9 +2,10 @@ import { Component, OnInit } from "@angular/core";
 import { Router } from '@angular/router';
 
 @Component({
-  selector: "app-layout-examples",
-  templateUrl: "./app-layout-examples.component.html",
-  styleUrls: [],
+    selector: "app-layout-examples",
+    templateUrl: "./app-layout-examples.component.html",
+    styleUrls: [],
+    standalone: false
 })
 export class ApplicationLayoutExamplesComponent implements OnInit {
 

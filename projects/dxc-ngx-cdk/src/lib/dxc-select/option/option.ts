@@ -315,26 +315,27 @@ export class _MatOptionBase
  * Single option inside of a `<mat-select>` element.
  */
 @Component({
-  selector: "dxc-select-option",
-  exportAs: "DxcSelectOption",
-  host: {
-    role: "option",
-    "[attr.tabindex]": "_getTabIndex()",
-    "[class.mat-selected]": "selected",
-    "[class.mat-option-multiple]": "multiple",
-    "[class.mat-active]": "active",
-    "[id]": "id",
-    "[attr.aria-selected]": "_getAriaSelected()",
-    "[attr.aria-disabled]": "disabled.toString()",
-    "[class.mat-option-disabled]": "disabled",
-    "(click)": "_selectViaInteraction()",
-    "(keydown)": "_handleKeydown($event)",
-    class: "mat-option mat-focus-indicator",
-  },
-  styleUrls: ["option.scss"],
-  templateUrl: "option.html",
-  encapsulation: ViewEncapsulation.None,
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    selector: "dxc-select-option",
+    exportAs: "DxcSelectOption",
+    host: {
+        role: "option",
+        "[attr.tabindex]": "_getTabIndex()",
+        "[class.mat-selected]": "selected",
+        "[class.mat-option-multiple]": "multiple",
+        "[class.mat-active]": "active",
+        "[id]": "id",
+        "[attr.aria-selected]": "_getAriaSelected()",
+        "[attr.aria-disabled]": "disabled.toString()",
+        "[class.mat-option-disabled]": "disabled",
+        "(click)": "_selectViaInteraction()",
+        "(keydown)": "_handleKeydown($event)",
+        class: "mat-option mat-focus-indicator",
+    },
+    styleUrls: ["option.scss"],
+    templateUrl: "option.html",
+    encapsulation: ViewEncapsulation.None,
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class DxcSelectOption extends _MatOptionBase {
   constructor(

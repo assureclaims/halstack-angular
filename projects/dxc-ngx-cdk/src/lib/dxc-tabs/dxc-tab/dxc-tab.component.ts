@@ -13,8 +13,9 @@ import { DxcTabIconComponent } from "./dxc-tab-icon/dxc-tab-icon.component";
 import { QueryList } from "@angular/core";
 import { TabService } from "../services/tab.service";
 @Component({
-  selector: "dxc-tab",
-  templateUrl: "./dxc-tab.component.html",
+    selector: "dxc-tab",
+    templateUrl: "./dxc-tab.component.html",
+    standalone: false
 })
 export class DxcTabComponent implements OnChanges {
   /**

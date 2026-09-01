@@ -41,8 +41,9 @@ import { takeUntil } from 'rxjs/operators';
  */
 
 @Directive({
-  selector: '[dxcPopoverTriggerFor]',
-  exportAs: 'dxcPopoverTrigger'
+    selector: '[dxcPopoverTriggerFor]',
+    exportAs: 'dxcPopoverTrigger',
+    standalone: false
 })
 export class DxcPopoverTrigger implements AfterViewInit, OnDestroy { // tslint:disable-line:directive-class-suffix
 

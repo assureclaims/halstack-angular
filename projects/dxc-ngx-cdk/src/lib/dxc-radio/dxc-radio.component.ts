@@ -13,9 +13,10 @@ import { CssUtils } from "../utils";
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
 
 @Component({
-  selector: "dxc-radio",
-  templateUrl: "./dxc-radio.component.html",
-  providers: [CssUtils],
+    selector: "dxc-radio",
+    templateUrl: "./dxc-radio.component.html",
+    providers: [CssUtils],
+    standalone: false
 })
 export class DxcRadioComponent implements OnInit {
   @Input()
@@ -44,7 +45,7 @@ export class DxcRadioComponent implements OnInit {
     this._required = coerceBooleanProperty(value);
   }
   private _required;
-  @Input() labelPosition: string;
+  @Input() labelPosition: "before" | "after";
   @Input() margin: string;
   @Input() size: string;
   @Input() value: string;

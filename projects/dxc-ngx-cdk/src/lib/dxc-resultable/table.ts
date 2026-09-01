@@ -30,7 +30,6 @@ import {
   ViewChild,
   ViewContainerRef,
   ViewEncapsulation,
-  ComponentFactoryResolver,
   Output,
   EventEmitter,
 } from "@angular/core";
@@ -71,9 +70,9 @@ import { Space, Spacing } from "./types/dxc-resultset-table.types";
  * connect function that will return an Observable stream that emits the data array to render.
  */
 @Component({
-  selector: "dxc-resultset-table, table[dxc-resultset-table]",
-  exportAs: "dxcResultsetTable",
-  template: `
+    selector: "dxc-resultset-table, table[dxc-resultset-table]",
+    exportAs: "dxcResultsetTable",
+    template: `
     <dxc-table [margin]="margin">
       <ng-container headerOutlet></ng-container>
       <ng-container rowOutlet></ng-container>
@@ -90,17 +89,18 @@ import { Space, Spacing } from "./types/dxc-resultset-table.types";
       (itemsPerPageFunction)="handleItemsPerPageSelect($event)"
     ></dxc-paginator>
   `,
-  encapsulation: ViewEncapsulation.None,
-  // The "OnPush" status for the `MatTable` component is effectively a noop, so we are removing it.
-  // The view for `MatTable` consists entirely of templates declared in other views. As they are
-  // declared elsewhere, they are checked when their declaration points are checked.
-  // tslint:disable-next-line:validate-decorators
-  changeDetection: ChangeDetectionStrategy.Default,
-  providers: [
-    { provide: DXC_RESULTSET_TABLE, useExisting: DxcResultTable },
-    PaginationService,
-    SortService,
-  ],
+    encapsulation: ViewEncapsulation.None,
+    // The "OnPush" status for the `MatTable` component is effectively a noop, so we are removing it.
+    // The view for `MatTable` consists entirely of templates declared in other views. As they are
+    // declared elsewhere, they are checked when their declaration points are checked.
+    // tslint:disable-next-line:validate-decorators
+    changeDetection: ChangeDetectionStrategy.Default,
+    providers: [
+        { provide: DXC_RESULTSET_TABLE, useExisting: DxcResultTable },
+        PaginationService,
+        SortService,
+    ],
+    standalone: false
 })
 export class DxcResultTable<T>
   implements AfterContentChecked, CollectionViewer, OnDestroy, OnInit
@@ -159,7 +159,7 @@ export class DxcResultTable<T>
 
   displayedColumns: string[] = [];
 
-  totalItems: Number = 0;
+  totalItems: number = 0;
 
   fetchStatus;
 
@@ -284,7 +284,6 @@ export class DxcResultTable<T>
     @Attribute("role") role: string,
     @Optional() protected readonly _dir: Directionality,
     @Inject(DOCUMENT) _document: any,
-    private resolver: ComponentFactoryResolver,
     private paginationService: PaginationService,
     private sortService: SortService
   ) {
@@ -360,11 +359,9 @@ export class DxcResultTable<T>
     this._headerOutlet.viewContainer.clear();
     if (this._columnDefsByName !== null) {
       this._columnDefsByName.forEach((value: DxcColumnDef, key: string) => {
-        const factory = this.resolver.resolveComponentFactory(
+        const viewRef = this._headerOutlet.viewContainer.createComponent(
           DxcHeaderRowComponent
         );
-        const viewRef =
-          this._headerOutlet.viewContainer.createComponent(factory);
         viewRef.instance.columnName = key;
         viewRef.instance.isSortable = value.sortable.isSortable; //Save if header is sortable in the created component
         viewRef.instance.tabIndexValue = this.tabIndexValue;
@@ -556,8 +553,7 @@ export class DxcResultTable<T>
     context: RowContext<T> = {}
   ) {
     // TODO(andrewseguin): enforce that one outlet was instantiated from createEmbeddedView
-    const factory = this.resolver.resolveComponentFactory(DxcRowComponent);
-    outlet.viewContainer.createComponent(factory, index);
+    outlet.viewContainer.createComponent(DxcRowComponent, { index });
     //outlet.viewContainer.createEmbeddedView(this.cdkRow.template, context, index);
 
     for (let cellTemplate of this._getCellTemplates(renderRow)) {

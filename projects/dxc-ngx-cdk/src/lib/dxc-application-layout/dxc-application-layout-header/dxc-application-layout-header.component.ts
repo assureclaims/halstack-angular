@@ -5,9 +5,10 @@ import {
 } from "@angular/core";
 import { CssUtils } from "../../utils";
 @Component({
-  selector: "dxc-application-layout-header",
-  templateUrl: "./dxc-application-layout-header.component.html",
-  providers: [CssUtils],
+    selector: "dxc-application-layout-header",
+    templateUrl: "./dxc-application-layout-header.component.html",
+    providers: [CssUtils],
+    standalone: false
 })
 export class DxcApplicationLayoutHeaderComponent implements OnInit {
 

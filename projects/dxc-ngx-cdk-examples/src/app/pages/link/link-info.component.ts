@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'link-info',
-  templateUrl: './link-info.component.html',
-  styleUrls: ['./link-info.component.scss']
+    selector: 'link-info',
+    templateUrl: './link-info.component.html',
+    styleUrls: ['./link-info.component.scss'],
+    standalone: false
 })
 export class LinkInfoComponent implements OnInit {
 

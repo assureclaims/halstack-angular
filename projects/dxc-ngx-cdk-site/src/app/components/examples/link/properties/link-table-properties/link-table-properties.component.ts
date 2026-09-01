@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'link-table-properties',
-  templateUrl: './link-table-properties.component.html',
-  styleUrls: ['./link-table-properties.component.scss']
+    selector: 'link-table-properties',
+    templateUrl: './link-table-properties.component.html',
+    styleUrls: ['./link-table-properties.component.scss'],
+    standalone: false
 })
 export class LinkTablePropertiesComponent implements OnInit {
 

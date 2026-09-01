@@ -6,9 +6,10 @@ import { OverviewSupportComponent } from 'src/app/components/overview/overview-s
 import { OverviewThemesComponent } from '../../components/overview/overview-themes/overview-themes.component';
 
 @Component({
-  selector: 'app-overview-page',
-  templateUrl: './overview-page.component.html',
-  styleUrls: ['./overview-page.component.scss']
+    selector: 'app-overview-page',
+    templateUrl: './overview-page.component.html',
+    styleUrls: ['./overview-page.component.scss'],
+    standalone: false
 })
 export class OverviewPageComponent implements OnInit {
 

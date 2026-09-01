@@ -4,8 +4,9 @@ import {
 
 
 @Component({
-  selector: "dxc-tag-icon",
-  templateUrl: "./dxc-tag-icon.component.html"
+    selector: "dxc-tag-icon",
+    templateUrl: "./dxc-tag-icon.component.html",
+    standalone: false
 })
 export class DxcTagIconComponent {
   

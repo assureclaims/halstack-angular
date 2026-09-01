@@ -10,10 +10,10 @@ import  { BackgroundProviderService}  from "./service/background-provider.servi
 import { TinyColor } from '@ctrl/tinycolor';
 
 @Component({
-  selector: "background-provider",
-  template: "<div><ng-content></ng-content></div>",
-  providers: [{ provide: "bgService", useClass: BackgroundProviderService }]
-
+    selector: "background-provider",
+    template: "<div><ng-content></ng-content></div>",
+    providers: [{ provide: "bgService", useClass: BackgroundProviderService }],
+    standalone: false
 })
 export class BackgroundProvider implements OnInit {
   @Input() color: string;
