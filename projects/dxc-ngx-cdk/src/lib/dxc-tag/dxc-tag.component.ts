@@ -60,7 +60,7 @@ export class DxcTagComponent implements OnInit {
 
   iconContainer: string;
 
-  shadowDepth: string;
+  shadowDepth: number;
 
   @ViewChildren("dxcBox", { read: ElementRef }) dxcBox: QueryList<ElementRef>;
 
@@ -166,12 +166,12 @@ export class DxcTagComponent implements OnInit {
     this.onClick.emit($event);
   }
 
-  getShadowDepth(): string {
+  getShadowDepth(): number {
     return this.isHovered &&
       (this.isClickDefined ||
         (this.linkHref !== null && this.linkHref !== undefined))
-      ? "2"
-      : "1";
+      ? 2
+      : 1;
   }
 
   setDxcTagDynamicStyle(input: any) {

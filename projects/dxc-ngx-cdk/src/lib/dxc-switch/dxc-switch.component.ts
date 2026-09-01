@@ -54,7 +54,7 @@ export class DxcSwitchComponent implements OnChanges {
   @Input() label: string;
   @Input() name: string;
   @Input() id: string;
-  @Input() labelPosition: string;
+  @Input() labelPosition: "before" | "after";
   @Input() margin: any;
   @Input() size: any;
   @Input()
