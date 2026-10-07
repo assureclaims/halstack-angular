@@ -1,7 +1,7 @@
-@import './variables';
-@import './list-common';
-@import './layout-common';
-@import './vendor-prefixes';
+@use 'variables';
+@use 'list-common';
+@use 'layout-common';
+@use 'vendor-prefixes';
 
 /** The mixins below are shared between mat-menu and mat-select */
 
@@ -22,7 +22,7 @@ $mat-menu-icon-margin: 16px !default;
 }
 
 @mixin mat-menu-item-base() {
-  @include mat-truncate-line();
+  @include list-common.mat-truncate-line();
 
   // Needs to be a block for the ellipsis to work.
   display: block;
@@ -93,7 +93,7 @@ $mat-menu-icon-margin: 16px !default;
 }
 
 @mixin mat-menu-item-ripple() {
-  @include mat-fill;
+  @include layout-common.mat-fill;
 
   // Prevent any pointer events on the ripple container for a menu item. The ripple container is
   // not the trigger element for the ripples and can be therefore disabled like that. Disabling

@@ -98,10 +98,7 @@
             "production": {
               "buildTarget": "angular-dxc-site:build:production"
             }
-          },
-          "assets": [
-            "projects/dxc-ngx-cdk-site/src/assets"
-          ]
+          }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
@@ -173,7 +170,7 @@
             ],
             "styles": [
               "projects/dxc-ngx-cdk-examples/src/styles.scss",
-              "./node_modules/bootstrap/dist/css/bootstrap.css",
+              "./node_modules/bootstrap/dist/css/bootstrap.css"
             ],
             "scripts": [
               "./node_modules/bootstrap/dist/js/bootstrap.js"
@@ -224,10 +221,7 @@
             "production": {
               "buildTarget": "dxc-angular-cdk:build:production"
             }
-          },
-          "assets": [
-            "projects/dxc-ngx-cdk-examples/src/assets"
-          ]
+          }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
@@ -260,7 +254,7 @@
       "prefix": "dxc-ngx-cdk",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "builder": "@angular/build:ng-packagr",
           "options": {
             "tsConfig": "projects/dxc-ngx-cdk/tsconfig.lib.json",
             "project": "projects/dxc-ngx-cdk/ng-package.json"
@@ -269,15 +263,7 @@
             "production": {
               "tsConfig": "projects/dxc-ngx-cdk/tsconfig.lib.prod.json"
             }
-          },
-          "styles": [
-            "./node_modules/bootstrap/dist/css/bootstrap.css"
-          ],
-          "scripts": [
-            "../app/node_modules/jquery/dist/jquery.min.js",
-            "./node_modules/jstree/dist/jstree.min.js",
-            "./node_modules/bootstrap/dist/js/bootstrap.js"
-          ]
+          }
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",

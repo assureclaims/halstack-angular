@@ -1,14 +1,14 @@
-@import './breakpoint';
-@import './mixin';
+@use 'breakpoint';
+@use 'mixin';
 
 .searchcontainer {
   width: 200px;
 // 576px window width and more
-  @include sm {
+  @include mixin.sm {
     width: 100px;
   }
 // 992px window width and more
-  @include lg {
+  @include mixin.lg {
     width: 500px;
   }
 }

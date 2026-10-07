@@ -1,10 +1,10 @@
 @use '@angular/cdk' as cdk;
 @use "sass:math";
-@import "./style/menu-common";
-@import "./style/list-common";
-@import "./style/variables";
-@import "./style/vendor-prefixes";
-@import "./a11y/a11y";
+@use "style/menu-common";
+@use "style/list-common";
+@use "style/variables";
+@use "style/vendor-prefixes";
+@use "a11y/a11y";
 
 $mat-select-arrow-size: 7px !default;
 $mat-select-arrow-margin: 4px !default;
@@ -29,7 +29,7 @@ $mat-select-placeholder-arrow-space: 2 *
   height: 20px;
 
   .mat-select-disabled & {
-    @include user-select(none);
+    @include vendor-prefixes.user-select(none);
     cursor: default;
   }
 }
@@ -50,7 +50,7 @@ $mat-select-placeholder-arrow-space: 2 *
 }
 
 .mat-select-value-text {
-  @include mat-truncate-line();
+  @include list-common.mat-truncate-line();
 }
 
 .mat-select-arrow-wrapper {
@@ -79,8 +79,8 @@ $mat-select-placeholder-arrow-space: 2 *
   // Animate the arrow position, but only when the transitioning to empty (animate the arrow down)
   // This is in line with the mat-form-field label animation
   .mat-form-field-appearance-standard .mat-select.mat-select-empty & {
-    transition: transform $swift-ease-out-duration
-      $swift-ease-out-timing-function;
+    transition: transform variables.$swift-ease-out-duration
+      variables.$swift-ease-out-timing-function;
   }
 
   ._mat-animation-noopable.mat-form-field-appearance-standard
@@ -106,7 +106,7 @@ $mat-select-placeholder-arrow-space: 2 *
 }
 
 .mat-select-panel {
-  @include mat-menu-base();
+  @include menu-common.mat-menu-base();
   padding-top: 0;
   padding-bottom: 0;
   max-height: $mat-select-panel-max-height;
@@ -154,8 +154,8 @@ $mat-select-placeholder-arrow-space: 2 *
 .mat-select-placeholder {
   // Delay the transition until the label has animated about a third of the way through, in
   // order to prevent the placeholder from overlapping for a split second.
-  transition: color $swift-ease-out-duration math.div($swift-ease-out-duration, 3)
-    $swift-ease-out-timing-function;
+  transition: color variables.$swift-ease-out-duration math.div(variables.$swift-ease-out-duration, 3)
+    variables.$swift-ease-out-timing-function;
 
   ._mat-animation-noopable & {
     transition: none;

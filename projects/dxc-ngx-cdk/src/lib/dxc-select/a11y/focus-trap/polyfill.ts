@@ -17,7 +17,7 @@ export function closest(element: EventTarget|Element|null|undefined, selector: s
   }
 
   return curr && (hasNativeClosest ?
-      curr.closest(selector) : polyfillClosest(curr, selector)) as Element|null;
+      (curr as Element).closest(selector) : polyfillClosest(curr as Element, selector)) as Element|null;
 }
 
 /** Polyfill for browsers without Element.closest. */

@@ -40,7 +40,12 @@
 }
 
 @mixin position-sticky($important: false) {
-  position: -webkit-sticky #{if($important, '!important', '')};
-  position: sticky #{if($important, '!important', '')};
+  @if $important {
+    position: -webkit-sticky !important;
+    position: sticky !important;
+  } @else {
+    position: -webkit-sticky;
+    position: sticky;
+  }
 }
 /* stylelint-enable */
