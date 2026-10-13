@@ -9,7 +9,8 @@ import {
   ElementRef,
   HostListener,
   AfterViewInit,
-  OnDestroy
+  OnDestroy,
+  ChangeDetectionStrategy
 } from "@angular/core";
 import { css } from "@emotion/css";
 import { BehaviorSubject } from "rxjs";
@@ -21,6 +22,7 @@ import { MODEL_HEIGHT, MODEL_WIDTH} from './props/dailog-props';
     templateUrl: "./dxc-dialog.component.html",
     styleUrls: ["./dxc-dialog.component.scss"],
     providers: [CssUtils],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class DxcDialogComponent implements OnDestroy, AfterViewInit {

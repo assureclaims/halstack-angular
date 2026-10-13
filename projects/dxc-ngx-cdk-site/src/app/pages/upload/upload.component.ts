@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Section } from 'src/app/model/sections';
 import {UploadExampleComponent} from '../../components/examples/upload/upload-example/upload-example.component';
 import { UploadApiComponent } from '../../components/examples/upload/upload-api/upload-api.component';
@@ -7,6 +7,7 @@ import { UploadApiComponent } from '../../components/examples/upload/upload-api/
     selector: 'app-upload',
     templateUrl: './upload.component.html',
     styleUrls: ['./upload.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class UploadComponent implements OnInit {

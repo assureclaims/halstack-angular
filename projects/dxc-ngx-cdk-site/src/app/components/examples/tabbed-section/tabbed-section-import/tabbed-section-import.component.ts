@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
     selector: 'tabbed-section-import',
     templateUrl: './tabbed-section-import.component.html',
     styleUrls: ['./tabbed-section-import.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class TabbedSectionImportComponent implements OnInit {

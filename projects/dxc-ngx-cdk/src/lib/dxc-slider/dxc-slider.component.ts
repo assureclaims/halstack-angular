@@ -8,6 +8,7 @@ import {
   OnInit,
   SimpleChanges,
   forwardRef,
+  ChangeDetectionStrategy
 } from "@angular/core";
 import { css } from "@emotion/css";
 import { BehaviorSubject } from "rxjs";
@@ -22,6 +23,7 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from "@angular/forms";
             useExisting: forwardRef(() => DxcSliderComponent),
             multi: true
         }],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class DxcSliderComponent implements OnInit, OnChanges, ControlValueAccessor{

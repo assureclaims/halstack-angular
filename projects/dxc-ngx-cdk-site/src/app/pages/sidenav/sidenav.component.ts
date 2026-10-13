@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ChangeDetectionStrategy } from "@angular/core";
 import { Section } from "../../model/sections";
 import { SidenavExampleComponent } from "../../components/examples/sidenav/sidenav-example/sidenav-example.component";
 import { SidenavApiComponent } from "../../components/examples/sidenav/sidenav-api/sidenav-api.component";
@@ -7,6 +7,7 @@ import { SidenavApiComponent } from "../../components/examples/sidenav/sidenav-a
     selector: "app-sidenav",
     templateUrl: "./sidenav.component.html",
     styleUrls: ["./sidenav.component.scss"],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class SidenavComponent implements OnInit {

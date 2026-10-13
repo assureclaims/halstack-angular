@@ -7,6 +7,7 @@ import {
   SimpleChanges,
   ContentChildren,
   QueryList,
+  ChangeDetectionStrategy
 } from "@angular/core";
 import { css } from "@emotion/css";
 import { BehaviorSubject } from "rxjs";
@@ -21,6 +22,7 @@ import { Spacing, Space, WizardProperties } from "./dxc-wizard.types";
     selector: "dxc-wizard",
     templateUrl: "./dxc-wizard.component.html",
     providers: [CssUtils, WizardService],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class DxcWizardComponent {

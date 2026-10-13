@@ -5,7 +5,8 @@ import {
   Injector,
   ApplicationRef,
   AfterViewInit,
-  OnDestroy
+  OnDestroy,
+  ChangeDetectionStrategy
 } from "@angular/core";
 import { ComponentPortal, DomPortalHost, CdkPortal } from '@angular/cdk/portal';
 import { ViewChild, ViewContainerRef } from '@angular/core';
@@ -15,6 +16,7 @@ import { ViewChild, ViewContainerRef } from '@angular/core';
     selector: "app-dynamic-component",
     template: "",
     providers: [],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class DynamicComponentComponent implements AfterViewInit, OnDestroy {

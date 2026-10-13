@@ -8,6 +8,7 @@ import {
   SimpleChanges,
   HostListener,
   ElementRef,
+  ChangeDetectionStrategy
 } from "@angular/core";
 import { css } from "@emotion/css";
 import { BehaviorSubject } from "rxjs";
@@ -19,6 +20,7 @@ import { coerceBooleanProperty, coerceNumberProperty } from '@angular/cdk/coerci
     selector: "dxc-header",
     templateUrl: "./dxc-header.component.html",
     providers: [CssUtils],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class DxcHeaderComponent implements OnChanges {
@@ -105,7 +107,7 @@ export class DxcHeaderComponent implements OnChanges {
   }
 
   public ngOnInit() {
-    this.isClickDefined = this.onClick.observers?.length > 0;
+    this.isClickDefined = this.onClick.observed;
     this.innerWidth = window.innerWidth;
     this.innerHeight = window.innerHeight;
     if (this.innerWidth <= responsiveSizes.tablet && !this.isResponsive) {

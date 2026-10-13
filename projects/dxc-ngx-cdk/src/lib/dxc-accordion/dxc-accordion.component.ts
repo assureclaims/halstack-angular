@@ -10,6 +10,7 @@ import {
   OnChanges,
   ContentChildren,
   AfterViewInit,
+  ChangeDetectionStrategy
 } from "@angular/core";
 import { CssUtils } from "../utils";
 import { BehaviorSubject } from "rxjs";
@@ -22,6 +23,7 @@ import { QueryList, ChangeDetectorRef, ElementRef } from "@angular/core";
     selector: "dxc-accordion",
     templateUrl: "./dxc-accordion.component.html",
     providers: [CssUtils],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class DxcAccordionComponent implements OnInit, OnChanges, AfterViewInit {

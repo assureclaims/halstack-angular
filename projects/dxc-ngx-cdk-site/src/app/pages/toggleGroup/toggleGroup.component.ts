@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { ToggleGroupApiComponent } from 'src/app/components/examples/toggleGroup/toggleGroup-api/toggleGroup-api.component';
 import { Section } from 'src/app/model/sections';
 import { ToggleGroupExampleComponent } from '../../components/examples/toggleGroup/toggleGroup-example/toggleGroup-example.component';
@@ -7,6 +7,7 @@ import { ToggleGroupExampleComponent } from '../../components/examples/toggleGro
     selector: 'app-toggleGroup',
     templateUrl: './toggleGroup.component.html',
     styleUrls: ['./toggleGroup.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class ToggleGroupComponent implements OnInit {

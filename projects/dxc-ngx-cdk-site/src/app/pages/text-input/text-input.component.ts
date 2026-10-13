@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Section } from 'src/app/model/sections';
 import { TextInputExampleComponent } from 'src/app/components/examples/text-input/text-input-example/text-input-example.component';
 import { TextInputApiComponent } from '../../components/examples/text-input/text-input-api/text-input-api.component';
@@ -7,6 +7,7 @@ import { TextInputApiComponent } from '../../components/examples/text-input/text
     selector: 'app-text-input',
     templateUrl: './text-input.component.html',
     styleUrls: ['./text-input.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class TextInputComponent implements OnInit {

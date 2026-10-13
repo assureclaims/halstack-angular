@@ -12,6 +12,7 @@ import {
   ChangeDetectorRef,
   ContentChildren,
   QueryList,
+  ChangeDetectionStrategy
 } from "@angular/core";
 import { DxcLinkIconComponent } from "./dxc-link-icon/dxc-link-icon.component";
 
@@ -19,6 +20,7 @@ import { DxcLinkIconComponent } from "./dxc-link-icon/dxc-link-icon.component";
     selector: "dxc-link",
     templateUrl: "./dxc-link.component.html",
     providers: [CssUtils],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class DxcLinkComponent {
@@ -99,7 +101,7 @@ export class DxcLinkComponent {
   constructor(private utils: CssUtils, private cdRef: ChangeDetectorRef) {}
 
   ngOnInit() {
-    this.isClickDefined = this.onClick.observers.length > 0;
+    this.isClickDefined = this.onClick.observed;
     this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
     this.styledButton = `${this.getDynamicStyledButton(
       this.defaultInputs.getValue()

@@ -8,7 +8,7 @@ import {
 @Component({
     selector: "tr",
     template: `<ng-container cdkCellOutlet></ng-container>`,
-    changeDetection: ChangeDetectionStrategy.Default,
+    changeDetection: ChangeDetectionStrategy.Eager,
     encapsulation: ViewEncapsulation.None,
     standalone: false
 })

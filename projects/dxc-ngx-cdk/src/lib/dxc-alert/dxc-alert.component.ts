@@ -8,6 +8,7 @@ import {
   ViewChild,
   ElementRef,
   SimpleChanges,
+  ChangeDetectionStrategy
 } from "@angular/core";
 import { BehaviorSubject } from "rxjs";
 import { css } from "@emotion/css";
@@ -19,6 +20,7 @@ import { coerceNumberProperty } from '@angular/cdk/coercion';
     templateUrl: "./dxc-alert.component.html",
     styleUrls: ["./dxc-alert.component.scss"],
     providers: [CssUtils],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class DxcAlertComponent implements OnChanges {
@@ -59,7 +61,7 @@ export class DxcAlertComponent implements OnChanges {
   constructor(private utils: CssUtils) {}
 
   public ngOnInit() {
-    this.isCloseVisible = this.onClose.observers.length > 0;
+    this.isCloseVisible = this.onClose.observed;
     this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
   }
 

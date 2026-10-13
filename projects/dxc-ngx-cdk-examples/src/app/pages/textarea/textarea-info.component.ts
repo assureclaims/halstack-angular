@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
     selector: 'textarea-info',
     templateUrl: './textarea-info.component.html',
     styleUrls: ['./textarea-info.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class TextareaInfoComponent implements OnInit {

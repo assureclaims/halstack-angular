@@ -94,7 +94,7 @@ import { Space, Spacing } from "./types/dxc-resultset-table.types";
     // The view for `MatTable` consists entirely of templates declared in other views. As they are
     // declared elsewhere, they are checked when their declaration points are checked.
     // tslint:disable-next-line:validate-decorators
-    changeDetection: ChangeDetectionStrategy.Default,
+    changeDetection: ChangeDetectionStrategy.Eager,
     providers: [
         { provide: DXC_RESULTSET_TABLE, useExisting: DxcResultTable },
         PaginationService,

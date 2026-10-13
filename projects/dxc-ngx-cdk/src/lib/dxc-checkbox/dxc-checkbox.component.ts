@@ -5,7 +5,8 @@ import {
   Output,
   HostBinding,
   SimpleChanges,
-  forwardRef
+  forwardRef,
+  ChangeDetectionStrategy
 } from "@angular/core";
 import { EventEmitter } from "@angular/core";
 import { css } from "@emotion/css";
@@ -22,6 +23,7 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
             useExisting: forwardRef(() => DxcCheckboxComponent),
             multi: true
         }],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class DxcCheckboxComponent implements OnInit, ControlValueAccessor {

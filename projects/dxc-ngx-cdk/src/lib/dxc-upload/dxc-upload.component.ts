@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, EventEmitter } from "@angular/core";
+import { Component, Input, OnChanges, EventEmitter, ChangeDetectionStrategy } from "@angular/core";
 import { CssUtils } from "../utils";
 import { css } from "@emotion/css";
 import { SimpleChanges, HostBinding } from "@angular/core";
@@ -10,6 +10,7 @@ import { coerceNumberProperty } from '@angular/cdk/coercion';
     templateUrl: "./dxc-upload.component.html",
     styleUrls: ["./dxc-upload.component.scss"],
     providers: [CssUtils],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class DxcUploadComponent implements OnChanges {

@@ -13,6 +13,7 @@ import { css } from "@emotion/css";
     selector: "dxc-header-dropdown",
     templateUrl: "./dxc-header-dropdown.component.html",
     styleUrls: [],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class DxcHeaderDropdownComponent implements OnChanges {

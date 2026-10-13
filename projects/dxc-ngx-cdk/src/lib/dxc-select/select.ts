@@ -73,7 +73,6 @@ import {
   take,
   takeUntil,
 } from "rxjs/operators";
-import { matSelectAnimations } from "./select-animations";
 import {
   CanDisableCtor,
   mixinDisabled,
@@ -729,6 +728,7 @@ export abstract class _MatSelectBase<C>
       this._keyManager.withHorizontalOrientation(this._isRtl() ? "rtl" : "ltr");
       this._changeDetectorRef.markForCheck();
       this._onTouched();
+      this._panelDoneAnimatingStream.next("void");
     }
   }
 
@@ -936,6 +936,7 @@ export abstract class _MatSelectBase<C>
     this.overlayDir.positionChange.pipe(take(1)).subscribe(() => {
       this._changeDetectorRef.detectChanges();
       this._positioningSettled();
+      this._panelDoneAnimatingStream.next("showing");
     });
   }
 
@@ -1444,10 +1445,6 @@ export abstract class _MatSelectBase<C>
         "(focus)": "_onFocus()",
         "(blur)": "_onBlur()",
     },
-    animations: [
-        matSelectAnimations.transformPanelWrap,
-        matSelectAnimations.transformPanel,
-    ],
     providers: [
         { provide: MatFormFieldControl, useExisting: DxcSelectComponent },
         { provide: MAT_OPTION_PARENT_COMPONENT, useExisting: DxcSelectComponent },
@@ -1463,7 +1460,7 @@ export class DxcSelectComponent
   private _scrollTop = 0;
 
   /** The last measured value for the trigger's client bounding rect. */
-  _triggerRect: ClientRect;
+  _triggerRect: DOMRect;
 
   /** The cached font-size of the trigger element. */
   _triggerFontSize = 0;

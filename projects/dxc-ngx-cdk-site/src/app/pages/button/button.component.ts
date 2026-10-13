@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Section } from '../../model/sections';
 import { ButtonExampleComponent } from 'src/app/components/examples/button/button-example/button-example.component';
 import { ButtonApiComponent } from '../../components/examples/button/button-api/button-api.component';
@@ -8,6 +8,7 @@ import { ButtonApiComponent } from '../../components/examples/button/button-api/
     templateUrl: "./button.component.html",
     styleUrls: ["./button.component.scss"],
     providers: [],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class ButtonComponent implements OnInit{

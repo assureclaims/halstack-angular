@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Section } from '../../model/sections';
 import { HeaderExampleComponent } from '../../components/examples/header/header-example/header-example.component';
 import { HeaderApiComponent } from '../../components/examples/header/header-api/header-api.component';
@@ -7,6 +7,7 @@ import { HeaderApiComponent } from '../../components/examples/header/header-api/
     selector: 'app-header',
     templateUrl: './header.component.html',
     styleUrls: ['./header.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class HeaderComponent implements OnInit {

@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ChangeDetectionStrategy } from "@angular/core";
 import { Section } from "../../model/sections";
 import { SelectExampleComponent } from "../../components/examples/select/select-example/select-example.component";
 import { SelectApiComponent } from '../../components/examples/select/select-api/select-api.component';
@@ -7,6 +7,7 @@ import { SelectApiComponent } from '../../components/examples/select/select-api/
     selector: "app-select",
     templateUrl: "./select.component.html",
     styleUrls: ["./select.component.scss"],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class SelectComponent implements OnInit {

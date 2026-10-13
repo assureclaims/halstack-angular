@@ -15,6 +15,7 @@ import {
   Output,
   ViewChild,
   forwardRef,
+  ChangeDetectionStrategy
 } from "@angular/core";
 import { css } from "@emotion/css";
 import { BehaviorSubject, Subscription, take } from "rxjs";
@@ -51,6 +52,7 @@ import { FileAddService } from "./services/file.add.service";
         },
         FileAddService
     ],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class DxcFileInputComponent
@@ -379,7 +381,7 @@ export class DxcFileInputComponent
   drop(event) {
     event.preventDefault();
     this.hoveringWithFile = false;
-    if (this.callbackFile.observers?.length > 0 && this.hasValue) {
+    if (this.callbackFile.observed && this.hasValue) {
       if (!this.multiple) {
         this.fileAddService.removeAll();
 
@@ -417,7 +419,7 @@ export class DxcFileInputComponent
    * @param event
    */
   onFileInput(event) {
-    if (this.callbackFile.observers?.length > 0 && this.hasValue) {
+    if (this.callbackFile.observed && this.hasValue) {
       if (!this.multiple) {
         this.fileAddService.removeAll();
         let fileToAdd: FileData = {

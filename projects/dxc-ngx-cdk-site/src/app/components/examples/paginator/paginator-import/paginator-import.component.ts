@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
     selector: 'paginator-import',
     templateUrl: './paginator-import.component.html',
     styleUrls: ['./paginator-import.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class PaginatorImportComponent implements OnInit {

@@ -80,7 +80,7 @@ export class RippleRenderer implements EventListenerObject {
    * Cached dimensions of the ripple container. Set when the first
    * ripple is shown and cleared once no more ripples are visible.
    */
-  private _containerRect: ClientRect | null;
+  private _containerRect: DOMRect | null;
 
   constructor(private _target: RippleTarget,
               private _ngZone: NgZone,
@@ -338,7 +338,7 @@ function enforceStyleRecalculation(element: HTMLElement) {
 /**
  * Returns the distance from the point (x, y) to the furthest corner of a rectangle.
  */
-function distanceToFurthestCorner(x: number, y: number, rect: ClientRect) {
+function distanceToFurthestCorner(x: number, y: number, rect: DOMRect) {
   const distX = Math.max(Math.abs(x - rect.left), Math.abs(x - rect.right));
   const distY = Math.max(Math.abs(y - rect.top), Math.abs(y - rect.bottom));
   return Math.sqrt(distX * distX + distY * distY);

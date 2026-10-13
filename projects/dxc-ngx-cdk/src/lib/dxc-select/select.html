@@ -44,7 +44,7 @@
   (backdropClick)="close()"
   (attach)="_onAttached()"
   (detach)="close()">
-  <div class="mat-select-panel-wrap" [@transformPanelWrap]>
+  <div class="mat-select-panel-wrap">
     <div
       #panel
       role="listbox"
@@ -55,8 +55,9 @@
       [attr.aria-label]="ariaLabel || null"
       [attr.aria-labelledby]="_getPanelAriaLabelledby()"
       [ngClass]="panelClass"
-      [@transformPanel]="multiple ? 'showing-multiple' : 'showing'"
-      (@transformPanel.done)="_panelDoneAnimatingStream.next($event.toState)"
+      animate.enter="dxc-select-panel-enter"
+      style="opacity: 1; transform: scaleY(1); margin-top: 47px; margin-left: 32px"
+      [style.min-width]="multiple ? 'calc(100% + 64px)' : 'calc(100% + 32px)'"
       [style.transformOrigin]="_transformOrigin"
       [style.font-size.px]="_triggerFontSize"
       (keydown)="_handleKeydown($event)">

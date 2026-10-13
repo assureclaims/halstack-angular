@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Section } from '../../model/sections';
 import { BoxExampleComponent } from 'src/app/components/examples/box/box-example/box-example.component';
 import { BoxApiComponent } from '../../components/examples/box/box-api/box-api.component';
@@ -8,6 +8,7 @@ import { BoxApiComponent } from '../../components/examples/box/box-api/box-api.c
     templateUrl: "./box.component.html",
     styleUrls: ["./box.component.scss"],
     providers: [],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class BoxComponent implements OnInit{

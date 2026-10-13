@@ -232,17 +232,11 @@ export class DxcTextInputComponent
 
     this.service.setIsDisabled(this.disabled);
 
-    if (
-      this.onClickSuffix.observers !== undefined &&
-      this.onClickSuffix.observers.length !== 0
-    ) {
+    if (this.onClickSuffix.observed) {
       this.suffixPointer = true;
     }
 
-    if (
-      this.onClickPrefix.observers !== undefined &&
-      this.onClickPrefix.observers.length !== 0
-    ) {
+    if (this.onClickPrefix.observed) {
       this.prefixPointer = true;
     }
 

@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Section } from '../../model/sections';
 import { AlertExampleComponent } from 'src/app/components/examples/alert/alert-example/alert-example.component';
 import { AlertApiComponent } from '../../components/examples/alert/alert-api/alert-api.component';
@@ -8,6 +8,7 @@ import { AlertApiComponent } from '../../components/examples/alert/alert-api/ale
     templateUrl: "./alert.component.html",
     styleUrls: ["./alert.component.scss"],
     providers: [],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class AlertComponent implements OnInit{

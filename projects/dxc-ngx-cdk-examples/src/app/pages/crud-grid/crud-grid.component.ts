@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { UntypedFormBuilder, FormControl, UntypedFormGroup } from '@angular/forms';
 import { List } from 'immutable';
 import { Button, DxcCrudTableComponent, DxcResizeService } from '@dxc-technology/halstack-angular';
@@ -8,6 +8,7 @@ import { EFieldsType, EMethod, IFieldsBaseProperties, IRequest, ITextEditorprope
     selector: 'app-crud-grid',
     templateUrl: './crud-grid.component.html',
     styleUrls: ['./crud-grid.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class CrudGridComponent implements OnInit {

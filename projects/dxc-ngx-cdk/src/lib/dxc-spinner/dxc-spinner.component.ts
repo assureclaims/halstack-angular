@@ -4,7 +4,9 @@ import {
   Input,
   HostBinding,
   SimpleChanges,
-  Injector
+  Injector,
+  ChangeDetectorRef,
+  ChangeDetectionStrategy
 } from "@angular/core";
 import { css } from "@emotion/css";
 import { BehaviorSubject, Subscription } from "rxjs";
@@ -18,6 +20,7 @@ import { ProgressSpinnerMode } from "@angular/material/progress-spinner";
     templateUrl: "./dxc-spinner.component.html",
     styleUrls: ["./dxc-spinner.component.scss"],
     providers: [CssUtils],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class DxcSpinnerComponent {
@@ -52,7 +55,7 @@ export class DxcSpinnerComponent {
   private subscriptions: Subscription;
   show = false;
 
-  constructor(private utils: CssUtils, private injector: Injector,) {
+  constructor(private utils: CssUtils, private injector: Injector, private changeDetectorRef: ChangeDetectorRef) {
     this.loaderService = this.injector.get(LoaderService);
    }
 
@@ -104,6 +107,7 @@ export class DxcSpinnerComponent {
     this.subscriptions = this.loaderService.loaderState
       .subscribe((state: LoaderState) => {
         this.show = state.show;
+        this.changeDetectorRef.detectChanges();
       });
   }
 

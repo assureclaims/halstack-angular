@@ -55,7 +55,7 @@ export class Ordering {
     public elementRef: ElementRef,
     public viewContainerRef: ViewContainerRef
   ) {
-    const _injector = this.viewContainerRef.parentInjector;
+    const _injector = this.viewContainerRef.injector;
     const _parent: DxcResultTable<any> =
       _injector.get<DxcResultTable<any>>(DxcResultTable);
 

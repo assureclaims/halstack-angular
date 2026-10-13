@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
     selector: 'dropdown-info',
     templateUrl: './dropdown-info.component.html',
     styleUrls: ['./dropdown-info.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class DropdownInfoComponent {

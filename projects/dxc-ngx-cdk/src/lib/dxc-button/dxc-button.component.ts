@@ -8,6 +8,7 @@ import {
   ContentChildren,
   QueryList,
   ChangeDetectorRef,
+  ChangeDetectionStrategy
 } from "@angular/core";
 import { css } from "@emotion/css";
 import { BehaviorSubject } from "rxjs";
@@ -22,6 +23,7 @@ import { DxcButtonIconComponent } from "./dxc-button-icon/dxc-button-icon.compon
     selector: "dxc-button",
     templateUrl: "./dxc-button.component.html",
     providers: [CssUtils],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class DxcButtonComponent {

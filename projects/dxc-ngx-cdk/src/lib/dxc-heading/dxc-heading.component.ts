@@ -1,12 +1,13 @@
 import { css } from "@emotion/css";
 import { CssUtils } from "../utils";
 import { BehaviorSubject } from "rxjs";
-import { Component, Input, HostBinding, SimpleChanges } from "@angular/core";
+import { Component, Input, HostBinding, SimpleChanges, ChangeDetectionStrategy } from "@angular/core";
 
 @Component({
     selector: "dxc-heading",
     templateUrl: "./dxc-heading.component.html",
     providers: [CssUtils],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class DxcHeadingComponent {

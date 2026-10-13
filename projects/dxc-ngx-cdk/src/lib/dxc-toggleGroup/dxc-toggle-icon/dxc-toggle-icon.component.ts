@@ -1,12 +1,14 @@
 import {
-    Component,
-    HostBinding,
-    OnChanges,
-  } from "@angular/core";
+  Component,
+  HostBinding,
+  OnChanges,
+  ChangeDetectionStrategy
+} from "@angular/core";
   
   @Component({
     selector: "dxc-toggle-icon",
     templateUrl: "./dxc-toggle-icon.component.html",
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
   export class DxcToggleIconComponent implements OnChanges {

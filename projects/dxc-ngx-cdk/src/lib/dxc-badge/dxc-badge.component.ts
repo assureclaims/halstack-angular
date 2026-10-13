@@ -4,6 +4,7 @@ import {
   Input,
   SimpleChanges,
   HostBinding,
+  ChangeDetectionStrategy
 } from "@angular/core";
 import { BehaviorSubject } from "rxjs";
 import { css } from "@emotion/css";
@@ -12,6 +13,7 @@ import { CssUtils } from "../utils";
     selector: "dxc-badge",
     templateUrl: "./dxc-badge.component.html",
     providers: [CssUtils],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class DxcBadgeComponent implements OnInit {

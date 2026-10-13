@@ -7,6 +7,7 @@ import {
   EventEmitter,
   ChangeDetectorRef,
   ContentChildren,
+  ChangeDetectionStrategy
 } from "@angular/core";
 import { MatTab } from "@angular/material/tabs";
 import { DxcTabIconComponent } from "./dxc-tab-icon/dxc-tab-icon.component";
@@ -15,6 +16,7 @@ import { TabService } from "../services/tab.service";
 @Component({
     selector: "dxc-tab",
     templateUrl: "./dxc-tab.component.html",
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class DxcTabComponent implements OnChanges {

@@ -4,6 +4,7 @@ import {
   ViewChild,
   Input,
   SimpleChanges,
+  ChangeDetectionStrategy
 } from "@angular/core";
 import { EventEmitter } from "events";
 import { css } from "@emotion/css";
@@ -17,6 +18,7 @@ import {
 @Component({
     selector: "dxc-tabbed-section",
     templateUrl: "./dxc-tabbed-section.component.html",
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class DxcTabbedSectionComponent implements OnInit {

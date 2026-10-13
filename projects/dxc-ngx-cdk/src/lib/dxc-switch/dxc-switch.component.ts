@@ -5,6 +5,7 @@ import {
   Output,
   HostBinding,
   SimpleChanges,
+  ChangeDetectionStrategy
 } from "@angular/core";
 import { EventEmitter, ElementRef } from "@angular/core";
 import { css } from "@emotion/css";
@@ -19,6 +20,7 @@ import {
     selector: "dxc-switch",
     templateUrl: "./dxc-switch.component.html",
     providers: [CssUtils],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class DxcSwitchComponent implements OnChanges {

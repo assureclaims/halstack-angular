@@ -5,6 +5,7 @@ import {
   Output,
   HostBinding,
   SimpleChanges,
+  ChangeDetectionStrategy
 } from "@angular/core";
 import { EventEmitter } from "@angular/core";
 import { css } from "@emotion/css";
@@ -16,6 +17,7 @@ import { coerceBooleanProperty } from '@angular/cdk/coercion';
     selector: "dxc-radio",
     templateUrl: "./dxc-radio.component.html",
     providers: [CssUtils],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class DxcRadioComponent implements OnInit {

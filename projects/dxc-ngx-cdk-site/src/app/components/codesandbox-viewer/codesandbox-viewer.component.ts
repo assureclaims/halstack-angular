@@ -4,6 +4,7 @@ import {
   Input,
   HostBinding,
   OnDestroy,
+  ChangeDetectionStrategy
 } from "@angular/core";
 import { CodesandboxServiceService } from "../../service/codesandbox-service.service";
 import { DomSanitizer, SafeResourceUrl } from "@angular/platform-browser";
@@ -12,6 +13,7 @@ import { DomSanitizer, SafeResourceUrl } from "@angular/platform-browser";
     selector: "codesandbox-viewer",
     templateUrl: "./codesandbox-viewer.component.html",
     styleUrls: ["./codesandbox-viewer.component.scss"],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class CodesandboxViewer implements OnInit {

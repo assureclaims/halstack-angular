@@ -1,5 +1,5 @@
 import { coerceNumberProperty } from '@angular/cdk/coercion';
-import { Input } from '@angular/core';
+import { Input, ChangeDetectionStrategy } from '@angular/core';
 import { InputTextService } from '../services/inputText.service';
 import {
   Component,
@@ -13,6 +13,7 @@ import {
 @Component({
     selector: "dxc-input-prefix-icon",
     templateUrl: "./dxc-input-prefix-icon.component.html",
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class DxcInputPrefixIconComponent implements OnChanges {
@@ -43,7 +44,7 @@ export class DxcInputPrefixIconComponent implements OnChanges {
         this.isDisabled = value;
       }
     });
-    if(this.onClickPrefix.observers.length > 0){
+    if(this.onClickPrefix.observed){
       this.hasOnClick = true;
     }
   }

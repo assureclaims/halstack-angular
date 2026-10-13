@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { UntypedFormGroup, UntypedFormBuilder, Validators, AbstractControl, ValidatorFn } from '@angular/forms';
 
 @Component({
     selector: 'date-info',
     templateUrl: './date-info.component.html',
     styleUrls: ['./date-info.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class DateInfoComponent implements OnInit {

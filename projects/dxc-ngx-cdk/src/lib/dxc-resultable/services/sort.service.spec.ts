@@ -1,16 +1,16 @@
 import { SortService } from "./sort.service";
 import { TestBed, ComponentFixture } from "@angular/core/testing";
 import { Ordering } from "../directives/sorting.directive";
-import { Component } from "@angular/core";
+import { Component, ChangeDetectionStrategy } from "@angular/core";
 import { MockDirective, ngMocks, MockedDirective } from "ng-mocks";
 import {
-  BrowserDynamicTestingModule,
-  platformBrowserDynamicTesting,
-} from "@angular/platform-browser-dynamic/testing";
+  BrowserTestingModule,
+  platformBrowserTesting,
+} from "@angular/platform-browser/testing";
 
 TestBed.initTestEnvironment(
-  BrowserDynamicTestingModule,
-  platformBrowserDynamicTesting()
+  BrowserTestingModule,
+  platformBrowserTesting()
 );
 let data = [
   {
@@ -52,6 +52,7 @@ let data = [
       ></span>
     </div>
     >`,
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 class TestHeaderComponent {

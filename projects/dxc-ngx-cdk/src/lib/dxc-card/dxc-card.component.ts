@@ -10,6 +10,7 @@ import {
   SimpleChanges,
   ChangeDetectorRef,
   Optional,
+  ChangeDetectionStrategy
 } from "@angular/core";
 import { css } from "@emotion/css";
 import { BehaviorSubject } from "rxjs";
@@ -26,6 +27,7 @@ import { Space, Spacing, CardProperties } from "./dxc-card.types"
     templateUrl: "./dxc-card.component.html",
     styleUrls: [],
     providers: [CssUtils],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class DxcCardComponent implements OnInit {
@@ -129,7 +131,7 @@ export class DxcCardComponent implements OnInit {
   });
 
   public ngOnChanges(changes: SimpleChanges): void {
-    if (this.onClick.observers.length <= 0 && !this.linkHref) {
+    if (!this.onClick.observed && !this.linkHref) {
       this.tabIndexValue = -1;
     }
     const inputs = Object.keys(changes).reduce((result, item) => {
@@ -187,14 +189,14 @@ export class DxcCardComponent implements OnInit {
     return !this.defaultInputs.value.outlined
       ? 0
       : this.isHovered &&
-        this.onClick.observers.length > 0 &&
+        this.onClick.observed &&
         this.linkHref !== ""
       ? 2
       : 1;
   }
 
   getCursor(href) {
-    if (this.onClick.observers.length > 0 || href) {
+    if (this.onClick.observed || href) {
       return css`
         cursor: pointer;
       `;
@@ -204,7 +206,7 @@ export class DxcCardComponent implements OnInit {
   }
 
   getShadowDepthOnHover(href): number {
-    if (this.onClick.observers.length > 0 || href) {
+    if (this.onClick.observed || href) {
       return 2;
     } else {
       return 1;

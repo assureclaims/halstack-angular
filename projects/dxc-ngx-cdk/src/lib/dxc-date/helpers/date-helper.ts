@@ -55,10 +55,10 @@ export class DateHelper {
     
       public dateLostFocus(dateValue: any, userFormat: string): string {
         var format = userFormat.replace('YYYY', 'yy').replace('yyyy', 'yy');
-        var format1 = format.substr(0, 2).toUpperCase();
-        var format2 = format.substr(3, 2).toUpperCase();
-        var format3 = format.substr(6, 4).toUpperCase();
-        var sDateSeparator = format.substr(2, 1);
+        var format1 = format.substring(0, 2).toUpperCase();
+        var format2 = format.substring(3, 5).toUpperCase();
+        var format3 = format.substring(6, 10).toUpperCase();
+        var sDateSeparator = format.substring(2, 3);
         var iDayPos = 0, iMonthPos = 0;
         var d = new Date(1999, 11, 22);
         var s = d.toLocaleString();
@@ -180,7 +180,7 @@ export class DateHelper {
           sInputYear = '0' + sInputYear;
         }
         if (sInputYear.length < 3) {
-          sGuessedYear = sCurrentYear.substr(0, 4 - sInputYear.length) + sInputYear;
+          sGuessedYear = sCurrentYear.substring(0, 4 - sInputYear.length) + sInputYear;
           var iGuessedYear = parseInt(sGuessedYear);
           if (iGuessedYear - iCurrentYear > 20) {
             iGuessedYear = iGuessedYear - 100;

@@ -1,9 +1,10 @@
-import { Component } from "@angular/core";
+import { Component, ChangeDetectionStrategy } from "@angular/core";
 
 @Component({
     selector: "tabs-info",
     templateUrl: "./tabs-info.component.html",
     styleUrls: ["./tabs-info.component.scss"],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class TabsInfoComponent {

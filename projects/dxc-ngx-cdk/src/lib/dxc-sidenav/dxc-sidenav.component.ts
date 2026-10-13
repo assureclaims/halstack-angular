@@ -8,6 +8,7 @@ import {
   ElementRef,
   ChangeDetectorRef,
   HostBinding,
+  ChangeDetectionStrategy
 } from "@angular/core";
 import { BehaviorSubject } from "rxjs";
 import { css } from "@emotion/css";
@@ -21,6 +22,7 @@ import { SidenavService } from './services/sidenav.service';
     templateUrl: "./dxc-sidenav.component.html",
     styleUrls: ["./dxc-sidenav.component.scss"],
     providers: [CssUtils, SidenavService],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class DxcSidenavComponent implements OnInit {

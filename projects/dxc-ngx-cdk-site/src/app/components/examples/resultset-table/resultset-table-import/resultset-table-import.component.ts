@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
     selector: 'resultset-table-import',
     templateUrl: './resultset-table-import.component.html',
     styleUrls: ['./resultset-table-import.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class ResultsetTableImportComponent implements OnInit {

@@ -1,6 +1,7 @@
 import {
   Component,
-  OnInit
+  OnInit,
+  ChangeDetectionStrategy
 } from "@angular/core";
 import { CssUtils } from "../../utils";
 
@@ -8,6 +9,7 @@ import { CssUtils } from "../../utils";
     selector: "dxc-application-layout-main",
     templateUrl: "./dxc-application-layout-main.component.html",
     providers: [CssUtils],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class DxcApplicationLayoutMainComponent implements OnInit {

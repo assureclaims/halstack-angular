@@ -4,6 +4,7 @@ import {
   Input,
   SimpleChanges,
   HostBinding,
+  ChangeDetectionStrategy
 } from "@angular/core";
 import { BehaviorSubject } from "rxjs";
 import { css } from "@emotion/css";
@@ -12,6 +13,7 @@ import { CssUtils } from "../utils";
     selector: "dxc-box",
     templateUrl: "./dxc-box.component.html",
     providers: [CssUtils],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class DxcBoxComponent implements OnInit {

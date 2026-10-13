@@ -7,6 +7,7 @@ import {
   ContentChildren,
   QueryList,
   SimpleChanges,
+  ChangeDetectionStrategy
 } from "@angular/core";
 import { DxcTabComponent } from "./dxc-tab/dxc-tab.component";
 import { MatTab, MatTabGroup } from "@angular/material/tabs";
@@ -39,6 +40,7 @@ const globalRippleConfig: RippleGlobalOptions = {
         TabService,
         { provide: MAT_RIPPLE_GLOBAL_OPTIONS, useValue: globalRippleConfig },
     ],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class DxcTabsComponent implements OnChanges {

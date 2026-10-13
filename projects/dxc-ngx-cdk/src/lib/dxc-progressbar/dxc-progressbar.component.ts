@@ -1,4 +1,4 @@
-import { Component, Input, HostBinding, SimpleChanges } from "@angular/core";
+import { Component, Input, HostBinding, SimpleChanges, ChangeDetectionStrategy } from "@angular/core";
 import { css } from "@emotion/css";
 import { BehaviorSubject } from "rxjs";
 import { CssUtils } from "../utils";
@@ -10,6 +10,7 @@ import { ProgressBarMode } from "@angular/material/progress-bar";
     templateUrl: "./dxc-progressbar.component.html",
     styleUrls: ["./dxc-progressbar.component.scss"],
     providers: [CssUtils],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class DxcProgressbarComponent {

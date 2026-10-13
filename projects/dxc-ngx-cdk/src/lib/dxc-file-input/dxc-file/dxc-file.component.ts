@@ -11,6 +11,7 @@ import {
   OnInit,
   Output,
   SimpleChanges,
+  ChangeDetectionStrategy
 } from "@angular/core";
 import { css } from "@emotion/css";
 import { BehaviorSubject } from "rxjs";
@@ -24,6 +25,7 @@ import { FileAddService } from "../services/file.add.service";
     selector: "dxc-file",
     templateUrl: "./dxc-file.component.html",
     providers: [FileAddService],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class DxcFileComponent implements OnInit {

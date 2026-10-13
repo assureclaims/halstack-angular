@@ -19,7 +19,7 @@ import {
     ></span>
   </div>`,
     styleUrls: ["./dxc-header-row-component.scss"],
-    changeDetection: ChangeDetectionStrategy.Default,
+    changeDetection: ChangeDetectionStrategy.Eager,
     encapsulation: ViewEncapsulation.None,
     standalone: false
 })

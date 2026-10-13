@@ -1,4 +1,4 @@
-import { Component, Input, HostBinding, SimpleChanges } from "@angular/core";
+import { Component, Input, HostBinding, SimpleChanges, ChangeDetectionStrategy } from "@angular/core";
 import { css } from "@emotion/css";
 import { BehaviorSubject } from "rxjs";
 import { CssUtils } from "../utils";
@@ -8,6 +8,7 @@ import { CssUtils } from "../utils";
     templateUrl: "./dxc-table.component.html",
     styleUrls: [],
     providers: [CssUtils],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class DxcTableComponent {

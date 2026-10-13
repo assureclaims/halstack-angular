@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Section } from '../../model/sections';
 import { CardExampleComponent } from '../../components/examples/card/card-example/card-example.component';
 import { CardApiComponent } from '../../components/examples/card/card-api/card-api.component';
@@ -8,6 +8,7 @@ import { CardApiComponent } from '../../components/examples/card/card-api/card-a
     templateUrl: "./card.component.html",
     styleUrls: ["./card.component.scss"],
     providers: [],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class CardComponent implements OnInit{

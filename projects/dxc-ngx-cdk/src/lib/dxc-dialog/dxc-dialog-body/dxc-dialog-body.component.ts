@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
     selector: 'dxc-dialog-body',
     templateUrl: './dxc-dialog-body.component.html',
     styleUrls: ['./dxc-dialog-body.component.css'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class DxcDialogBodyComponent implements OnInit {

@@ -8,6 +8,7 @@ import {
   ElementRef,
   ViewChildren,
   QueryList,
+  ChangeDetectionStrategy
 } from "@angular/core";
 import { BehaviorSubject } from "rxjs";
 import { CssUtils } from "../utils";
@@ -21,6 +22,7 @@ import { DxcTagIconComponent } from './dxc-tag-icon/dxc-tag-icon.component';
     templateUrl: "./dxc-tag.component.html",
     styleUrls: ["./dxc-tag.component.css"],
     providers: [CssUtils],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class DxcTagComponent implements OnInit {
@@ -96,7 +98,7 @@ export class DxcTagComponent implements OnInit {
   constructor(private utils: CssUtils,private cdRef: ChangeDetectorRef) {}
 
   ngOnInit() {
-    this.isClickDefined = this.onClick.observers.length > 0;
+    this.isClickDefined = this.onClick.observed;
     this.styleDxcTag = `${this.setDxcTagDynamicStyle(
       this.defaultInputs.getValue()
     )}`;

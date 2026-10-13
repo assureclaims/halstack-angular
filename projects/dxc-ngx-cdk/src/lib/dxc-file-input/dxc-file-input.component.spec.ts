@@ -4,14 +4,14 @@ import { DxcFileInputModule } from "./dxc-file-input.module";
 import { screen, waitFor } from "@testing-library/dom";
 import { FileData } from "./model/file-info";
 import {
-  BrowserDynamicTestingModule,
-  platformBrowserDynamicTesting,
-} from "@angular/platform-browser-dynamic/testing";
+  BrowserTestingModule,
+  platformBrowserTesting,
+} from "@angular/platform-browser/testing";
 import { TestBed } from "@angular/core/testing";
 
 TestBed.initTestEnvironment(
-  BrowserDynamicTestingModule,
-  platformBrowserDynamicTesting()
+  BrowserTestingModule,
+  platformBrowserTesting()
 );
 
 describe("DxcFileInputComponent", () => {

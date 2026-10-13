@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ChangeDetectionStrategy } from "@angular/core";
 import { Section } from "../../model/sections";
 import {TabsExampleComponent} from '../../components/examples/tabs/tabs-example/tabs-example.component';
 import { TabsApiComponent } from '../../components/examples/tabs/tabs-api/tabs-api.component';
@@ -7,6 +7,7 @@ import { TabsApiComponent } from '../../components/examples/tabs/tabs-api/tabs-a
     selector: "app-tabs",
     templateUrl: "./tabs.component.html",
     styleUrls: ["./tabs.component.scss"],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class TabsComponent implements OnInit {

@@ -297,7 +297,6 @@ export * from "./lib/dxc-file-input/model/IFileService";
 
 export * from './lib/dxc-popover/dxc-popover-module';
 export * from './lib/dxc-popover/dxc-popover';
-export * from './lib/dxc-popover/dxc-popover-animations';
 export * from './lib/dxc-popover/dxc-popover-interfaces';
 export * from './lib/dxc-popover/dxc-popover-trigger';
 export * from './lib/dxc-popover/dxc-popover-target';

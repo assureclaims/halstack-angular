@@ -13,15 +13,12 @@ import {
   NgZone
 } from '@angular/core';
 
-import { AnimationEvent } from '@angular/animations';
-
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
 import { ESCAPE } from '@angular/cdk/keycodes';
 
 import { DxcPopoverPositionX, DxcPopoverPositionY, DxcPopoverTriggerEvent, DxcPopoverScrollStrategy } from './dxc-popover-types';
 import { throwDxcPopoverInvalidPositionX, throwDxcPopoverInvalidPositionY } from './dxc-popover-errors';
 import { DxcPopoverPanel } from './dxc-popover-interfaces';
-import { transformPopover } from './dxc-popover-animations';
 
 @Component({
     selector: 'dxc-popover',
@@ -29,9 +26,6 @@ import { transformPopover } from './dxc-popover-animations';
     styleUrls: ['./dxc-popover.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     encapsulation: ViewEncapsulation.None,
-    animations: [
-        transformPopover
-    ],
     exportAs: 'dxcPopover',
     standalone: false
 })
@@ -75,9 +69,6 @@ export class DxcPopover implements DxcPopoverPanel, OnDestroy { // tslint:disabl
 
   /** Config object to be passed into the popover's content ngStyle */
   public popoverContentStyles: {};
-
-  /** Emits the current animation state whenever it changes. */
-  _onAnimationStateChange = new EventEmitter<AnimationEvent>();
 
 
   /** Position of the popover in the X axis. */

@@ -5,6 +5,7 @@ import {
   OnChanges,
   SimpleChanges,
   HostListener,
+  ChangeDetectionStrategy
 } from "@angular/core";
 import { css } from "@emotion/css";
 import { BehaviorSubject } from "rxjs";
@@ -17,6 +18,7 @@ import { coerceNumberProperty } from '@angular/cdk/coercion';
     templateUrl: "./dxc-footer.component.html",
     styleUrls: ["./dxc-footer.component.scss"],
     providers: [CssUtils],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class DxcFooterComponent implements OnChanges {

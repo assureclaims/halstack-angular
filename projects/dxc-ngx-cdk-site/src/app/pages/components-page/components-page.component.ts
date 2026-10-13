@@ -1,4 +1,4 @@
-import { Component, OnInit, HostListener } from '@angular/core';
+import { Component, OnInit, HostListener, ChangeDetectionStrategy } from '@angular/core';
 import { Components } from '../../components';
 import { Router, NavigationEnd } from '@angular/router';
 
@@ -6,6 +6,7 @@ import { Router, NavigationEnd } from '@angular/router';
     selector: 'app-components-page',
     templateUrl: './components-page.component.html',
     styleUrls: ['./components-page.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class ComponentsPageComponent implements OnInit {

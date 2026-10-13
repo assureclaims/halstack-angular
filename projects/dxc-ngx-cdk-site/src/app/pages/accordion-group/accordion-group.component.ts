@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Section } from 'src/app/model/sections';
 import { AccordionGroupExampleComponent } from '../../components/examples/accordion-group/accordion-group-example/accordion-group-example.component';
 import { AccordionGroupApiComponent } from '../../components/examples/accordion-group/accordion-group-api/accordion-group-api.component';
 @Component({
     selector: 'app-accordion-group',
     templateUrl: './accordion-group.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class AccordionGroupComponent implements OnInit {

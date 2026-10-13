@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
     selector: 'checkbox-import',
     templateUrl: './checkbox-import.component.html',
     styleUrls: ['./checkbox-import.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class CheckboxImportComponent implements OnInit {

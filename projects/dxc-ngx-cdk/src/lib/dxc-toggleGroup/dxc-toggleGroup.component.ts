@@ -7,6 +7,7 @@ import {
   SimpleChanges,
   HostBinding,
   ChangeDetectorRef,
+  ChangeDetectionStrategy
 } from "@angular/core";
 import { BehaviorSubject } from "rxjs";
 import { CssUtils } from "../utils";
@@ -19,6 +20,7 @@ import { ToggleGroupService } from "./services/toggleGroup.service";
     templateUrl: "./dxc-toggleGroup.component.html",
     styleUrls: [],
     providers: [CssUtils, ToggleGroupService],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class DxcToggleGroupComponent implements OnInit {

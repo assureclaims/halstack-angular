@@ -6,6 +6,7 @@ import {
   EventEmitter,
   SimpleChanges,
   HostBinding,
+  ChangeDetectionStrategy
 } from "@angular/core";
 import { BehaviorSubject } from "rxjs";
 import { coerceNumberProperty, coerceArray } from "@angular/cdk/coercion";
@@ -15,6 +16,7 @@ import { css } from "@emotion/css";
     selector: "dxc-paginator",
     templateUrl: "./dxc-paginator.component.html",
     styleUrls: ["./dxc-paginator.component.scss"],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class DxcPaginatorComponent implements OnInit {

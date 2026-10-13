@@ -1,10 +1,11 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
 import { DataPropertiesTable } from 'src/app/model/data-properties-table';
 
 @Component({
     selector: 'tabbed-section-table-properties',
     templateUrl: './tabbed-section-table-properties.component.html',
     styleUrls: ['./tabbed-section-table-properties.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class TabbedSectionTablePropertiesComponent implements OnInit {

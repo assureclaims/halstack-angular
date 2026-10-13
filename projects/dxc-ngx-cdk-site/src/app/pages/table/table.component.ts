@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Section } from '../../model/sections';
 import { TableExampleComponent } from '../../components/examples/table/table-example/table-example.component';
 import { TableApiComponent } from '../../components/examples/table/table-api/table-api.component';
@@ -7,6 +7,7 @@ import { TableApiComponent } from '../../components/examples/table/table-api/tab
     selector: 'app-table',
     templateUrl: './table.component.html',
     styleUrls: ['./table.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class TableComponent implements OnInit {

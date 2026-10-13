@@ -4,6 +4,7 @@ import {
   OnChanges,
   Output,
   EventEmitter,
+  ChangeDetectionStrategy
 } from "@angular/core";
 import { CssUtils } from "../utils";
 import {
@@ -27,6 +28,7 @@ import {
     selector: "dxc-accordion-group",
     templateUrl: "./dxc-accordionGroup.component.html",
     providers: [CssUtils, AccordionService],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class DxcAccordionGroupComponent implements OnChanges, OnInit {
