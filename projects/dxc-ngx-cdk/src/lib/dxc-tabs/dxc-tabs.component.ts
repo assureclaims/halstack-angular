@@ -222,7 +222,7 @@ export class DxcTabsComponent implements OnChanges {
       .mat-mdc-tab-list .mdc-tab-indicator .mdc-tab-indicator__content--underline{
         border-width: var(--tabs-dividerThickness, 2px);
         width: 100%;
-        border-color: var(--tabs-dividerColor);
+        border-color: var(--tabs-dividerColor) !important;
         border-style: solid
       }
       .mat-mdc-tab-group{
