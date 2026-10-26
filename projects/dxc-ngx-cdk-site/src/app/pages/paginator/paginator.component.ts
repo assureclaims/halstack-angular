@@ -1,12 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Section } from 'src/app/model/sections';
 import { PaginatorExampleComponent } from '../../components/examples/paginator/paginator-example/paginator-example.component';
 import { PaginatorApiComponent } from '../../components/examples/paginator/paginator-api/paginator-api.component';
 
 @Component({
-  selector: 'app-paginator',
-  templateUrl: './paginator.component.html',
-  styleUrls: ['./paginator.component.scss']
+    selector: 'app-paginator',
+    templateUrl: './paginator.component.html',
+    styleUrls: ['./paginator.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class PaginatorComponent implements OnInit {
   headingMargin = {

@@ -4,15 +4,15 @@ import { MatCardModule } from "@angular/material/card";
 import { DxcBoxModule } from "../dxc-box/dxc-box.module";
 import { TestBed } from "@angular/core/testing";
 import {
-  BrowserDynamicTestingModule,
-  platformBrowserDynamicTesting,
-} from "@angular/platform-browser-dynamic/testing";
+  BrowserTestingModule,
+  platformBrowserTesting,
+} from "@angular/platform-browser/testing";
 import { screen } from "@testing-library/dom";
 import { BackgroundProviderModule } from "../background-provider/background-provider.module";
 
 TestBed.initTestEnvironment(
-  BrowserDynamicTestingModule,
-  platformBrowserDynamicTesting()
+  BrowserTestingModule,
+  platformBrowserTesting()
 );
 
 describe("DxcCardComponent tests", () => {

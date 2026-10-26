@@ -1,10 +1,12 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
 import { DataPropertiesTable } from 'src/app/model/data-properties-table';
 
 @Component({
-  selector: 'upload-table-properties',
-  templateUrl: './upload-table-properties.component.html',
-  styleUrls: ['./upload-table-properties.component.scss']
+    selector: 'upload-table-properties',
+    templateUrl: './upload-table-properties.component.html',
+    styleUrls: ['./upload-table-properties.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class UploadTablePropertiesComponent implements OnInit {
 

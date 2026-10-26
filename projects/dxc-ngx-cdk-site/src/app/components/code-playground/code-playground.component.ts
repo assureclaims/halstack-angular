@@ -1,9 +1,11 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
-  selector: 'app-code-playground',
-  templateUrl: './code-playground.component.html',
-  styleUrls: ['./code-playground.component.scss']
+    selector: 'app-code-playground',
+    templateUrl: './code-playground.component.html',
+    styleUrls: ['./code-playground.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class CodePlaygroundComponent implements OnInit {
   @Input() type;

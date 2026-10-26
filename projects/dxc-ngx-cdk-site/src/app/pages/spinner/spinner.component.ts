@@ -1,13 +1,15 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ChangeDetectionStrategy } from "@angular/core";
 import { Section } from "../../model/sections";
 import { SpinnerExampleComponent } from "../../components/examples/spinner/spinner-example/spinner-example.component";
 import { SpinnerApiComponent } from '../../components/examples/spinner/spinner-api/spinner-api.component';
 
 @Component({
-  selector: "app-spinner",
-  templateUrl: "./spinner.component.html",
-  styleUrls: ["./spinner.component.scss"],
-  providers: [],
+    selector: "app-spinner",
+    templateUrl: "./spinner.component.html",
+    styleUrls: ["./spinner.component.scss"],
+    providers: [],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class SpinnerComponent implements OnInit {
   headingMargin = {

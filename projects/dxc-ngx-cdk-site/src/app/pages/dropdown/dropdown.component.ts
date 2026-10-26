@@ -1,12 +1,14 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ChangeDetectionStrategy } from "@angular/core";
 import { Section } from "../../model/sections";
 import { DropdownExampleComponent } from "../../components/examples/dropdown/dropwdown-example/dropdown-example.component";
 import { DropdownApiComponent } from "../../components/examples/dropdown/dropdown-api/dropdown-api.component";
 
 @Component({
-  selector: "app-dropdown",
-  templateUrl: "./dropdown.component.html",
-  styleUrls: ["./dropdown.component.scss"],
+    selector: "app-dropdown",
+    templateUrl: "./dropdown.component.html",
+    styleUrls: ["./dropdown.component.scss"],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class DropdownComponent implements OnInit {
   headingMargin = {

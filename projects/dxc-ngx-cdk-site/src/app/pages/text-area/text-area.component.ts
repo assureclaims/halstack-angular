@@ -1,12 +1,14 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ChangeDetectionStrategy } from "@angular/core";
 import { Section } from "src/app/model/sections";
 import { TextAreaApiComponent } from "../../components/examples/text-area/text-area-api/text-area-api.component";
 import { TextAreaExampleComponent } from "../../components/examples/text-area/text-area-example/text-area-example.component";
 
 @Component({
-  selector: "app-text-area",
-  templateUrl: "./text-area.component.html",
-  styleUrls: ["./text-area.component.scss"],
+    selector: "app-text-area",
+    templateUrl: "./text-area.component.html",
+    styleUrls: ["./text-area.component.scss"],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class TextAreaComponent implements OnInit {
   headingMargin = {

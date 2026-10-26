@@ -4,6 +4,7 @@ import {
   OnChanges,
   Output,
   EventEmitter,
+  ChangeDetectionStrategy
 } from "@angular/core";
 import { CssUtils } from "../utils";
 import {
@@ -24,9 +25,11 @@ import {
 } from "@angular/cdk/coercion";
 
 @Component({
-  selector: "dxc-accordion-group",
-  templateUrl: "./dxc-accordionGroup.component.html",
-  providers: [CssUtils, AccordionService],
+    selector: "dxc-accordion-group",
+    templateUrl: "./dxc-accordionGroup.component.html",
+    providers: [CssUtils, AccordionService],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class DxcAccordionGroupComponent implements OnChanges, OnInit {
   @Input() margin: any;

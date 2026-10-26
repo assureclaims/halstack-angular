@@ -1,10 +1,12 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
 import { DataPropertiesTable } from 'src/app/model/data-properties-table';
 
 @Component({
-  selector: 'slider-properties',
-  templateUrl: './slider-properties.component.html',
-  styleUrls: ['./slider-properties.component.scss']
+    selector: 'slider-properties',
+    templateUrl: './slider-properties.component.html',
+    styleUrls: ['./slider-properties.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class SliderPropertiesComponent implements OnInit {
 

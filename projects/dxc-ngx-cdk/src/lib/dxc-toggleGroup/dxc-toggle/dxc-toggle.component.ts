@@ -8,14 +8,17 @@ import {
   ContentChildren,
   QueryList,
   ChangeDetectorRef,
+  ChangeDetectionStrategy
 } from "@angular/core";
 import { DxcToggleIconComponent } from "../dxc-toggle-icon/dxc-toggle-icon.component";
 import { ToggleGroupService } from "../services/toggleGroup.service";
 
 @Component({
-  selector: "dxc-toggle",
-  templateUrl: "./dxc-toggle.component.html",
-  providers: [],
+    selector: "dxc-toggle",
+    templateUrl: "./dxc-toggle.component.html",
+    providers: [],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class DxcToggleComponent implements OnInit {
   @Input() label: string;

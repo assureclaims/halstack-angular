@@ -1,12 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Section } from '../../model/sections';
 import { ChipExampleComponent } from 'src/app/components/examples/chip/chip-example/chip-example.component';
 import { ChipApiComponent } from '../../components/examples/chip/chip-api/chip-api.component';
 
 @Component({
-  selector: 'app-chip',
-  templateUrl: './chip.component.html',
-  styleUrls: ['./chip.component.scss']
+    selector: 'app-chip',
+    templateUrl: './chip.component.html',
+    styleUrls: ['./chip.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class ChipComponent implements OnInit {
   headingMargin = {

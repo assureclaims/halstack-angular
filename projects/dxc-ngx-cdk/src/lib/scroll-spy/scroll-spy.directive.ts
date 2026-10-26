@@ -1,9 +1,9 @@
 ;import { Directive, Input, EventEmitter, Output, ElementRef } from '@angular/core';
 
 @Directive({
-  selector: '[scroll-spy]',
-  host: {'(window:scroll)': 'track($event)'}
-
+    selector: '[scroll-spy]',
+    host: { '(window:scroll)': 'track($event)' },
+    standalone: false
 })
 export class ScrollSpyDirective {
 
@@ -34,7 +34,7 @@ export class ScrollSpyDirective {
      }
 
     if (currentSection !== this.currentSection && currentSection !== undefined) {
-      this.currentSection = currentSection.substr(currentSection.length - 1);
+      this.currentSection = currentSection.slice(-1);
       this.sectionChange.emit(this.currentSection);
     }
   }

@@ -1,10 +1,12 @@
-import { Component, OnInit, Inject } from "@angular/core";
+import { Component, OnInit, Inject, ChangeDetectionStrategy } from "@angular/core";
 import { ExampleService } from "src/app/service/example.service";
 
 @Component({
-  selector: "app-overview-install",
-  templateUrl: "./overview-install.component.html",
-  styleUrls: ["./overview-install.component.scss"],
+    selector: "app-overview-install",
+    templateUrl: "./overview-install.component.html",
+    styleUrls: ["./overview-install.component.scss"],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class OverviewInstallComponent implements OnInit {
   headingMargin = {

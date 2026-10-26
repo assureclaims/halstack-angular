@@ -15,7 +15,7 @@
   (input)="valueChanged($event)"
   (mouseup)="mouseUp($event)"
   [tabIndex]="tabIndexValue"
-><input [value]="renderedValue" matSliderThumb></mat-slider>
+><input [value]="(renderedValue ?? 0).toString()" matSliderThumb></mat-slider>
 <span
   [ngClass]="disabled ? 'disabled-span' : ''"
   *ngIf="showLimitsValues"
@@ -25,7 +25,7 @@
 >
 <dxc-input-text
   *ngIf="showInput"
-  [value]="renderedValue"
+  [value]="(renderedValue ?? '').toString()"
   [name]="name"
   [disabled]="disabled"
   (onChange)="inputValueChanged($event)"

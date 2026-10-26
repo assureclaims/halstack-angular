@@ -1,9 +1,11 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
 import { DataPropertiesTable } from '../../../../../model/data-properties-table';
 @Component({
-  selector: 'button-table-properties',
-  templateUrl: './button-table-properties.component.html',
-  styleUrls: ['./button-table-properties.component.scss']
+    selector: 'button-table-properties',
+    templateUrl: './button-table-properties.component.html',
+    styleUrls: ['./button-table-properties.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class ButtonTablePropertiesComponent implements OnInit {
 

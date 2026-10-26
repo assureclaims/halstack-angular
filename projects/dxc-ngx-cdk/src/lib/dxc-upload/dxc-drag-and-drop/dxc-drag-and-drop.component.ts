@@ -6,11 +6,14 @@ import {
   OnChanges,
   EventEmitter,
   Input,
+  ChangeDetectionStrategy
 } from "@angular/core";
 @Component({
-  selector: "dxc-drag-and-drop",
-  templateUrl: "./dxc-drag-and-drop.component.html",
-  styleUrls: ["./dxc-drag-and-drop.component.scss"],
+    selector: "dxc-drag-and-drop",
+    templateUrl: "./dxc-drag-and-drop.component.html",
+    styleUrls: ["./dxc-drag-and-drop.component.scss"],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class DxcDragAndDropComponent implements OnChanges {
   hoveringWithFile = false;

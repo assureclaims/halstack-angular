@@ -10,6 +10,7 @@ import {
   ContentChildren,
   QueryList,
   ChangeDetectorRef,
+  ChangeDetectionStrategy
 } from "@angular/core";
 import { css } from "@emotion/css";
 import { BehaviorSubject } from "rxjs";
@@ -18,8 +19,10 @@ import { WizardService } from "../services/wizard.service";
 import { WizardStepProperties } from "./dxc-wizard-step.types";
 
 @Component({
-  selector: "dxc-wizard-step",
-  templateUrl: "./dxc-wizard-step.component.html",
+    selector: "dxc-wizard-step",
+    templateUrl: "./dxc-wizard-step.component.html",
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class DxcWizardStepComponent {
   /**

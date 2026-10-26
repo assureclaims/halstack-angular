@@ -1,12 +1,14 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ChangeDetectionStrategy } from "@angular/core";
 import { Section } from "../../model/sections";
 import {ProgressbarExampleComponent} from '../../components/examples/progressbar/progressbar-example/progressbar-example.component';
 import { ProgressbarApiComponent } from '../../components/examples/progressbar/progressbar-api/progressbar-api.component';
 
 @Component({
-  selector: "app-progressbar",
-  templateUrl: "./progressbar.component.html",
-  styleUrls: ["./progressbar.component.scss"]
+    selector: "app-progressbar",
+    templateUrl: "./progressbar.component.html",
+    styleUrls: ["./progressbar.component.scss"],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class ProgressbarComponent implements OnInit {
   headingMargin = {

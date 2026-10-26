@@ -8,6 +8,7 @@ import {
   ElementRef,
   OnChanges,
   HostBinding,
+  ChangeDetectionStrategy
 } from "@angular/core";
 import { BehaviorSubject } from "rxjs";
 import { css } from "@emotion/css";
@@ -17,10 +18,12 @@ import { coerceBooleanProperty } from "@angular/cdk/coercion";
 import { SidenavService } from "./services/sidenav.service";
 
 @Component({
-  selector: "dxc-application-layout-sidenav",
-  templateUrl: "./dxc-application-layout-sidenav.component.html",
-  styleUrls: [],
-  providers: [CssUtils],
+    selector: "dxc-application-layout-sidenav",
+    templateUrl: "./dxc-application-layout-sidenav.component.html",
+    styleUrls: [],
+    providers: [CssUtils],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class DxcApplicationLayoutSidenavComponent implements OnInit, OnChanges {
   @HostBinding("class") sidenavStyles;

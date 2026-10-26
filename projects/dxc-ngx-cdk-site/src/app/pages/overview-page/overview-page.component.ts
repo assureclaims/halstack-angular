@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Section } from '../../model/sections';
 import { OverviewInstallComponent } from 'src/app/components/overview/overview-install/overview-install.component';
 import { OverviewUseComponent } from 'src/app/components/overview/overview-use/overview-use.component';
@@ -6,9 +6,11 @@ import { OverviewSupportComponent } from 'src/app/components/overview/overview-s
 import { OverviewThemesComponent } from '../../components/overview/overview-themes/overview-themes.component';
 
 @Component({
-  selector: 'app-overview-page',
-  templateUrl: './overview-page.component.html',
-  styleUrls: ['./overview-page.component.scss']
+    selector: 'app-overview-page',
+    templateUrl: './overview-page.component.html',
+    styleUrls: ['./overview-page.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class OverviewPageComponent implements OnInit {
 

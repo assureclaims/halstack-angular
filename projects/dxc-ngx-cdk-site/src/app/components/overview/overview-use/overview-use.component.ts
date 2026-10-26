@@ -1,10 +1,12 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, ChangeDetectionStrategy } from '@angular/core';
 import { ExampleService } from 'src/app/service/example.service';
 
 @Component({
-  selector: 'app-overview-use',
-  templateUrl: './overview-use.component.html',
-  styleUrls: ['./overview-use.component.scss']
+    selector: 'app-overview-use',
+    templateUrl: './overview-use.component.html',
+    styleUrls: ['./overview-use.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class OverviewUseComponent implements OnInit {
 

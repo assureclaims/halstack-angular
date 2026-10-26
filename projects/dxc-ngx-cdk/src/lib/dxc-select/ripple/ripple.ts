@@ -8,6 +8,7 @@
 
 import {Platform} from '@angular/cdk/platform';
 import {
+  ANIMATION_MODULE_TYPE,
   Directive,
   ElementRef,
   Inject,
@@ -20,7 +21,6 @@ import {
 } from '@angular/core';
 import {RippleAnimationConfig, RippleConfig, RippleRef} from './ripple-ref';
 import {RippleRenderer, RippleTarget} from './ripple-renderer';
-import {ANIMATION_MODULE_TYPE} from '@angular/platform-browser/animations';
 
 /** Configurable options for `matRipple`. */
 export interface RippleGlobalOptions {
@@ -49,12 +49,13 @@ export const MAT_RIPPLE_GLOBAL_OPTIONS =
     new InjectionToken<RippleGlobalOptions>('mat-ripple-global-options');
 
 @Directive({
-  selector: '[mat-ripple], [matRipple]',
-  exportAs: 'matRipple',
-  host: {
-    'class': 'mat-ripple',
-    '[class.mat-ripple-unbounded]': 'unbounded'
-  }
+    selector: '[mat-ripple], [matRipple]',
+    exportAs: 'matRipple',
+    host: {
+        'class': 'mat-ripple',
+        '[class.mat-ripple-unbounded]': 'unbounded'
+    },
+    standalone: false
 })
 export class MatRipple implements OnInit, OnDestroy, RippleTarget {
 

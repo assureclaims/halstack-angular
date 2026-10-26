@@ -1,9 +1,11 @@
-import { Component } from "@angular/core";
+import { Component, ChangeDetectionStrategy } from "@angular/core";
 
 @Component({
-  selector: "toggle-group-info",
-  templateUrl: "./toggle-group-info.component.html",
-  styleUrls: ["./toggle-group-info.component.scss"]
+    selector: "toggle-group-info",
+    templateUrl: "./toggle-group-info.component.html",
+    styleUrls: ["./toggle-group-info.component.scss"],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class ToggleGroupInfoComponent {
 

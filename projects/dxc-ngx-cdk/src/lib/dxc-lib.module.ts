@@ -2,11 +2,10 @@
 // import { MessageToast } from './services/toaster/message.component';
 // import { MessageService } from './services/toaster/message.service';
 import { NgModule, ModuleWithProviders, Input, Pipe } from '@angular/core';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 // import { HttpcallService } from './services/httpconfiguration/httpcall.service';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 // import { InterceptorService } from './services/httpconfiguration/interceptor.service';
 // import { LoaderService } from './services/spinner/loader.service';
 // import { ConfigurationsetupService } from './services/startup/configurationsetup.service';
@@ -20,14 +19,13 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
   // entryComponents: [MessageToast],
   imports: [
     CommonModule,
-    BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule,
    // MdePopoverModule,
     // ToastrModule.forRoot({ toastComponent: MessageToast }),
     // ToastContainerModule
   ],
+  providers: [provideHttpClient(withInterceptorsFromDi())],
   // providers: [HttpcallService,
   //   InterceptorService,
   //   {

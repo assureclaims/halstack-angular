@@ -1,17 +1,18 @@
 @use '@angular/material' as mat;
-@import './elevation';
+@use "sass:map";
+@use 'elevation';
 
 @mixin mat-private-theme-elevation($zValue, $config, $opacity: 1) {
-  $foreground: map-get($config, foreground);
-  $elevation-color: map-get($foreground, elevation);
+  $foreground: map.get($config, foreground);
+  $elevation-color: map.get($foreground, elevation);
   $elevation-color-or-default: if($elevation-color == null, #000, $elevation-color);
 
   @include mat.elevation($zValue, $elevation-color-or-default, $opacity);
 }
 
 @mixin mat-private-theme-overridable-elevation($zValue, $config, $opacity: 1) {
-  $foreground: map-get($config, foreground);
-  $elevation-color: map-get($foreground, elevation);
+  $foreground: map.get($config, foreground);
+  $elevation-color: map.get($foreground, elevation);
   $elevation-color-or-default: if($elevation-color == null, #000, $elevation-color);
 
   @include mat.overridable-elevation($zValue, $elevation-color-or-default, $opacity);

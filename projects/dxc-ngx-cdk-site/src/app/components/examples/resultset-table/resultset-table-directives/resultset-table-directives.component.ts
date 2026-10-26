@@ -1,9 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
-  selector: 'resultset-table-directives',
-  templateUrl: './resultset-table-directives.component.html',
-  styleUrls: ['./resultset-table-directives.component.scss']
+    selector: 'resultset-table-directives',
+    templateUrl: './resultset-table-directives.component.html',
+    styleUrls: ['./resultset-table-directives.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class ResultsetTableDirectivesComponent implements OnInit {
 

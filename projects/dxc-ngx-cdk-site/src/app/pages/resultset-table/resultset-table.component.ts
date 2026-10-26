@@ -1,13 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Section } from '../../model/sections';
 import { ResultsetTableExampleComponent } from '../../components/examples/resultset-table/resultset-table-example/resultset-table-example.component';
 import { ResultsetTableApiComponent } from '../../components/examples/resultset-table/resultset-table-api/resultset-table-api.component';
 
 
 @Component({
-  selector: 'app-resultset-table',
-  templateUrl: './resultset-table.component.html',
-  styleUrls: ['./resultset-table.component.scss']
+    selector: 'app-resultset-table',
+    templateUrl: './resultset-table.component.html',
+    styleUrls: ['./resultset-table.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class ResultsetTableComponent implements OnInit {
   headingMargin = {

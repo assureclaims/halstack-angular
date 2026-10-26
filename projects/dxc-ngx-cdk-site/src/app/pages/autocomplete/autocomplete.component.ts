@@ -1,12 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Section } from 'src/app/model/sections';
 import { AutocompleteExampleComponent } from 'src/app/components/examples/autocomplete/autocomplete-example/autocomplete-example.component';
 import { AutocompleteUsageComponent } from 'src/app/components/examples/autocomplete/autocomplete-usage/autocomplete-usage.component';
 
 @Component({
-  selector: 'app-autocomplete',
-  templateUrl: './autocomplete.component.html',
-  styleUrls: []
+    selector: 'app-autocomplete',
+    templateUrl: './autocomplete.component.html',
+    styleUrls: [],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class AutocompleteComponent implements OnInit {
 

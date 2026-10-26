@@ -1,4 +1,4 @@
-import { Component, Inject } from "@angular/core";
+import { Component, Inject, ChangeDetectionStrategy } from "@angular/core";
 import { ThemeService } from "@dxc-technology/halstack-angular";
 import { customTheme } from "../assets/styles/themesProperties";
 import { HttpClient } from "@angular/common/http";
@@ -7,9 +7,11 @@ import { ActivatedRoute, Router } from "@angular/router";
 import { BehaviorSubject } from "rxjs";
 
 @Component({
-  selector: "app-root",
-  templateUrl: "./app.component.html",
-  styleUrls: ["./app.component.scss"],
+    selector: "app-root",
+    templateUrl: "./app.component.html",
+    styleUrls: ["./app.component.scss"],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class AppComponent {
   title = "DXC Angular Components";

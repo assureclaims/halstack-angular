@@ -7,6 +7,7 @@ import {
   ContentChildren,
   QueryList,
   SimpleChanges,
+  ChangeDetectionStrategy
 } from "@angular/core";
 import { DxcTabComponent } from "./dxc-tab/dxc-tab.component";
 import { MatTab, MatTabGroup } from "@angular/material/tabs";
@@ -31,14 +32,16 @@ const globalRippleConfig: RippleGlobalOptions = {
 };
 
 @Component({
-  selector: "dxc-tabs",
-  templateUrl: "./dxc-tabs.component.html",
-  styleUrls: ["./dxc-tabs.component.scss"],
-  providers: [
-    CssUtils,
-    TabService,
-    { provide: MAT_RIPPLE_GLOBAL_OPTIONS, useValue: globalRippleConfig },
-  ],
+    selector: "dxc-tabs",
+    templateUrl: "./dxc-tabs.component.html",
+    styleUrls: ["./dxc-tabs.component.scss"],
+    providers: [
+        CssUtils,
+        TabService,
+        { provide: MAT_RIPPLE_GLOBAL_OPTIONS, useValue: globalRippleConfig },
+    ],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class DxcTabsComponent implements OnChanges {
   /**
@@ -219,7 +222,7 @@ export class DxcTabsComponent implements OnChanges {
       .mat-mdc-tab-list .mdc-tab-indicator .mdc-tab-indicator__content--underline{
         border-width: var(--tabs-dividerThickness, 2px);
         width: 100%;
-        border-color: var(--tabs-dividerColor);
+        border-color: var(--tabs-dividerColor) !important;
         border-style: solid
       }
       .mat-mdc-tab-group{

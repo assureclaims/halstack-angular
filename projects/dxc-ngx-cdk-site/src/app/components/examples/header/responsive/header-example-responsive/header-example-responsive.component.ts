@@ -1,9 +1,11 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
-  selector: 'header-example-responsive',
-  templateUrl: './header-example-responsive.component.html',
-  styleUrls: ['./header-example-responsive.component.scss']
+    selector: 'header-example-responsive',
+    templateUrl: './header-example-responsive.component.html',
+    styleUrls: ['./header-example-responsive.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class HeaderExampleResponsiveComponent implements OnInit {
 

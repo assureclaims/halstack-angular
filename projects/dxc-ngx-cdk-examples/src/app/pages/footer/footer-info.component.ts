@@ -1,9 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
-  selector: 'footer-info',
-  templateUrl: './footer-info.component.html',
-  styleUrls: ['./footer-info.component.scss']
+    selector: 'footer-info',
+    templateUrl: './footer-info.component.html',
+    styleUrls: ['./footer-info.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class FooterInfoComponent {
 

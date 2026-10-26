@@ -1,4 +1,4 @@
-import { Component, SimpleChanges } from '@angular/core';
+import { Component, SimpleChanges, ChangeDetectionStrategy } from '@angular/core';
 import { AccordionComponent } from '../accordion/accordion.component';
 import { AlertComponent } from '../alert/alert.component';
 import { BoxComponent } from '../box/box.component';
@@ -26,9 +26,11 @@ import { DxcUploadComponent } from '../../../../../dxc-ngx-cdk/src/lib/dxc-uploa
 DxcUploadComponent
 
 @Component({
-  selector: 'header-info',
-  templateUrl: './header-info.component.html',
-  styleUrls: ['./header-info.component.scss']
+    selector: 'header-info',
+    templateUrl: './header-info.component.html',
+    styleUrls: ['./header-info.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class HeaderInfoComponent {
 

@@ -1,13 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Section } from '../../model/sections';
 import { ApplicationLayoutApiComponent } from '../../components/examples/layout/app-layout-api/app-layout-api.component';
 import { ApplicationLayoutExamplesComponent } from '../../components/examples/layout/app-layout-examples/app-layout-examples.component';
 
 @Component({
-  selector: "app-layout",
-  templateUrl: "./app-layout.component.html",
-  styleUrls: [],
-  providers: []
+    selector: "app-layout",
+    templateUrl: "./app-layout.component.html",
+    styleUrls: [],
+    providers: [],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class ApplicationLayoutComponent implements OnInit{
 

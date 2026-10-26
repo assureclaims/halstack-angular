@@ -384,8 +384,9 @@ export class FocusTrapFactory {
 
 /** Directive for trapping focus within a region. */
 @Directive({
-  selector: '[cdkTrapFocus]',
-  exportAs: 'cdkTrapFocus',
+    selector: '[cdkTrapFocus]',
+    exportAs: 'cdkTrapFocus',
+    standalone: false
 })
 export class CdkTrapFocus implements OnDestroy, AfterContentInit, OnChanges, DoCheck {
   private _document: Document;

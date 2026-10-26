@@ -1,9 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
-  selector: 'dropdown-import',
-  templateUrl: './dropdown-import.component.html',
-  styleUrls: ['./dropdown-import.component.scss']
+    selector: 'dropdown-import',
+    templateUrl: './dropdown-import.component.html',
+    styleUrls: ['./dropdown-import.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class DropdownImportComponent implements OnInit {
 

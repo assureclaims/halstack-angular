@@ -12,7 +12,10 @@ import { DxcResultTable } from "../table";
  * Provides a handle for sorting rows using table's headers.
  * @docs-private
  */
-@Directive({ selector: "[ordering]" })
+@Directive({
+    selector: "[ordering]",
+    standalone: false
+})
 export class Ordering {
   //Header sorting state
   state: string;
@@ -52,7 +55,7 @@ export class Ordering {
     public elementRef: ElementRef,
     public viewContainerRef: ViewContainerRef
   ) {
-    const _injector = this.viewContainerRef.parentInjector;
+    const _injector = this.viewContainerRef.injector;
     const _parent: DxcResultTable<any> =
       _injector.get<DxcResultTable<any>>(DxcResultTable);
 

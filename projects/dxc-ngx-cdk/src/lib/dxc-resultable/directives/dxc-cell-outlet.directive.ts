@@ -5,7 +5,10 @@ import { DxcCellDef } from "./dxc-cell-def.directive";
  * Outlet for rendering cells inside of a row or header row.
  * @docs-private
  */
-@Directive({ selector: "[cdkCellOutlet]" })
+@Directive({
+    selector: "[cdkCellOutlet]",
+    standalone: false
+})
 export class DxcCellOutlet implements OnDestroy {
   /** The ordered list of cells to render within this outlet's view container */
   cells: DxcCellDef[];

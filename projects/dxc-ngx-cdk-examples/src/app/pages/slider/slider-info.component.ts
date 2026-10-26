@@ -1,9 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
-  selector: 'slider-info',
-  templateUrl: './slider-info.component.html',
-  styleUrls: ['./slider-info.component.scss']
+    selector: 'slider-info',
+    templateUrl: './slider-info.component.html',
+    styleUrls: ['./slider-info.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class SliderInfoComponent {
 

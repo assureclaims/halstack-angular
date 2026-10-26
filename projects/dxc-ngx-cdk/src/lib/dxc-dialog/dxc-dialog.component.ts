@@ -9,7 +9,8 @@ import {
   ElementRef,
   HostListener,
   AfterViewInit,
-  OnDestroy
+  OnDestroy,
+  ChangeDetectionStrategy
 } from "@angular/core";
 import { css } from "@emotion/css";
 import { BehaviorSubject } from "rxjs";
@@ -17,10 +18,12 @@ import { CssUtils } from "../utils";
 import { coerceBooleanProperty, coerceNumberProperty } from '@angular/cdk/coercion';
 import { MODEL_HEIGHT, MODEL_WIDTH} from './props/dailog-props';
 @Component({
-  selector: "dxc-dialog",
-  templateUrl: "./dxc-dialog.component.html",
-  styleUrls: ["./dxc-dialog.component.scss"],
-  providers: [CssUtils],
+    selector: "dxc-dialog",
+    templateUrl: "./dxc-dialog.component.html",
+    styleUrls: ["./dxc-dialog.component.scss"],
+    providers: [CssUtils],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class DxcDialogComponent implements OnDestroy, AfterViewInit {
   @ViewChild('dialogboxstart', { read: ElementRef, static: false }) dialogboxstart: ElementRef;

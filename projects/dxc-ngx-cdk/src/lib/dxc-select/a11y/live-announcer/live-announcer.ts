@@ -178,8 +178,9 @@ export class LiveAnnouncer implements OnDestroy {
  * with a wider range of browsers and screen readers.
  */
 @Directive({
-  selector: '[cdkAriaLive]',
-  exportAs: 'cdkAriaLive',
+    selector: '[cdkAriaLive]',
+    exportAs: 'cdkAriaLive',
+    standalone: false
 })
 export class CdkAriaLive implements OnDestroy {
   /** The aria-live politeness level to use when announcing messages. */

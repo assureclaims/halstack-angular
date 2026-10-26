@@ -1,9 +1,11 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
-  selector: 'chip-info',
-  templateUrl: './chip.component.html',
-  styleUrls: ['./chip.component.scss']
+    selector: 'chip-info',
+    templateUrl: './chip.component.html',
+    styleUrls: ['./chip.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class ChipComponent implements OnInit {
 

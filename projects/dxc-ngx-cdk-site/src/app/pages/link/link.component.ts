@@ -1,12 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Section } from "../../model/sections";
 import { LinkExampleComponent } from "../../components/examples/link/link-example/link-example.component";
 import { LinkApiComponent } from '../../components/examples/link/link-api/link-api.component';
 
 @Component({
-  selector: 'app-link',
-  templateUrl: './link.component.html',
-  styleUrls: ['./link.component.scss']
+    selector: 'app-link',
+    templateUrl: './link.component.html',
+    styleUrls: ['./link.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class LinkComponent implements OnInit {
   headingMargin = {

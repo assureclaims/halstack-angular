@@ -5,13 +5,16 @@ import {
   Input,
   OnInit,
   Output,
+  ChangeDetectionStrategy
 } from "@angular/core";
 import { CssUtils } from "../../utils";
 import { SidenavService } from '../services/sidenav.service';
 @Component({
-  selector: "dxc-sidenav-link",
-  templateUrl: "./dxc-sidenav-link.component.html",
-  providers: [CssUtils],
+    selector: "dxc-sidenav-link",
+    templateUrl: "./dxc-sidenav-link.component.html",
+    providers: [CssUtils],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class DxcSidenavLinkComponent implements OnInit {
   @Input() href: string;

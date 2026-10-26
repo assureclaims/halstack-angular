@@ -7,6 +7,7 @@ import {
   SimpleChanges,
   HostBinding,
   ChangeDetectorRef,
+  ChangeDetectionStrategy
 } from "@angular/core";
 import { BehaviorSubject } from "rxjs";
 import { CssUtils } from "../utils";
@@ -15,10 +16,12 @@ import { coerceBooleanProperty, coerceNumberProperty } from '@angular/cdk/coerci
 import { ToggleGroupService } from "./services/toggleGroup.service";
 
 @Component({
-  selector: "dxc-togglegroup",
-  templateUrl: "./dxc-toggleGroup.component.html",
-  styleUrls: [],
-  providers: [CssUtils, ToggleGroupService],
+    selector: "dxc-togglegroup",
+    templateUrl: "./dxc-toggleGroup.component.html",
+    styleUrls: [],
+    providers: [CssUtils, ToggleGroupService],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class DxcToggleGroupComponent implements OnInit {
   @Input()

@@ -1,12 +1,15 @@
 import {
-    Component,
-    OnChanges,
-  } from "@angular/core";
+  Component,
+  OnChanges,
+  ChangeDetectionStrategy
+} from "@angular/core";
   
   @Component({
     selector: "dxc-button-icon",
     templateUrl: "./dxc-button-icon.component.html",
-  })
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
+})
   export class DxcButtonIconComponent implements OnChanges {
   
     constructor() {}

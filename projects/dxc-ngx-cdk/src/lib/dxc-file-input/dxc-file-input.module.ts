@@ -7,7 +7,7 @@ import { DxcFileErrorComponent } from "./dxc-file-error/dxc-file-error.component
 import { FileFormatDirective } from "./directives/file-format.directive";
 import { MatIconModule } from "@angular/material/icon";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
-import { HttpClientModule } from "@angular/common/http";
+import { provideHttpClient, withInterceptorsFromDi } from "@angular/common/http";
 import { FilesService } from "./services/files.services";
 import { IFileService } from "./model/IFileService";
 import {
@@ -30,9 +30,9 @@ import { MatTooltipModule } from "@angular/material/tooltip";
     FormsModule,
     ReactiveFormsModule,
     DxcProgressbarModule,
-    HttpClientModule,
     MatTooltipModule
   ],
+  providers: [provideHttpClient(withInterceptorsFromDi())],
   exports: [DxcFileInputComponent],
 })
 export class DxcFileInputModule {

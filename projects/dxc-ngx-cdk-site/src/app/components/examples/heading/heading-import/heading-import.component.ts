@@ -1,9 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
-  selector: 'heading-import',
-  templateUrl: './heading-import.component.html',
-  styleUrls: ['./heading-import.component.scss']
+    selector: 'heading-import',
+    templateUrl: './heading-import.component.html',
+    styleUrls: ['./heading-import.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class HeadingImportComponent implements OnInit {
 

@@ -1,12 +1,14 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ChangeDetectionStrategy } from "@angular/core";
 import { Section } from "../../model/sections";
 import { DialogExampleComponent } from "../../components/examples/dialog/dialog-example/dialog-example.component";
 import { DialogApiComponent } from "../../components/examples/dialog/dialog-api/dialog-api.component";
 
 @Component({
-  selector: "app-dialog",
-  templateUrl: "./dialog.component.html",
-  styleUrls: ["./dialog.component.scss"],
+    selector: "app-dialog",
+    templateUrl: "./dialog.component.html",
+    styleUrls: ["./dialog.component.scss"],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class DialogComponent implements OnInit {
   headingMargin = {

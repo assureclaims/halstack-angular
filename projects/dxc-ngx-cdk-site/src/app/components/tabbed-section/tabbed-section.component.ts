@@ -1,10 +1,12 @@
-import { Component, OnInit, ViewChild, Input } from '@angular/core';
+import { Component, OnInit, ViewChild, Input, ChangeDetectionStrategy } from '@angular/core';
 import { EventEmitter } from 'events';
 
 @Component({
-  selector: 'app-tabbed-section',
-  templateUrl: './tabbed-section.component.html',
-  styleUrls: ['./tabbed-section.component.scss']
+    selector: 'app-tabbed-section',
+    templateUrl: './tabbed-section.component.html',
+    styleUrls: ['./tabbed-section.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class TabbedSectionComponent implements OnInit {
 

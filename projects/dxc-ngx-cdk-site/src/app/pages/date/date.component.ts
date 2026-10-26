@@ -1,12 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Section } from '../../model/sections';
 import { DateExampleComponent } from '../../components/examples/date/date-example/date-example.component';
 import { DateApiComponent } from '../../components/examples/date/date-api/date-api.component';
 
 @Component({
-  selector: 'app-date',
-  templateUrl: './date.component.html',
-  styleUrls: ['./date.component.scss']
+    selector: 'app-date',
+    templateUrl: './date.component.html',
+    styleUrls: ['./date.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class DateComponent implements OnInit {
   headingMargin = {

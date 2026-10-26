@@ -1,9 +1,11 @@
-import { Component, Output, EventEmitter, Input } from "@angular/core";
+import { Component, Output, EventEmitter, Input, ChangeDetectionStrategy } from "@angular/core";
 import { coerceNumberProperty } from '@angular/cdk/coercion';
 @Component({
-  selector: "dxc-files-preview",
-  templateUrl: "./dxc-files-preview.component.html",
-  styleUrls: ["./dxc-files-preview.component.scss"],
+    selector: "dxc-files-preview",
+    templateUrl: "./dxc-files-preview.component.html",
+    styleUrls: ["./dxc-files-preview.component.scss"],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class DxcFilesPreviewComponent {
   @Output() showOverlay = new EventEmitter<any>();

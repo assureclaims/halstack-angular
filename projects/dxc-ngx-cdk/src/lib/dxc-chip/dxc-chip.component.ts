@@ -7,6 +7,7 @@ import {
   EventEmitter,
   SimpleChanges,
   ContentChildren,
+  ChangeDetectionStrategy
 } from "@angular/core";
 import { BehaviorSubject } from "rxjs";
 import { css } from "@emotion/css";
@@ -20,9 +21,11 @@ import { DxcChipPrefixIconComponent } from "./dxc-chip-prefix-icon/dxc-chip-pref
 import { DxcChipSuffixIconComponent } from "./dxc-chip-suffix-icon/dxc-chip-suffix-icon.component";
 
 @Component({
-  selector: "dxc-chip",
-  templateUrl: "./dxc-chip.component.html",
-  providers: [CssUtils],
+    selector: "dxc-chip",
+    templateUrl: "./dxc-chip.component.html",
+    providers: [CssUtils],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class DxcChipComponent implements OnChanges {
   @HostBinding("class") className;
@@ -92,8 +95,8 @@ export class DxcChipComponent implements OnChanges {
     this.defaultInputs.next({ ...this.defaultInputs.getValue(), ...inputs });
     this.className = `${this.getDynamicStyle(this.defaultInputs.getValue())}`;
     if (
-      this.prefixIconClick.observers.length <= 0 &&
-      this.suffixIconClick.observers.length <= 0
+      !this.prefixIconClick.observed &&
+      !this.suffixIconClick.observed
     ) {
       this.tabIndexValue = -1;
     }
@@ -123,13 +126,13 @@ export class DxcChipComponent implements OnChanges {
 
   getDisabledStyleSuffixIcon(disabled) {
     if (disabled) {
-      if (this.suffixIconClick.observers.length > 0) {
+      if (this.suffixIconClick.observed) {
         return css`
           cursor: not-allowed;
         `;
       }
     } else {
-      if (this.suffixIconClick.observers.length > 0) {
+      if (this.suffixIconClick.observed) {
         return css`
           cursor: pointer;
         `;
@@ -142,13 +145,13 @@ export class DxcChipComponent implements OnChanges {
 
   getDisabledStylePrefixIcon(disabled) {
     if (disabled) {
-      if (this.prefixIconClick.observers.length > 0) {
+      if (this.prefixIconClick.observed) {
         return css`
           cursor: not-allowed;
         `;
       }
     } else {
-      if (this.prefixIconClick.observers.length > 0) {
+      if (this.prefixIconClick.observed) {
         return css`
           cursor: pointer;
         `;

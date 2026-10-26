@@ -1,13 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Section } from 'src/app/model/sections';
 import { TabbedSectionExampleComponent } from '../../components/examples/tabbed-section/tabbed-section-example/tabbed-section-example.component';
 import { TabbedSectionNotesComponent } from '../../components/examples/tabbed-section/properties/tabbed-section-notes/tabbed-section-notes.component';
 import { TabbedSectionApiComponent } from '../../components/examples/tabbed-section/tabbed-section-api/tabbed-section-api.component';
 
 @Component({
-  selector: 'app-tabbed-section-info',
-  templateUrl: './tabbed-section-info.component.html',
-  styleUrls: ['./tabbed-section-info.component.scss']
+    selector: 'app-tabbed-section-info',
+    templateUrl: './tabbed-section-info.component.html',
+    styleUrls: ['./tabbed-section-info.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class TabbedSectionInfoComponent implements OnInit {
   headingMargin = {

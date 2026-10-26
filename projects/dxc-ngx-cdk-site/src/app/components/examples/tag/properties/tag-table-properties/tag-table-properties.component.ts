@@ -1,10 +1,12 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
 import { DataPropertiesTable } from 'src/app/model/data-properties-table';
 
 @Component({
-  selector: 'tag-table-properties',
-  templateUrl: './tag-table-properties.component.html',
-  styleUrls: ['./tag-table-properties.component.scss']
+    selector: 'tag-table-properties',
+    templateUrl: './tag-table-properties.component.html',
+    styleUrls: ['./tag-table-properties.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class TagTablePropertiesComponent implements OnInit {
 

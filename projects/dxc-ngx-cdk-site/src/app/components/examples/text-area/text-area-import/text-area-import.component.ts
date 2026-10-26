@@ -1,9 +1,11 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ChangeDetectionStrategy } from "@angular/core";
 
 @Component({
-  selector: "text-area-import",
-  templateUrl: "./text-area-import.component.html",
-  styleUrls: ["./text-area-import.component.scss"],
+    selector: "text-area-import",
+    templateUrl: "./text-area-import.component.html",
+    styleUrls: ["./text-area-import.component.scss"],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class TextAreaImportComponent implements OnInit {
   bindCode = `

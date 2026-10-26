@@ -1,5 +1,5 @@
 import { coerceNumberProperty } from '@angular/cdk/coercion';
-import { Input } from '@angular/core';
+import { Input, ChangeDetectionStrategy } from '@angular/core';
 import { InputTextService } from '../services/inputText.service';
 import {
     Component,
@@ -13,7 +13,9 @@ import {
   @Component({
     selector: "dxc-input-suffix-icon",
     templateUrl: "./dxc-input-suffix-icon.component.html",
-  })
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
+})
   export class DxcInputSuffixIconComponent implements OnChanges {
     @Input()
     get tabIndexValue(): number {
@@ -38,7 +40,7 @@ import {
           this.isDisabled = value;
         }
       });
-      if(this.onClickSuffix.observers.length > 0){
+      if(this.onClickSuffix.observed){
         this.hasOnClick = true;
       }
     }

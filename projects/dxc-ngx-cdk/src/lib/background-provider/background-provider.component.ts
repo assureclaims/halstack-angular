@@ -4,16 +4,18 @@ import {
   Input,
   Host,
   InjectionToken,
-  Inject
+  Inject,
+  ChangeDetectionStrategy
 } from "@angular/core";
 import  { BackgroundProviderService}  from "./service/background-provider.service";
 import { TinyColor } from '@ctrl/tinycolor';
 
 @Component({
-  selector: "background-provider",
-  template: "<div><ng-content></ng-content></div>",
-  providers: [{ provide: "bgService", useClass: BackgroundProviderService }]
-
+    selector: "background-provider",
+    template: "<div><ng-content></ng-content></div>",
+    providers: [{ provide: "bgService", useClass: BackgroundProviderService }],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class BackgroundProvider implements OnInit {
   @Input() color: string;

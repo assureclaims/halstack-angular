@@ -1,9 +1,11 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ChangeDetectionStrategy } from "@angular/core";
 
 @Component({
-  selector: "app-wizard",
-  templateUrl: "./wizard.component.html",
-  styleUrls: ["./wizard.component.scss"],
+    selector: "app-wizard",
+    templateUrl: "./wizard.component.html",
+    styleUrls: ["./wizard.component.scss"],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class WizardComponent implements OnInit {
   currentStep: number;

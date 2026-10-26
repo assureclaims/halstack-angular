@@ -1,9 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
-  selector: 'text-input-import',
-  templateUrl: './text-input-import.component.html',
-  styleUrls: ['./text-input-import.component.scss']
+    selector: 'text-input-import',
+    templateUrl: './text-input-import.component.html',
+    styleUrls: ['./text-input-import.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class TextInputImportComponent implements OnInit {
 

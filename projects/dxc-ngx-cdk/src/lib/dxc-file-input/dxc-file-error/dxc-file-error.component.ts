@@ -1,10 +1,11 @@
 import { ChangeDetectionStrategy, Component, HostBinding, Input, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'dxc-file-error',
-  templateUrl: './dxc-file-error.component.html',
-  styleUrls: ['./dxc-file-error.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    selector: 'dxc-file-error',
+    templateUrl: './dxc-file-error.component.html',
+    styleUrls: ['./dxc-file-error.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class DxcFileErrorComponent implements OnInit {
 

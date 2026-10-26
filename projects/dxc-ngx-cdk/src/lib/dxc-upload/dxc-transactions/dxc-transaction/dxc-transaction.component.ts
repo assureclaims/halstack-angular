@@ -1,8 +1,10 @@
-import { Component, OnChanges, Input } from "@angular/core";
+import { Component, OnChanges, Input, ChangeDetectionStrategy } from "@angular/core";
 @Component({
-  selector: "dxc-transaction",
-  templateUrl: "./dxc-transaction.component.html",
-  styleUrls: ["./dxc-transaction.component.scss"],
+    selector: "dxc-transaction",
+    templateUrl: "./dxc-transaction.component.html",
+    styleUrls: ["./dxc-transaction.component.scss"],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class DxcTransactionComponent implements OnChanges {
   @Input() file;

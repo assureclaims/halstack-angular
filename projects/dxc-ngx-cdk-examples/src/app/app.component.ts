@@ -1,13 +1,15 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, ChangeDetectionStrategy } from '@angular/core';
 import { Components } from './components';
 import { HttpClient } from '@angular/common/http';
 import { ThemeService } from '../../../dxc-ngx-cdk/src/lib/theme/theme.service';
 
 ThemeService
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+    selector: 'app-root',
+    templateUrl: './app.component.html',
+    styleUrls: ['./app.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class AppComponent {
   components: Array<any>;

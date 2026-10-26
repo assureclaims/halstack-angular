@@ -1,11 +1,13 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
 import { DataPropertiesTable } from 'src/app/model/data-properties-table';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'toggleGroup-table-properties',
-  templateUrl: './toggleGroup-table-properties.component.html',
-  styleUrls: ['./toggleGroup-table-properties.component.scss']
+    selector: 'toggleGroup-table-properties',
+    templateUrl: './toggleGroup-table-properties.component.html',
+    styleUrls: ['./toggleGroup-table-properties.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class ToggleGroupTablePropertiesComponent implements OnInit {
 

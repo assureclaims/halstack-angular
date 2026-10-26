@@ -1,12 +1,14 @@
-import { Component } from "@angular/core";
+import { Component, ChangeDetectionStrategy } from "@angular/core";
 import { of, Subject, BehaviorSubject } from "rxjs";
 import { delay } from "rxjs/operators";
 import { switchMap } from "rxjs/operators";
 
 @Component({
-  selector: "text-info",
-  templateUrl: "./text-input-info.component.html",
-  styleUrls: ["./text-input-info.component.scss"]
+    selector: "text-info",
+    templateUrl: "./text-input-info.component.html",
+    styleUrls: ["./text-input-info.component.scss"],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class TextInputInfoComponent {
   inputValue = "Testing";

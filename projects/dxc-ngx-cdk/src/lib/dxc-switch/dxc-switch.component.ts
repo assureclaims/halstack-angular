@@ -5,6 +5,7 @@ import {
   Output,
   HostBinding,
   SimpleChanges,
+  ChangeDetectionStrategy
 } from "@angular/core";
 import { EventEmitter, ElementRef } from "@angular/core";
 import { css } from "@emotion/css";
@@ -16,9 +17,11 @@ import {
 } from "@angular/cdk/coercion";
 
 @Component({
-  selector: "dxc-switch",
-  templateUrl: "./dxc-switch.component.html",
-  providers: [CssUtils],
+    selector: "dxc-switch",
+    templateUrl: "./dxc-switch.component.html",
+    providers: [CssUtils],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class DxcSwitchComponent implements OnChanges {
   @HostBinding("class") className;
@@ -53,7 +56,7 @@ export class DxcSwitchComponent implements OnChanges {
   @Input() label: string;
   @Input() name: string;
   @Input() id: string;
-  @Input() labelPosition: string;
+  @Input() labelPosition: "before" | "after";
   @Input() margin: any;
   @Input() size: any;
   @Input()

@@ -5,11 +5,14 @@ import {
   Output,
   EventEmitter,
   HostBinding,
+  ChangeDetectionStrategy
 } from "@angular/core";
 @Component({
-  selector: "dxc-files-to-upload",
-  templateUrl: "./dxc-files-to-upload.component.html",
-  styleUrls: ["./dxc-files-to-upload.component.scss"],
+    selector: "dxc-files-to-upload",
+    templateUrl: "./dxc-files-to-upload.component.html",
+    styleUrls: ["./dxc-files-to-upload.component.scss"],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class DxcFilesToUploadComponent {
   @Input() filesToUpload;

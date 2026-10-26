@@ -4,6 +4,7 @@ import {
   HostBinding,
   ContentChildren,
   ChangeDetectorRef,
+  ChangeDetectionStrategy
 } from "@angular/core";
 import { BehaviorSubject } from "rxjs";
 import { css } from "@emotion/css";
@@ -16,9 +17,11 @@ import { DxcFooterComponent } from "../dxc-footer/dxc-footer.component";
 import { DxcApplicationLayoutFooterComponent } from "./dxc-application-layout-footer/dxc-application-layout-footer.component";
 
 @Component({
-  selector: "dxc-application-layout",
-  templateUrl: "./dxc-application-layout.component.html",
-  providers: [CssUtils, SidenavService],
+    selector: "dxc-application-layout",
+    templateUrl: "./dxc-application-layout.component.html",
+    providers: [CssUtils, SidenavService],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class DxcApplicationLayoutComponent implements OnInit {
   @HostBinding("class") layoutStyles;

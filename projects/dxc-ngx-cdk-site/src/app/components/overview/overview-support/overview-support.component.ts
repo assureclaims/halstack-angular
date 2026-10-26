@@ -1,9 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
-  selector: 'app-overview-support',
-  templateUrl: './overview-support.component.html',
-  styleUrls: ['./overview-support.component.scss']
+    selector: 'app-overview-support',
+    templateUrl: './overview-support.component.html',
+    styleUrls: ['./overview-support.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class OverviewSupportComponent implements OnInit {
 

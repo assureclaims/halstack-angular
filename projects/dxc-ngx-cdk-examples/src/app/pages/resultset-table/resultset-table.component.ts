@@ -1,11 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { DataSource } from '@angular/cdk/collections';
 import { BehaviorSubject, Observable } from 'rxjs';
 
 @Component({
-  selector: 'resultset-table-info',
-  templateUrl: './resultset-table.component.html',
-  styleUrls: ['./resultset-table.component.scss']
+    selector: 'resultset-table-info',
+    templateUrl: './resultset-table.component.html',
+    styleUrls: ['./resultset-table.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class ResultsetTableComponent implements OnInit {
 

@@ -9,7 +9,8 @@ import {
   ViewChild,
   SimpleChanges,
   forwardRef,
-  ElementRef
+  ElementRef,
+  ChangeDetectionStrategy
 } from "@angular/core";
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { css } from "@emotion/css";
@@ -26,13 +27,15 @@ import { DateHelper } from './helpers/date-helper';
 //const moment = momentImported;
 
 @Component({
-  selector: "dxc-date",
-  templateUrl: "./dxc-date.component.html",
-  providers: [{
-    provide: NG_VALUE_ACCESSOR,
-    useExisting: forwardRef(() => DxcDateComponent),
-    multi: true
-  }, CssUtils]
+    selector: "dxc-date",
+    templateUrl: "./dxc-date.component.html",
+    providers: [{
+            provide: NG_VALUE_ACCESSOR,
+            useExisting: forwardRef(() => DxcDateComponent),
+            multi: true
+        }, CssUtils],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class DxcDateComponent implements OnChanges, OnInit, ControlValueAccessor {
   @Input()

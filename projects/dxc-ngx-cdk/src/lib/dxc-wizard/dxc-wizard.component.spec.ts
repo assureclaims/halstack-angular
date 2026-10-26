@@ -3,14 +3,14 @@ import { DxcWizardComponent } from "./dxc-wizard.component";
 import { DxcWizardStepComponent } from "./dxc-wizard-step/dxc-wizard-step.component";
 import { DxcWizardModule } from "./dxc-wizard.module";
 import {
-  BrowserDynamicTestingModule,
-  platformBrowserDynamicTesting,
-} from "@angular/platform-browser-dynamic/testing";
+  BrowserTestingModule,
+  platformBrowserTesting,
+} from "@angular/platform-browser/testing";
 import { TestBed } from "@angular/core/testing";
 
 TestBed.initTestEnvironment(
-  BrowserDynamicTestingModule,
-  platformBrowserDynamicTesting()
+  BrowserTestingModule,
+  platformBrowserTesting()
 );
 
 describe("DxcWizardComponent tests", () => {

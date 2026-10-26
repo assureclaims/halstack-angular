@@ -1,13 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Section } from '../../model/sections';
 import { SwitchExampleComponent } from '../../components/examples/switch/switch-example/switch-example.component';
 import { SwitchApiComponent } from '../../components/examples/switch/switch-api/switch-api.component';
 
 @Component({
-  selector: "app-switch",
-  templateUrl: "./switch.component.html",
-  styleUrls: ["./switch.component.scss"],
-  providers: []
+    selector: "app-switch",
+    templateUrl: "./switch.component.html",
+    styleUrls: ["./switch.component.scss"],
+    providers: [],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class SwitchComponent implements OnInit{
   headingMargin = {
