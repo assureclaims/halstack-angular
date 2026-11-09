@@ -18,6 +18,8 @@ import { BehaviorSubject } from "rxjs";
 import { CssUtils } from "../utils";
 import moment from "moment";
 import { MatCalendar } from "@angular/material/datepicker";
+import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from "@angular/material/core";
+import { MAT_MOMENT_DATE_FORMATS, MomentDateAdapter } from "@angular/material-moment-adapter";
 import { Moment } from "moment";
 import { DxcPopoverTrigger } from "../dxc-popover/dxc-popover-trigger";
 import { HostListener } from "@angular/core";
@@ -33,7 +35,14 @@ import { DateHelper } from './helpers/date-helper';
             provide: NG_VALUE_ACCESSOR,
             useExisting: forwardRef(() => DxcDateComponent),
             multi: true
-        }, CssUtils],
+          }, {
+            provide: DateAdapter,
+            useClass: MomentDateAdapter,
+            deps: [MAT_DATE_LOCALE]
+          }, {
+            provide: MAT_DATE_FORMATS,
+            useValue: MAT_MOMENT_DATE_FORMATS
+          }, CssUtils],
     changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
@@ -287,7 +296,7 @@ export class DxcDateComponent implements OnChanges, OnInit, ControlValueAccessor
 
   public openCalendar() {
     this._dxcCalendar.activeDate = this.dateValue.isValid()
-      ? this.dateValue
+      ? this.dateValue 
       : moment();
     this._dxcCalendar.currentView = "month";
     this._dxcTrigger.openPopover();

@@ -12,10 +12,62 @@ import {
 import { DxcPopoverModule } from "../dxc-popover/dxc-popover-module";
 import { DxcBoxModule } from "../dxc-box/dxc-box.module";
 import { DxcInputTextModule } from "../dxc-text-input/dxc-input-text.module";
+import { fakeAsync, TestBed, tick } from "@angular/core/testing";
+import { NativeDateAdapter, MAT_NATIVE_DATE_FORMATS } from "@angular/material/core";
+import { DxcDateModule } from "./dxc-date.module";
+import moment from "moment";
 
 describe("DxcDate", () => {
   const newMockDate = new Date("1995/12/03");
   const newValue = "03-12-1995";
+
+  test.each(["03-12-1995", "", "invalid"])(
+    "opens and selects dates with a parent native adapter and value '%s'",
+    fakeAsync((value: string) => {
+      TestBed.configureTestingModule({
+        imports: [DxcDateModule, MatNativeDateModule],
+        providers: [
+          { provide: DateAdapter, useClass: NativeDateAdapter },
+          { provide: MAT_DATE_FORMATS, useValue: MAT_NATIVE_DATE_FORMATS },
+        ],
+      });
+      TestBed.overrideTemplate(DxcDateComponent, `
+        <button #calendarButton (click)="openCalendar()">Open</button>
+        <div #calender tabindex="0">
+          <mat-calendar #dxcCalendar [selected]="dateValue"
+            (selectedChange)="onSelectedChangeHandler($event)"></mat-calendar>
+        </div>
+      `);
+      const fixture = TestBed.createComponent(DxcDateComponent);
+      const component = fixture.componentInstance;
+      component.value = value;
+      fixture.detectChanges();
+      component._dxcTrigger = {
+        openPopover: jest.fn(),
+        closePopover: jest.fn(),
+      } as any;
+
+      expect(TestBed.inject(DateAdapter)).toBeInstanceOf(NativeDateAdapter);
+      expect(fixture.debugElement.injector.get(DateAdapter)).toBeInstanceOf(MomentDateAdapter);
+      fixture.nativeElement.querySelector("button").click();
+      fixture.detectChanges();
+      tick(100);
+
+      const activeDate = component._dxcCalendar.activeDate;
+      expect(moment.isMoment(activeDate)).toBe(true);
+      expect(activeDate.isValid()).toBe(true);
+      if (value === newValue) {
+        expect(activeDate.format("DD-MM-YYYY")).toBe(newValue);
+      }
+      const onChange = jest.spyOn(component.onChange, "emit");
+      const selectedDate = moment("1995-12-04");
+      component._dxcCalendar.selectedChange.emit(selectedDate);
+      expect(onChange).toHaveBeenCalledWith({
+        stringValue: "04-12-1995",
+        dateValue: selectedDate.toDate(),
+      });
+    })
+  );
 
   test("should render dxc-date", async () => {
     const { getByText } = await render(DxcDateComponent, {
